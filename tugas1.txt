@@ -1,3 +1,4 @@
 Tugas1:
 1. Menginstall Git dan Konfigurasi awal pada Git melalu command prompt
 2. Membuat Repositori baru
+3. Gak jelas
