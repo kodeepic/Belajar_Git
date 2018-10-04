@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -32,3 +32,13 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+INCLUDEPATH += C:\OpenCV\opencv\build\include
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_core343.dll
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_highgui343.dll
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_imgcodecs343.dll
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_imgproc343.dll
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_calib3d343.dll
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_videoio343.dll
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_photo343.dll
+LIBS +=C:\OpenCV\opencv\build\bin\libopencv_video343.dll
+
