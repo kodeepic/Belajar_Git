@@ -8,7 +8,7 @@
 
 using namespace std; //operasi input output
 using namespace cv; //Namespace tempat semua fungsi C++ OpenCV berada
-
+int i;
 int main(int argc, char *argv[])
 { 
     QApplication a(argc, argv);
@@ -35,7 +35,10 @@ int main(int argc, char *argv[])
            cout<<"cannot read the file"<<endl;
        }
        imshow("gambar",frame); //play gambar
-       imwrite("D:/Capture gambar/gambar.png",frame); //menyimpan gambar
+       char filename[80]; //stores file name
+      sprintf(filename,"D:/Capture gambar/gambar_%d.png",i); //lokasi penyimpanan
+      imwrite(filename,frame); //mencetak frame
+      i++;//perulangan
 
        if(waitKey(30)==27) //keluar jika tekan ESC (kode ascii esc adalah 27)
        {
