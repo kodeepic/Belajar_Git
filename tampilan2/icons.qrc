@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>exit.png</file>
+        <file>icon_control_nextmedia.png</file>
+        <file>icon_control_paly.png</file>
+        <file>icon_control_pause.png</file>
+        <file>icon_control_previousmedia.png</file>
+        <file>icon_control_stop.png</file>
+        <file>icon_folder.png</file>
+        <file>icon_pengaturan1.png</file>
+        <file>icon_save.png</file>
+        <file>icon_speaker.png</file>
+        <file>icon_next.png</file>
+    </qresource>
+</RCC>
