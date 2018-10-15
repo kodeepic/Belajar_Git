@@ -6,7 +6,7 @@
 #include <QVideoWidget>
 #include <QFileDialog>
 #include "secdialog.h"
-
+//Tampilan pemutar video
 
 namespace Ui {
 class MainWindow;
