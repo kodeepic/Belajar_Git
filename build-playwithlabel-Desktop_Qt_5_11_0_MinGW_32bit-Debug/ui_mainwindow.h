@@ -47,14 +47,14 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 50, 561, 351));
+        label->setGeometry(QRect(30, 20, 561, 351));
         label->setStyleSheet(QStringLiteral("Background-color: #000;"));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(30, 10, 75, 23));
+        pushButton->setGeometry(QRect(630, 20, 75, 23));
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(130, 10, 75, 23));
+        pushButton_2->setGeometry(QRect(630, 70, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -76,8 +76,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         label->setText(QString());
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Buka Video", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Putar Video", nullptr));
     } // retranslateUi
 
 };
