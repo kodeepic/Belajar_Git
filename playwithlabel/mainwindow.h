@@ -2,9 +2,27 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QDebug>
-#include <QImage>
-#include <QPixmap>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <player.h>
+namespace Ui {
+class MainWindow;
+}
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+public:
+    explicit MainWindow(QWidget *parent =0);
+    ~MainWindow();
+private slots:
+    void updatePlayerUI(QImage img);
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+private:
+    Ui::MainWindow *ui;
+    Player* myPlayer;
+};
+/*
 #include "opencv2/opencv.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/imgproc/types_c.h"
@@ -76,5 +94,5 @@ private:
     Ui::MainWindow *ui;
 
 };
-
+*/
 #endif // MAINWINDOW_H

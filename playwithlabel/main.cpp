@@ -1,5 +1,18 @@
 #include "mainwindow.h"
 #include <QApplication>
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow* w =new MainWindow();
+    w->setAttribute(Qt::WA_DeleteOnClose,true);
+
+    w->show();
+    return a.exec();
+}
+
+/*
+#include "mainwindow.h"
+#include <QApplication>
 #include "opencv2/opencv.hpp"
 #include <opencv2/core/core.hpp> //header yang direkomendasikan saat menggunakan C++ API
 #include <opencv2/highgui/highgui.hpp> //(tulisan header versi lama) highui untuk mengakses imgcodec,videoio, dll
@@ -32,4 +45,4 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
-
+*/

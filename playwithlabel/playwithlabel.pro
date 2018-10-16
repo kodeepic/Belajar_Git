@@ -36,10 +36,12 @@ LIBS +=C:\OpenCV\opencv\build\bin\libopencv_video343.dll
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    player.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    player.h
 
 FORMS += \
         mainwindow.ui
