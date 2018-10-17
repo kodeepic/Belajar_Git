@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QProgressBar>
 //#include <QFileDialog>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,7 +17,18 @@ MainWindow::MainWindow(QWidget *parent) :
     int h=ui->label->height();
     ui->label->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
 */
+
 }
+/*
+void MainWindow :: setProgressBarValue()
+{
+    bar=new QProgressBar (this);
+    button =new QPushButton(this);
+    connect(button,SIGNAL(clicked()),this,SLOT(setProgressBarValue()));
+    int value = 50;
+    bar->setValue(value);
+}
+*/
 void MainWindow::updatePlayerUI(QImage img)
 {
     if(!img.isNull()){
@@ -45,6 +56,7 @@ void MainWindow::on_pushButton_clicked()
         msgBox.setText("The selected video could not be opened");
         msgBox.exec();
         }
+       ui->lineEdit->setText(filename);
     }
 }
 void MainWindow :: on_pushButton_2_clicked()
@@ -58,4 +70,11 @@ void MainWindow :: on_pushButton_2_clicked()
         myPlayer->Stop();
         ui->pushButton_2->setText(tr("Play"));
     }
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
+                                                    tr("Video Files(*.m *.xlsx)"));
+    ui->lineEdit_2->setText(d_filename);
 }

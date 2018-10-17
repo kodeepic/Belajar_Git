@@ -5,6 +5,10 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <player.h>
+#include <QString>
+#include <QFile>
+//#include <QProgressBar>
+//#include <QPushButton>
 namespace Ui {
 class MainWindow;
 }
@@ -18,9 +22,15 @@ private slots:
     void updatePlayerUI(QImage img);
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+    //void setProgressBarValue();
+    void on_pushButton_3_clicked();
+
 private:
     Ui::MainWindow *ui;
     Player* myPlayer;
+   // QProgressBar *bar;
+ //   QPushButton *button;
+
 };
 /*
 #include "opencv2/opencv.hpp"
