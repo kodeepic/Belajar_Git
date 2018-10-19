@@ -37,6 +37,7 @@ public:
     QLineEdit *lineEdit;
     QLabel *label_3;
     QLineEdit *lineEdit_2;
+    QPushButton *pushButton_4;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -62,7 +63,7 @@ public:
         label->setStyleSheet(QStringLiteral("Background-color: #000;"));
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(60, 510, 90, 50));
+        pushButton_2->setGeometry(QRect(300, 510, 90, 50));
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
         pushButton_2->setMinimumSize(QSize(90, 50));
@@ -71,7 +72,7 @@ public:
 "color: white;\n"
 "background-color: #333333;\n"
 "border-width: 0px;\n"
-"border-radius: 3px;\n"
+"border-radius: 8px;\n"
 "border: 1px solid;\n"
 "}"));
         QIcon icon;
@@ -86,7 +87,7 @@ public:
 "color: white;\n"
 "background-color: #333333;\n"
 "border-width: 0px;\n"
-"border-radius: 3px;\n"
+"border-radius: 20px;\n"
 " border: 1px solid black;\n"
 "}"));
         groupBox->setAlignment(Qt::AlignCenter);
@@ -101,7 +102,7 @@ public:
 "color: white;\n"
 "background-color: #333333;\n"
 "border-width: 0px;\n"
-"border-radius: 3px;\n"
+"border-radius: 8px;\n"
 "border: 1px solid;\n"
 "}"));
         QIcon icon1;
@@ -119,7 +120,7 @@ public:
 "color: white;\n"
 "background-color: #333333;\n"
 "border-width: 0px;\n"
-"border-radius: 3px;\n"
+"border-radius: 8px;\n"
 "border: 1px solid;\n"
 "}"));
         pushButton->setIcon(icon1);
@@ -131,6 +132,7 @@ public:
         lineEdit = new QLineEdit(groupBox);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(110, 40, 501, 21));
+        lineEdit->setStyleSheet(QStringLiteral("border-radius: 8px;"));
         label_3 = new QLabel(groupBox);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(110, 80, 91, 16));
@@ -138,6 +140,25 @@ public:
         lineEdit_2 = new QLineEdit(groupBox);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
         lineEdit_2->setGeometry(QRect(110, 100, 501, 20));
+        lineEdit_2->setStyleSheet(QStringLiteral("border-radius: 8px;"));
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setGeometry(QRect(660, 590, 90, 50));
+        sizePolicy.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy);
+        pushButton_4->setMinimumSize(QSize(90, 50));
+        pushButton_4->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"color: white;\n"
+"background-color: #333333;\n"
+"border-width: 0px;\n"
+"border-radius: 10px;\n"
+"border: 1px solid;\n"
+"}"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_4->setIcon(icon2);
+        pushButton_4->setIconSize(QSize(23, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -160,11 +181,12 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         label->setText(QString());
         pushButton_2->setText(QApplication::translate("MainWindow", "Putar Video", nullptr));
-        groupBox->setTitle(QApplication::translate("MainWindow", "GroupBox", nullptr));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Unggah Berkas", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "Buka Data", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "Buka Video", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Lokasi Berkas Video</p></body></html>", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Lokasi Berkas Data", nullptr));
+        pushButton_4->setText(QApplication::translate("MainWindow", "Keluar", nullptr));
     } // retranslateUi
 
 };

@@ -34,7 +34,6 @@ void MainWindow::updatePlayerUI(QImage img)
     if(!img.isNull()){
         ui->label->setAlignment(Qt::AlignCenter);
         ui->label->setPixmap(QPixmap::fromImage(img).scaled(ui->label->size(),Qt::KeepAspectRatio,Qt::FastTransformation));
-
     }
 }
 
@@ -77,4 +76,9 @@ void MainWindow::on_pushButton_3_clicked()
     QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
                                                     tr("Video Files(*.m *.xlsx)"));
     ui->lineEdit_2->setText(d_filename);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    close();
 }

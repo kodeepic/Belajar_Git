@@ -49,7 +49,7 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>300</x>
       <y>510</y>
       <width>90</width>
       <height>50</height>
@@ -73,7 +73,7 @@
 color: white;
 background-color: #333333;
 border-width: 0px;
-border-radius: 3px;
+border-radius: 8px;
 border: 1px solid;
 }</string>
     </property>
@@ -81,7 +81,7 @@ border: 1px solid;
      <string>Putar Video</string>
     </property>
     <property name="icon">
-     <iconset resource="../tampilan2/icons.qrc">
+     <iconset resource="icons.qrc">
       <normaloff>:/icons/icon_control_paly.png</normaloff>:/icons/icon_control_paly.png</iconset>
     </property>
     <property name="iconSize">
@@ -106,12 +106,12 @@ border: 1px solid;
 color: white;
 background-color: #333333;
 border-width: 0px;
-border-radius: 3px;
+border-radius: 20px;
  border: 1px solid black;
 }</string>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Unggah Berkas</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -143,7 +143,7 @@ border-radius: 3px;
 color: white;
 background-color: #333333;
 border-width: 0px;
-border-radius: 3px;
+border-radius: 8px;
 border: 1px solid;
 }</string>
      </property>
@@ -151,7 +151,7 @@ border: 1px solid;
       <string>Buka Data</string>
      </property>
      <property name="icon">
-      <iconset resource="../tampilan2/icons.qrc">
+      <iconset resource="icons.qrc">
        <normaloff>:/icons/icon_folder.png</normaloff>:/icons/icon_folder.png</iconset>
      </property>
      <property name="iconSize">
@@ -188,7 +188,7 @@ border: 1px solid;
 color: white;
 background-color: #333333;
 border-width: 0px;
-border-radius: 3px;
+border-radius: 8px;
 border: 1px solid;
 }</string>
      </property>
@@ -196,7 +196,7 @@ border: 1px solid;
       <string>Buka Video</string>
      </property>
      <property name="icon">
-      <iconset resource="../tampilan2/icons.qrc">
+      <iconset resource="icons.qrc">
        <normaloff>:/icons/icon_folder.png</normaloff>:/icons/icon_folder.png</iconset>
      </property>
      <property name="iconSize">
@@ -231,6 +231,9 @@ border: 1px solid;
        <height>21</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 8px;</string>
+     </property>
     </widget>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
@@ -257,7 +260,55 @@ border: 1px solid;
        <height>20</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 8px;</string>
+     </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>590</y>
+      <width>90</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+color: white;
+background-color: #333333;
+border-width: 0px;
+border-radius: 10px;
+border: 1px solid;
+}</string>
+    </property>
+    <property name="text">
+     <string>Keluar</string>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>23</width>
+      <height>23</height>
+     </size>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -281,6 +332,8 @@ border: 1px solid;
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

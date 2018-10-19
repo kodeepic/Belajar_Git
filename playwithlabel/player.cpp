@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include <QPainter>
 Player::Player(QObject *parent) : QThread(parent)
 {
     stop =true;
@@ -40,11 +40,18 @@ void Player :: run()
         {
             img =QImage((const unsigned char*)(frame.data),
                     frame.cols,frame.rows,QImage::Format_Indexed8);
+
         }
+        QPainter p(&img);
+        p.setPen(QPen(Qt::red));
+        p.setFont(QFont("Times",100,QFont::Bold));
+        p.drawText(img.rect(),Qt::AlignCenter,"Text");
+
         emit processedImage(img);
         this->msleep(delay);
     }
 }
+
 Player ::~Player()
 {
     mutex.lock();
@@ -65,3 +72,6 @@ void Player ::msleep(int ms){
 bool Player::isStopped() const{
     return this->stop;
 }
+
+
+
