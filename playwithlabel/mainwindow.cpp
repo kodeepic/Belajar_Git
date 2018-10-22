@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QProgressBar>
-//#include <QFileDialog>
+#include <QSqlDatabase>
+#include <QDebug>
+#include <QSqlQuery>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -73,8 +75,22 @@ void MainWindow :: on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
+    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "xlsx_connection");
+
     QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
                                                     tr("Video Files(*.m *.xlsx)"));
+    db.setDatabaseName("DRIVER={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=" + d_filename);
+    if(db.open())
+    {
+     QSqlQuery query("select * from [" + QString("Sheet1") + "$]"); // Select range, place A1:B5 after $
+     while (query.next())
+     {
+     QString column1= query.value(0).toString();
+     qDebug() << column1;
+     }
+    db.close();
+    QSqlDatabase::removeDatabase("xlsx_connection");
+    }
     ui->lineEdit_2->setText(d_filename);
 }
 
