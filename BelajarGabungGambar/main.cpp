@@ -13,13 +13,22 @@ int main(int argc, char *argv[])
     w.show();
     //Mat image =imread("D:/Magang/Belajar_Qt/icon_shutdown.png");
     Mat image =imread("C:/Users/Ariku/Pictures/uav.jpg");
+    Mat image1 =imread("C:/Users/Ariku/Pictures/Capture.PNG");
+    Mat new_image1;
     if (image.empty()) {
                       cout << "Error" << endl;
                       return -1;
              }
-    namedWindow("image",CV_WINDOW_FREERATIO);
-    imshow("image",image);
+    if (image1.empty()){
+            cout << "Error"<< endl;
+            return -1;
+    }
+   resize(image1, new_image1, cvSize(500, 150));
+   namedWindow("image",CV_WINDOW_FREERATIO);
+    imshow("image",image1);
+    cout << "image1 channels: " << image1.channels()<< endl;
     cout << "image channels: " << image.channels() <<  endl;
+
     cout <<"pixcel value:"<<endl;
       //waitKey(0);
       if (image.channels() == 1) {

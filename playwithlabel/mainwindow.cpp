@@ -1,9 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QProgressBar>
-#include <QSqlDatabase>
-#include <QDebug>
-#include <QSqlQuery>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -71,27 +69,27 @@ void MainWindow :: on_pushButton_2_clicked()
         myPlayer->Stop();
         ui->pushButton_2->setText(tr("Play"));
     }
+
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "xlsx_connection");
 
     QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
                                                     tr("Video Files(*.m *.xlsx)"));
-    db.setDatabaseName("DRIVER={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=" + d_filename);
-    if(db.open())
-    {
-     QSqlQuery query("select * from [" + QString("Sheet1") + "$]"); // Select range, place A1:B5 after $
-     while (query.next())
-     {
-     QString column1= query.value(0).toString();
-     qDebug() << column1;
-     }
-    db.close();
-    QSqlDatabase::removeDatabase("xlsx_connection");
-    }
     ui->lineEdit_2->setText(d_filename);
+    /*
+    auto excel     = new QAxObject("Excel.Application");
+    auto workbooks = excel->querySubObject("Workbooks");
+    auto workbook  = workbooks->querySubObject("Open(const QString&)",d_filename);
+    auto sheets    = workbook->querySubObject("Worksheets");
+    auto sheet     = sheets->querySubObject("Item(int)", 1);
+    for (int r = 1; (r <= 5); ++r)
+    {
+        auto cCell = sheet->querySubObject("Cells(int,int)",r,1);
+        qDebug() << cCell->dynamicCall("Value()").toInt();
+    }
+*/
 }
 
 void MainWindow::on_pushButton_4_clicked()

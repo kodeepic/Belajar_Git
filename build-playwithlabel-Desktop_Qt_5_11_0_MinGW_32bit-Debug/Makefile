@@ -232,6 +232,7 @@ Makefile: ../playwithlabel/playwithlabel.pro C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mk
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/moc.prf \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/win32/opengl.prf \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/uic.prf \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/win32/dumpcpp.prf \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/qmake_use.prf \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/file_copies.prf \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/win32/windows.prf \
@@ -241,6 +242,8 @@ Makefile: ../playwithlabel/playwithlabel.pro C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mk
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/lex.prf \
 		../playwithlabel/playwithlabel.pro \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/qtmaind.prl \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5AxContainer.prl \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5AxBase.prl \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5Sql.prl \
@@ -417,6 +420,7 @@ C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/resources.prf:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/moc.prf:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/win32/opengl.prf:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/uic.prf:
+C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/win32/dumpcpp.prf:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/qmake_use.prf:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/file_copies.prf:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/win32/windows.prf:
@@ -426,6 +430,8 @@ C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/mkspecs/features/lex.prf:
 ../playwithlabel/playwithlabel.pro:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/qtmaind.prl:
+C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5AxContainer.prl:
+C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5AxBase.prl:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.11.0/5.11.0/mingw53_32/lib/Qt5Sql.prl:

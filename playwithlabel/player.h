@@ -29,6 +29,7 @@ public:
     Player(QObject *parent = 0);
     ~Player();
     bool loadVideo(String filename);
+    bool loadData (String d_filename);
     void Play();
     void Stop();
     bool isStopped() const;
