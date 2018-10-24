@@ -23,3 +23,8 @@ void MainWindow :: PemutarGambar()
     ui->label->setPixmap(QPixmap::fromImage(imdisplay));
 }
 */
+
+void MainWindow::on_pushButton_clicked()
+{
+
+}
