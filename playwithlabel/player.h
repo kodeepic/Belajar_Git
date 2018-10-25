@@ -33,6 +33,10 @@ public:
     void Play();
     void Stop();
     bool isStopped() const;
+    void setCurrentFrame(int frameNumber);
+    double getFrameRate();
+    double getCurrentFrame();
+    double getNumberOfFrames();
 signals:
 void processedImage(const QImage &image);
 protected:

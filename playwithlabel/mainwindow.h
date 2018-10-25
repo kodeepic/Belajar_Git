@@ -7,6 +7,7 @@
 #include <player.h>
 #include <QString>
 #include <QFile>
+#include <QTime>
 //#include <QProgressBar>
 //#include <QPushButton>
 namespace Ui {
@@ -26,7 +27,13 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+    QString getFormattedTime(int timeInSecond);
 
+
+    void on_horizontalSlider_sliderPressed();
+
+    void on_horizontalSlider_sliderReleased();
+    void on_horizontalSlider_sliderMoved(int position);
 private:
     Ui::MainWindow *ui;
     Player* myPlayer;

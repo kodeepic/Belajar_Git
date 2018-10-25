@@ -18,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -38,6 +39,7 @@ public:
     QLabel *label_3;
     QLineEdit *lineEdit_2;
     QPushButton *pushButton_4;
+    QSlider *horizontalSlider;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -60,10 +62,14 @@ public:
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(40, 180, 701, 321));
-        label->setStyleSheet(QStringLiteral("Background-color: #000;"));
+        label->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"background-color: #000000;\n"
+"\n"
+"}"));
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(300, 510, 90, 50));
+        pushButton_2->setGeometry(QRect(40, 510, 90, 50));
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
         pushButton_2->setMinimumSize(QSize(90, 50));
@@ -159,6 +165,11 @@ public:
         icon2.addFile(QStringLiteral(":/icons/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_4->setIcon(icon2);
         pushButton_4->setIconSize(QSize(23, 23));
+        horizontalSlider = new QSlider(centralWidget);
+        horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
+        horizontalSlider->setGeometry(QRect(140, 520, 591, 22));
+        horizontalSlider->setStyleSheet(QStringLiteral(""));
+        horizontalSlider->setOrientation(Qt::Horizontal);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

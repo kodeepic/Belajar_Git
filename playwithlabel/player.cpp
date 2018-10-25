@@ -29,8 +29,8 @@ void Player::Play()
         start(LowPriority);
     }
 }
-bool Player :: loadData(String d_filename)
-{
+//bool Player :: loadData(String d_filename)
+//{
     /*
     QBuffer MyExcelFile;
     MyExcelFile.open( d_filename);
@@ -46,7 +46,7 @@ bool Player :: loadData(String d_filename)
     }
     return true;
     */
-}
+//}
 
 void Player :: run()
 {
@@ -99,5 +99,17 @@ bool Player::isStopped() const{
     return this->stop;
 }
 
+double Player::getCurrentFrame(){
+    return capture.get(CV_CAP_PROP_POS_FRAMES);
 
+}
+double Player::getNumberOfFrames(){
+    return capture.get(CV_CAP_PROP_FRAME_COUNT);
+}
+double Player :: getFrameRate(){
+    return frameRate;
+}
 
+void Player::setCurrentFrame(int frameNumber){
+    capture.set(CV_CAP_PROP_POS_FRAMES,frameNumber);
+}
