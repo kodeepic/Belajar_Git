@@ -27,7 +27,7 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
-    QString getFormattedTime(int timeInSecond);
+    QString getFormattedTime(int timeInSeconds);
 
 
     void on_horizontalSlider_sliderPressed();

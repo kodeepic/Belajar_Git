@@ -23,6 +23,7 @@ private:
     Mat RGBframe;
     QImage img;
     QImage gambar;
+    Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru;
 
 public:
     //explicit Player(QWidget *parent = nullptr);

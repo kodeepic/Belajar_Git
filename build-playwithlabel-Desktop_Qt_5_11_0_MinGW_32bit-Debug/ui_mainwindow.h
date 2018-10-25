@@ -40,6 +40,8 @@ public:
     QLineEdit *lineEdit_2;
     QPushButton *pushButton_4;
     QSlider *horizontalSlider;
+    QLabel *label_4;
+    QLabel *label_5;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -167,9 +169,17 @@ public:
         pushButton_4->setIconSize(QSize(23, 23));
         horizontalSlider = new QSlider(centralWidget);
         horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setGeometry(QRect(140, 520, 591, 22));
+        horizontalSlider->setGeometry(QRect(180, 520, 511, 22));
         horizontalSlider->setStyleSheet(QStringLiteral(""));
         horizontalSlider->setOrientation(Qt::Horizontal);
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(140, 520, 41, 16));
+        label_4->setStyleSheet(QStringLiteral("color :white;"));
+        label_5 = new QLabel(centralWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(700, 520, 51, 16));
+        label_5->setStyleSheet(QStringLiteral("color :white;"));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -198,6 +208,8 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Lokasi Berkas Video</p></body></html>", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Lokasi Berkas Data", nullptr));
         pushButton_4->setText(QApplication::translate("MainWindow", "Keluar", nullptr));
+        label_4->setText(QString());
+        label_5->setText(QString());
     } // retranslateUi
 
 };

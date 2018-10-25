@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[14];
-    char stringdata0[265];
+    char stringdata0[266];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,17 +40,17 @@ QT_MOC_LITERAL(5, 53, 23), // "on_pushButton_2_clicked"
 QT_MOC_LITERAL(6, 77, 23), // "on_pushButton_3_clicked"
 QT_MOC_LITERAL(7, 101, 23), // "on_pushButton_4_clicked"
 QT_MOC_LITERAL(8, 125, 16), // "getFormattedTime"
-QT_MOC_LITERAL(9, 142, 12), // "timeInSecond"
-QT_MOC_LITERAL(10, 155, 33), // "on_horizontalSlider_sliderPre..."
-QT_MOC_LITERAL(11, 189, 34), // "on_horizontalSlider_sliderRel..."
-QT_MOC_LITERAL(12, 224, 31), // "on_horizontalSlider_sliderMoved"
-QT_MOC_LITERAL(13, 256, 8) // "position"
+QT_MOC_LITERAL(9, 142, 13), // "timeInSeconds"
+QT_MOC_LITERAL(10, 156, 33), // "on_horizontalSlider_sliderPre..."
+QT_MOC_LITERAL(11, 190, 34), // "on_horizontalSlider_sliderRel..."
+QT_MOC_LITERAL(12, 225, 31), // "on_horizontalSlider_sliderMoved"
+QT_MOC_LITERAL(13, 257, 8) // "position"
 
     },
     "MainWindow\0updatePlayerUI\0\0img\0"
     "on_pushButton_clicked\0on_pushButton_2_clicked\0"
     "on_pushButton_3_clicked\0on_pushButton_4_clicked\0"
-    "getFormattedTime\0timeInSecond\0"
+    "getFormattedTime\0timeInSeconds\0"
     "on_horizontalSlider_sliderPressed\0"
     "on_horizontalSlider_sliderReleased\0"
     "on_horizontalSlider_sliderMoved\0"
