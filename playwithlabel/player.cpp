@@ -3,8 +3,8 @@
 #include <QDebug>
 #include <QAxObject>
 #include <QSqlQuery>
-#include <QBuffer>
 #include <QtCore>
+
 Player::Player(QObject *parent) : QThread(parent)
 {
     stop =true;
@@ -29,24 +29,21 @@ void Player::Play()
         start(LowPriority);
     }
 }
-//bool Player :: loadData(String d_filename)
-//{
-    /*
-    QBuffer MyExcelFile;
-    MyExcelFile.open( d_filename);
-    auto excel     = new QAxObject("Excel.Application");
-    auto workbooks = excel->querySubObject("Workbooks");
-    auto workbook  = workbooks->querySubObject("Open(const QString&)",MyExcelFile);
-    auto sheets    = workbook->querySubObject("Worksheets");
-    auto sheet     = sheets->querySubObject("Item(int)", 1);
-    for (int r = 1; (r <= 5); ++r)
-    {
-        auto cCell = sheet->querySubObject("Cells(int,int)", r,1);
-            qDebug() << cCell->dynamicCall("Value()").toInt();
-    }
-    return true;
-    */
-//}
+
+double Player::getCurrentFrame(){
+    return capture.get(CV_CAP_PROP_POS_FRAMES);
+
+}
+double Player::getNumberOfFrames(){
+    return double(capture.get(CV_CAP_PROP_FRAME_COUNT));
+}
+double Player :: getFrameRate(){
+    return frameRate;
+}
+
+void Player::setCurrentFrame(int frameNumber){
+    capture.set(CV_CAP_PROP_POS_FRAMES,frameNumber);
+}
 
 void Player :: run()
 {
@@ -58,9 +55,9 @@ void Player :: run()
             stop=true;
 
         }
-        image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
+         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
          Rect ROI (0,0,image2.cols,image2.rows);
-        baru= frame(ROI);
+         baru= frame(ROI);
        //grayscale
          cvtColor(image2,gray,CV_BGR2GRAY);
          double thresh = 10;
@@ -103,20 +100,7 @@ void Player :: run()
         this->msleep(delay);
     }
 }
-double Player::getCurrentFrame(){
-    return capture.get(CV_CAP_PROP_POS_FRAMES);
 
-}
-double Player::getNumberOfFrames(){
-    return capture.get(CV_CAP_PROP_FRAME_COUNT);
-}
-double Player :: getFrameRate(){
-    return frameRate;
-}
-
-void Player::setCurrentFrame(int frameNumber){
-    capture.set(CV_CAP_PROP_POS_FRAMES,frameNumber);
-}
 
 Player ::~Player()
 {

@@ -64,7 +64,7 @@ void MainWindow::on_pushButton_clicked()
             ui->pushButton_2->setEnabled(true);
             ui->horizontalSlider->setEnabled(true);
             ui->horizontalSlider->setMaximum(myPlayer->getNumberOfFrames());
-            ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()));
+            ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate()) );
         }
        ui->lineEdit->setText(filename);
     }
@@ -86,31 +86,31 @@ void MainWindow :: on_pushButton_2_clicked()
 QString MainWindow::getFormattedTime(int timeInSeconds){
     int seconds =(int)(timeInSeconds)% 60;
     int minutes = (int)((timeInSeconds/60)% 60);
-    int hours = (int)((timeInSeconds/(60*60))% 24);
+    int hours = (int)((timeInSeconds/3600)% 24);
     QTime t(hours,minutes,seconds);
     if(hours ==0)
         return t.toString("mm:ss");
     else
-        return t.toString("h:mm:ss");
+        return t.toString("hh:mm:ss");
 }
 void MainWindow::on_pushButton_3_clicked()
 {
 
     QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
-                                                    tr("Video Files(*.m *.xlsx)"));
-    ui->lineEdit_2->setText(d_filename);
+                                                  tr("Video Files(*.m *.xlsx)"));
     /*
-    auto excel     = new QAxObject("Excel.Application");
-    auto workbooks = excel->querySubObject("Workbooks");
-    auto workbook  = workbooks->querySubObject("Open(const QString&)",d_filename);
-    auto sheets    = workbook->querySubObject("Worksheets");
-    auto sheet     = sheets->querySubObject("Item(int)", 1);
-    for (int r = 1; (r <= 5); ++r)
-    {
-        auto cCell = sheet->querySubObject("Cells(int,int)",r,1);
-        qDebug() << cCell->dynamicCall("Value()").toInt();
-    }
+
+    //QFileInfo name1 = d_filename;
+    if(!d_filename.isEmpty()){
+        if(!myPlayer->loadData(d_filename.toLatin1().data())){
+            QMessageBox msgBox;
+            msgBox.setText("The selected video could not be opened");
+            msgBox.exec();
+            }
+        }
 */
+    ui->lineEdit_2->setText(d_filename);
+
 }
 
 void MainWindow::on_pushButton_4_clicked()
