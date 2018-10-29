@@ -4,6 +4,12 @@
 #include <QAxObject>
 #include <QSqlQuery>
 #include <QtCore>
+#include <iostream>
+#include <fstream>
+#include <QString>
+#include <vector>
+using namespace std;
+
 
 Player::Player(QObject *parent) : QThread(parent)
 {
@@ -43,6 +49,39 @@ double Player :: getFrameRate(){
 
 void Player::setCurrentFrame(int frameNumber){
     capture.set(CV_CAP_PROP_POS_FRAMES,frameNumber);
+}
+
+bool Player :: loadData(String d_filename){
+    ifstream myfile;
+    myfile.open(d_filename);
+    int x;
+    myfile>>x;
+    cout <<"num : "<<x<<endl;
+    //string current_line;
+    //vector< vector<int> > all_data;
+    if (myfile.is_open())
+    {
+        qDebug()<<"berkas telah dibuka"<< endl;
+        /*
+        while(getline(myfile, current_line)){
+             vector<int> values;
+             stringstream temp(current_line);
+             string single_value;
+
+              while(getline(temp,single_value,',')){
+                   values.push_back(atoi(single_value.c_str()));
+              }
+              all_data.push_back(values);
+
+        }
+         cout << "Size of Vector=" << all_data.size() << endl;
+         */
+       }
+    else{
+        qDebug()<<"tidak ada file yang dibuka"<<endl;
+    }
+
+    return true;
 }
 
 void Player :: run()
@@ -90,12 +129,12 @@ void Player :: run()
                     frame.cols,frame.rows,QImage::Format_Indexed8);
 
         }
-
+        /*
         QPainter p(&img);
         p.setPen(QPen(Qt::red));
         p.setFont(QFont("Times",100,QFont::Bold));
         p.drawText(img.rect(),Qt::AlignCenter,"Text");
-
+        */
         emit processedImage(img);
         this->msleep(delay);
     }

@@ -98,17 +98,15 @@ void MainWindow::on_pushButton_3_clicked()
 
     QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
                                                   tr("Video Files(*.m *.xlsx)"));
-    /*
 
     //QFileInfo name1 = d_filename;
     if(!d_filename.isEmpty()){
         if(!myPlayer->loadData(d_filename.toLatin1().data())){
             QMessageBox msgBox;
-            msgBox.setText("The selected video could not be opened");
+            msgBox.setText("The selected data could not be opened");
             msgBox.exec();
             }
         }
-*/
     ui->lineEdit_2->setText(d_filename);
 
 }

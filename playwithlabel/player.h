@@ -8,7 +8,9 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <QPaintEvent>
-
+#include <iostream>
+#include <fstream>
+#include <QString>
 
 using namespace cv;
 
@@ -25,7 +27,7 @@ private:
     Mat RGBframe;
     QImage img;
     QImage gambar;
-    Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru;
+    Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru,vect;
 
 public:
     //explicit Player(QWidget *parent = nullptr);
