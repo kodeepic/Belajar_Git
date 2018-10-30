@@ -7,7 +7,6 @@
 #include <iostream>
 #include <fstream>
 #include <QString>
-#include <vector>
 using namespace std;
 
 
@@ -54,33 +53,18 @@ void Player::setCurrentFrame(int frameNumber){
 bool Player :: loadData(String d_filename){
     ifstream myfile;
     myfile.open(d_filename);
-    int x;
-    myfile>>x;
-    cout <<"num : "<<x<<endl;
-    //string current_line;
-    //vector< vector<int> > all_data;
     if (myfile.is_open())
     {
         qDebug()<<"berkas telah dibuka"<< endl;
-        /*
-        while(getline(myfile, current_line)){
-             vector<int> values;
-             stringstream temp(current_line);
-             string single_value;
-
-              while(getline(temp,single_value,',')){
-                   values.push_back(atoi(single_value.c_str()));
-              }
-              all_data.push_back(values);
-
+        while(myfile.good()){
+            string line;
+            getline(myfile,line,';');
+            cout<<line<<endl;
         }
-         cout << "Size of Vector=" << all_data.size() << endl;
-         */
        }
     else{
         qDebug()<<"tidak ada file yang dibuka"<<endl;
     }
-
     return true;
 }
 

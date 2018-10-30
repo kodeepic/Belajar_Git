@@ -97,7 +97,7 @@ void MainWindow::on_pushButton_3_clicked()
 {
 
     QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
-                                                  tr("Video Files(*.m *.xlsx)"));
+                                                  tr("Video Files(*.m *.xlsx *.csv)"));
 
     //QFileInfo name1 = d_filename;
     if(!d_filename.isEmpty()){

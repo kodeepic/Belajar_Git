@@ -12,6 +12,7 @@
 #include <fstream>
 #include <QString>
 
+
 using namespace cv;
 
 class Player : public QThread
