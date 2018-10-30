@@ -10,26 +10,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject ::connect(myPlayer, SIGNAL(processedImage(QImage)),
                       this,SLOT(updatePlayerUI(QImage)));
     ui->setupUi(this);
-    /*
-    ui->setupUi(this);
-    QPixmap pix(gambar);
-    int w=ui->label->width();
-    int h=ui->label->height();
-    ui->label->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-*/
-    ui->pushButton_2->setEnabled(false);
-    ui->horizontalSlider->setEnabled(false);
+    ui->pushButton_2->setEnabled(false); //pushbutton tidak aktif jika tidak file yang diunggah
+    ui->horizontalSlider->setEnabled(false); //horizontal tidak aktif jika tidak file yang diunggah
 }
-/*
-void MainWindow :: setProgressBarValue()
-{
-    bar=new QProgressBar (this);
-    button =new QPushButton(this);
-    connect(button,SIGNAL(clicked()),this,SLOT(setProgressBarValue()));
-    int value = 50;
-    bar->setValue(value);
-}
-*/
+
 void MainWindow::updatePlayerUI(QImage img)
 {
     if(!img.isNull()){
@@ -50,8 +34,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this,tr("Open Video"),".",
-                                                    tr("Video Files(*.avi *.mpg *.mp4)"));
+                                                    tr("Video Files(*.avi *.mpg *.mp4)")); //membuka dokumen untuk memilih video yang sesuai ekstensi
     QFileInfo name = filename;
+    //pesan dibawah ini akan keluar video tidak sesuai
     if(!filename.isEmpty()){
         if(!myPlayer->loadVideo(filename.toLatin1().data()))
         {
@@ -59,26 +44,27 @@ void MainWindow::on_pushButton_clicked()
         msgBox.setText("The selected video could not be opened");
         msgBox.exec();
         }
+        //kalau ada video hal dibawah ini akan dilakukan
         else{
             this->setWindowTitle(name.fileName());
-            ui->pushButton_2->setEnabled(true);
-            ui->horizontalSlider->setEnabled(true);
-            ui->horizontalSlider->setMaximum(myPlayer->getNumberOfFrames());
-            ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate()) );
+            ui->pushButton_2->setEnabled(true); //pushbutton menjadi aktif
+            ui->horizontalSlider->setEnabled(true); //horizontal akan aktif
+            ui->horizontalSlider->setMaximum(myPlayer->getNumberOfFrames()); //akan berjalan sampai ukuran max video
+            ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate()) ); //mencatat dan menampilkan durasi video
         }
-       ui->lineEdit->setText(filename);
+       ui->lineEdit->setText(filename); //menampilkan alamat filename di lineedit (lokasi video)
     }
 }
-void MainWindow :: on_pushButton_2_clicked()
+void MainWindow :: on_pushButton_2_clicked() //kalau pushbutton 2 sudah diklik maka hal dibawah ini akan terjadi
 {
     if(myPlayer->isStopped())
     {
-        myPlayer->Play();
-        ui->pushButton_2->setText(tr("Stop"));
+        myPlayer->Play(); //jika mplayer berputar
+        ui->pushButton_2->setText(tr("Stop")); //tulisan pushbutton jadi stop
     }else
     {
-        myPlayer->Stop();
-        ui->pushButton_2->setText(tr("Play"));
+        myPlayer->Stop(); //jika mplayer berhenti
+        ui->pushButton_2->setText(tr("Play")); //tulisan puhbutton jadi play
     }
 
 }
@@ -93,13 +79,13 @@ QString MainWindow::getFormattedTime(int timeInSeconds){
     else
         return t.toString("hh:mm:ss");
 }
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan dilakukan
 {
 
     QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
-                                                  tr("Video Files(*.m *.xlsx *.csv)"));
+                                                  tr("Video Files(*.m *.xlsx *.csv)")); //membuka dokumen untuk memilih file yang tersedia(sesuai ekstensi)
 
-    //QFileInfo name1 = d_filename;
+    //kalau gak ada file pesan dibawah ini akan keluar
     if(!d_filename.isEmpty()){
         if(!myPlayer->loadData(d_filename.toLatin1().data())){
             QMessageBox msgBox;
@@ -107,21 +93,21 @@ void MainWindow::on_pushButton_3_clicked()
             msgBox.exec();
             }
         }
-    ui->lineEdit_2->setText(d_filename);
+    ui->lineEdit_2->setText(d_filename); //mencatat lokasi file d_filename di lineedit (lokasi berkas)
 
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_pushButton_4_clicked() //kalau diklik akan keluar dari ui
 {
     close();
 }
 
-void MainWindow::on_horizontalSlider_sliderPressed()
+void MainWindow::on_horizontalSlider_sliderPressed() //kalau di press video akan berhenti
 {
     myPlayer->Stop();
 }
 
-void MainWindow::on_horizontalSlider_sliderReleased()
+void MainWindow::on_horizontalSlider_sliderReleased() //kalau ngk dipress video akan berjalan
 {
     myPlayer->Play();
 }

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <QString>
+#include <string>
 using namespace std;
 
 
@@ -57,9 +58,9 @@ bool Player :: loadData(String d_filename){
     {
         qDebug()<<"berkas telah dibuka"<< endl;
         while(myfile.good()){
-            string line;
-            getline(myfile,line,';');
-            cout<<line<<endl;
+            // line;
+            getline(myfile,line,',');
+           // cout<<line<<endl;
         }
        }
     else{
@@ -76,11 +77,11 @@ void Player :: run()
         if(!capture.read(frame))
         {
             stop=true;
-
         }
-         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
-         Rect ROI (0,0,image2.cols,image2.rows);
-         baru= frame(ROI);
+
+        image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
+        Rect ROI (0,0,image2.cols,image2.rows);
+        baru= frame(ROI);
        //grayscale
          cvtColor(image2,gray,CV_BGR2GRAY);
          double thresh = 10;
@@ -102,6 +103,7 @@ void Player :: run()
 
           }
         }
+         putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),
@@ -117,7 +119,7 @@ void Player :: run()
         QPainter p(&img);
         p.setPen(QPen(Qt::red));
         p.setFont(QFont("Times",100,QFont::Bold));
-        p.drawText(img.rect(),Qt::AlignCenter,"Text");
+        p.drawText(img.rect(),Qt::AlignCenter,qstr);
         */
         emit processedImage(img);
         this->msleep(delay);

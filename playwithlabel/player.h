@@ -11,9 +11,10 @@
 #include <iostream>
 #include <fstream>
 #include <QString>
-
+#include <string>
 
 using namespace cv;
+using namespace std;
 
 class Player : public QThread
 {
@@ -29,13 +30,15 @@ private:
     QImage img;
     QImage gambar;
     Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru,vect;
+    string line; //jika ingin menggunakan putText via opencv
+    QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
 
 public:
     //explicit Player(QWidget *parent = nullptr);
     Player(QObject *parent = 0);
     ~Player();
-    bool loadVideo(String filename);
-    bool loadData (String d_filename);
+    bool loadVideo(String filename);    //memanggil filename dari mainwindow.cpp
+    bool loadData (String d_filename); //memanggil d_filename dari mainwindow.cpp
     void Play();
     void Stop();
     bool isStopped() const;
@@ -46,7 +49,6 @@ public:
 signals:
 void processedImage(const QImage &image);
 protected:
-  //  void paintEvent(QPaintEvent *);
 void run();
 void msleep(int ms);
 };
