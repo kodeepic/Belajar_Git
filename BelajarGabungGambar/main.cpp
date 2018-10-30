@@ -16,22 +16,30 @@ int main(int argc, char *argv[])
     Mat image =imread("D:\\Capture gambar\\gambar.png");
     Mat image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
     Mat image3;
-    resize(image2,image3,Size(),0.50,0.50);
-    Rect ROI (0,0,image3.cols,image3.rows);
+    Mat tjn;
+    resize(image2,image3,Size(),0.43,0.35);
+    double angle = 90;
+    Point2f center((image3.cols-1)/2.0, (image3.rows-1)/2.0);
+    Mat rot = getRotationMatrix2D(center, angle, 1.0);
+    Rect2f bbox = cv::RotatedRect(cv::Point2f(), image3.size(), angle).boundingRect2f();
+    rot.at<double>(0,2) += bbox.width/2.0 - image3.cols/2.0;
+    rot.at<double>(1,2) += bbox.height/2.0 - image3.rows/2.0;
+    warpAffine(image3, tjn, rot, bbox.size());
+    Rect ROI (0,0,tjn.cols,tjn.rows);
      Mat baru= image(ROI);
     //grayscale
      Mat gray,tress,maskInv,imgbg,imgfg,sum,dst,fix;
-      cvtColor(image3,gray,CV_BGR2GRAY);
+      cvtColor(tjn,gray,CV_BGR2GRAY);
       double thresh = 10;
       double maxValue = 255;
       threshold(gray,tress, thresh, maxValue, THRESH_BINARY);
        bitwise_not(tress,maskInv);
        bitwise_and(baru,baru,imgbg,maskInv);
-       bitwise_and(image3,image3,imgfg,tress);
+       bitwise_and(tjn,tjn,imgfg,tress);
        add(imgbg,imgfg,sum);
          dst=image.clone();
-       for(int i=0;i<image3.rows;i++){
-           for(int j=0;j<image3.cols;j++){
+       for(int i=0;i<tjn.rows;i++){
+           for(int j=0;j<tjn.cols;j++){
 
                {
                        dst.at<Vec3b>(i,j)[0]= sum.at<Vec3b>(i,j)[0];
