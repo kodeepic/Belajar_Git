@@ -80,20 +80,21 @@ void Player :: run()
         }
 
         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
-        Rect ROI (0,0,image2.cols,image2.rows);
+        resize(image2,image3,Size(),0.50,0.50);
+        Rect ROI (0,0,image3.cols,image3.rows);
         baru= frame(ROI);
        //grayscale
-         cvtColor(image2,gray,CV_BGR2GRAY);
+         cvtColor(image3,gray,CV_BGR2GRAY);
          double thresh = 10;
          double maxValue = 255;
          threshold(gray,tress, thresh, maxValue, THRESH_BINARY);
           bitwise_not(tress,maskInv);
           bitwise_and(baru,baru,imgbg,maskInv);
-          bitwise_and(image2,image2,imgfg,tress);
+          bitwise_and(image3,image3,imgfg,tress);
           add(imgbg,imgfg,sum);
             frame=frame.clone();
-          for(int i=0;i<image2.rows;i++){
-              for(int j=0;j<image2.cols;j++){
+          for(int i=0;i<image3.rows;i++){
+              for(int j=0;j<image3.cols;j++){
 
                   {
                           frame.at<Vec3b>(i,j)[0]= sum.at<Vec3b>(i,j)[0];
