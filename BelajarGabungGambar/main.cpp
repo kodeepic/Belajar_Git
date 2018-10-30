@@ -19,12 +19,17 @@ int main(int argc, char *argv[])
     Mat tjn;
     resize(image2,image3,Size(),0.43,0.35);
     double angle = 90;
+    //mendapatkan matriks rotasi untuk memutar gambar di sekitar pusatnya dalam koordinat piksel
     Point2f center((image3.cols-1)/2.0, (image3.rows-1)/2.0);
+    //tentukan bounding rectangle, center tidak relevan
     Mat rot = getRotationMatrix2D(center, angle, 1.0);
     Rect2f bbox = cv::RotatedRect(cv::Point2f(), image3.size(), angle).boundingRect2f();
+    //menyesuaikan transformasi matriks
     rot.at<double>(0,2) += bbox.width/2.0 - image3.cols/2.0;
     rot.at<double>(1,2) += bbox.height/2.0 - image3.rows/2.0;
+    //wrapsemua kedalam mat tjn
     warpAffine(image3, tjn, rot, bbox.size());
+    //memanggil mat tjn dan diukur
     Rect ROI (0,0,tjn.cols,tjn.rows);
      Mat baru= image(ROI);
     //grayscale
