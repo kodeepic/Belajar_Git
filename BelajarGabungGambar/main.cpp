@@ -15,22 +15,23 @@ int main(int argc, char *argv[])
 
     Mat image =imread("D:\\Capture gambar\\gambar.png");
     Mat image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
-
-    Rect ROI (0,0,image2.cols,image2.rows);
+    Mat image3;
+    resize(image2,image3,Size(),0.50,0.50);
+    Rect ROI (0,0,image3.cols,image3.rows);
      Mat baru= image(ROI);
     //grayscale
      Mat gray,tress,maskInv,imgbg,imgfg,sum,dst,fix;
-      cvtColor(image2,gray,CV_BGR2GRAY);
+      cvtColor(image3,gray,CV_BGR2GRAY);
       double thresh = 10;
       double maxValue = 255;
       threshold(gray,tress, thresh, maxValue, THRESH_BINARY);
        bitwise_not(tress,maskInv);
        bitwise_and(baru,baru,imgbg,maskInv);
-       bitwise_and(image2,image2,imgfg,tress);
+       bitwise_and(image3,image3,imgfg,tress);
        add(imgbg,imgfg,sum);
          dst=image.clone();
-       for(int i=0;i<image2.rows;i++){
-           for(int j=0;j<image2.cols;j++){
+       for(int i=0;i<image3.rows;i++){
+           for(int j=0;j<image3.cols;j++){
 
                {
                        dst.at<Vec3b>(i,j)[0]= sum.at<Vec3b>(i,j)[0];
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
      }
 
        namedWindow("image",CV_WINDOW_FREERATIO);
-        imshow("image",dst);
+       imshow("image",dst);
        gray.release(); tress.release();maskInv.release();imgbg.release();
        imgfg.release(); baru.release(); sum.release();image.release(); image2.release();
          cvtColor(dst, fix, CV_BGR2RGB);
