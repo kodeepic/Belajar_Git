@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -42,6 +43,7 @@ public:
     QSlider *horizontalSlider;
     QLabel *label_4;
     QLabel *label_5;
+    QCheckBox *checkBox;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -180,6 +182,9 @@ public:
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(700, 520, 51, 16));
         label_5->setStyleSheet(QStringLiteral("color :white;"));
+        checkBox = new QCheckBox(centralWidget);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setGeometry(QRect(140, 560, 70, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -210,6 +215,7 @@ public:
         pushButton_4->setText(QApplication::translate("MainWindow", "Keluar", nullptr));
         label_4->setText(QString());
         label_5->setText(QString());
+        checkBox->setText(QApplication::translate("MainWindow", "CheckBox", nullptr));
     } // retranslateUi
 
 };

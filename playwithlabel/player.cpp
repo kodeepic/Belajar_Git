@@ -1,13 +1,13 @@
 #include "player.h"
 #include <QPainter>
 #include <QDebug>
-#include <QAxObject>
-#include <QSqlQuery>
 #include <QtCore>
 #include <iostream>
 #include <fstream>
 #include <QString>
 #include <string>
+#include <QCheckBox>
+#include <QMessageBox>
 using namespace std;
 
 
@@ -66,6 +66,17 @@ bool Player :: loadData(String d_filename){
     else{
         qDebug()<<"tidak ada file yang dibuka"<<endl;
     }
+/*
+    QCheckBox *checkbox = new QCheckBox();
+    //checkbox->setChecked(false);
+    if (!checkbox->isChecked()){
+        putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
+    }else{
+        QMessageBox msgeBox;
+        msgeBox.setText("Anda tidak menampilkan data");
+        msgeBox.exec();
+    }
+*/
     return true;
 }
 
@@ -104,7 +115,7 @@ void Player :: run()
 
           }
         }
-         putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
+
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),

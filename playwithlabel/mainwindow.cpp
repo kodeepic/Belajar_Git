@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QProgressBar>
-
+#include <QPainter>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -53,6 +53,15 @@ void MainWindow::on_pushButton_clicked()
             ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate()) ); //mencatat dan menampilkan durasi video
         }
        ui->lineEdit->setText(filename); //menampilkan alamat filename di lineedit (lokasi video)
+       if(ui->checkBox->isChecked()){
+           QImage img;
+           QString qstr;
+           QPainter p(&img);
+           p.setPen(QPen(Qt::red));
+           p.setFont(QFont("Times",100,QFont::Bold));
+           p.drawText(img.rect(),Qt::AlignCenter,qstr);
+       }
+
     }
 }
 void MainWindow :: on_pushButton_2_clicked() //kalau pushbutton 2 sudah diklik maka hal dibawah ini akan terjadi
