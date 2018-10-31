@@ -21,3 +21,12 @@ void MainWindow::on_pushButton_clicked()
         QMessageBox::information(this,"title","belum berhasil");
     }
 }
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+    if(arg1){
+        QMessageBox::information(this,"title"," benar berhasil");
+    }else{
+        QMessageBox::information(this,"title","benar belum berhasil");
+    }
+}
