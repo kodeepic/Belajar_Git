@@ -14,6 +14,7 @@ using namespace std;
 Player::Player(QObject *parent) : QThread(parent)
 {
     stop =true;
+
 }
 
 bool Player :: loadVideo(String filename){

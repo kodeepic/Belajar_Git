@@ -96,7 +96,6 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
             }
 
     ui->lineEdit_2->setText(d_filename); //mencatat lokasi file d_filename di lineedit (lokasi berkas)
-
 }
 
 void MainWindow::on_pushButton_4_clicked() //kalau diklik akan keluar dari ui
