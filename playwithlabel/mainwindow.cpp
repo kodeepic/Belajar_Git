@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QProgressBar>
 #include <QPainter>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -53,15 +54,6 @@ void MainWindow::on_pushButton_clicked()
             ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate()) ); //mencatat dan menampilkan durasi video
         }
        ui->lineEdit->setText(filename); //menampilkan alamat filename di lineedit (lokasi video)
-       if(ui->checkBox->isChecked()){
-           QImage img;
-           QString qstr;
-           QPainter p(&img);
-           p.setPen(QPen(Qt::red));
-           p.setFont(QFont("Times",100,QFont::Bold));
-           p.drawText(img.rect(),Qt::AlignCenter,qstr);
-       }
-
     }
 }
 void MainWindow :: on_pushButton_2_clicked() //kalau pushbutton 2 sudah diklik maka hal dibawah ini akan terjadi
@@ -91,7 +83,7 @@ QString MainWindow::getFormattedTime(int timeInSeconds){
 void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan dilakukan
 {
 
-    QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
+   QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
                                                   tr("Video Files(*.m *.xlsx *.csv)")); //membuka dokumen untuk memilih file yang tersedia(sesuai ekstensi)
 
     //kalau gak ada file pesan dibawah ini akan keluar
@@ -100,8 +92,9 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
             QMessageBox msgBox;
             msgBox.setText("The selected data could not be opened");
             msgBox.exec();
+                }
             }
-        }
+
     ui->lineEdit_2->setText(d_filename); //mencatat lokasi file d_filename di lineedit (lokasi berkas)
 
 }
@@ -124,3 +117,5 @@ void MainWindow::on_horizontalSlider_sliderMoved(int position){
     myPlayer->setCurrentFrame(position);
     ui->label_4->setText(getFormattedTime(position/(int)myPlayer->getFrameRate()));
 }
+
+
