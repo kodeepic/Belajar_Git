@@ -3,5 +3,6 @@
         <file>icon_control_paly.png</file>
         <file>icon_folder.png</file>
         <file>exit.png</file>
+        <file>icon_save.png</file>
     </qresource>
 </RCC>

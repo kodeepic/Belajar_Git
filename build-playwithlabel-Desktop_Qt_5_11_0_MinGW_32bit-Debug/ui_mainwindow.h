@@ -43,7 +43,19 @@ public:
     QSlider *horizontalSlider;
     QLabel *label_4;
     QLabel *label_5;
+    QGroupBox *groupBox_2;
     QCheckBox *checkBox;
+    QCheckBox *checkBox_2;
+    QCheckBox *checkBox_3;
+    QCheckBox *checkBox_4;
+    QCheckBox *checkBox_5;
+    QCheckBox *checkBox_6;
+    QCheckBox *checkBox_7;
+    QCheckBox *checkBox_8;
+    QGroupBox *groupBox_3;
+    QPushButton *pushButton_5;
+    QLineEdit *lineEdit_3;
+    QLabel *label_6;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -65,7 +77,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(40, 180, 701, 321));
+        label->setGeometry(QRect(20, 170, 671, 281));
         label->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "background-color: #000000;\n"
@@ -73,7 +85,7 @@ public:
 "}"));
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(40, 510, 90, 50));
+        pushButton_2->setGeometry(QRect(10, 460, 90, 50));
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
         pushButton_2->setMinimumSize(QSize(90, 50));
@@ -91,7 +103,7 @@ public:
         pushButton_2->setIconSize(QSize(23, 23));
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(30, 10, 721, 151));
+        groupBox->setGeometry(QRect(30, 10, 671, 141));
         groupBox->setStyleSheet(QLatin1String("QGroupBox\n"
 "{\n"
 "color: white;\n"
@@ -153,7 +165,7 @@ public:
         lineEdit_2->setStyleSheet(QStringLiteral("border-radius: 8px;"));
         pushButton_4 = new QPushButton(centralWidget);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(660, 590, 90, 50));
+        pushButton_4->setGeometry(QRect(710, 590, 90, 50));
         sizePolicy.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
         pushButton_4->setSizePolicy(sizePolicy);
         pushButton_4->setMinimumSize(QSize(90, 50));
@@ -171,20 +183,101 @@ public:
         pushButton_4->setIconSize(QSize(23, 23));
         horizontalSlider = new QSlider(centralWidget);
         horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setGeometry(QRect(180, 520, 511, 22));
+        horizontalSlider->setGeometry(QRect(150, 460, 511, 22));
         horizontalSlider->setStyleSheet(QStringLiteral(""));
         horizontalSlider->setOrientation(Qt::Horizontal);
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(140, 520, 41, 16));
+        label_4->setGeometry(QRect(100, 460, 41, 16));
         label_4->setStyleSheet(QStringLiteral("color :white;"));
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(700, 520, 51, 16));
+        label_5->setGeometry(QRect(670, 460, 41, 16));
         label_5->setStyleSheet(QStringLiteral("color :white;"));
-        checkBox = new QCheckBox(centralWidget);
+        groupBox_2 = new QGroupBox(centralWidget);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(10, 520, 361, 81));
+        groupBox_2->setStyleSheet(QLatin1String("QGroupBox\n"
+"{\n"
+"color: white;\n"
+"background-color: #333333;\n"
+"border-width: 0px;\n"
+"border-radius: 3px;\n"
+" border: 1px solid black;\n"
+"}\n"
+""));
+        groupBox_2->setAlignment(Qt::AlignCenter);
+        checkBox = new QCheckBox(groupBox_2);
         checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setGeometry(QRect(140, 560, 70, 17));
+        checkBox->setGeometry(QRect(10, 20, 70, 17));
+        checkBox->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_2 = new QCheckBox(groupBox_2);
+        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
+        checkBox_2->setGeometry(QRect(10, 50, 70, 17));
+        checkBox_2->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_3 = new QCheckBox(groupBox_2);
+        checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
+        checkBox_3->setGeometry(QRect(100, 20, 70, 17));
+        checkBox_3->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_4 = new QCheckBox(groupBox_2);
+        checkBox_4->setObjectName(QStringLiteral("checkBox_4"));
+        checkBox_4->setGeometry(QRect(190, 20, 70, 17));
+        checkBox_4->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_5 = new QCheckBox(groupBox_2);
+        checkBox_5->setObjectName(QStringLiteral("checkBox_5"));
+        checkBox_5->setGeometry(QRect(290, 20, 70, 17));
+        checkBox_5->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_6 = new QCheckBox(groupBox_2);
+        checkBox_6->setObjectName(QStringLiteral("checkBox_6"));
+        checkBox_6->setGeometry(QRect(100, 50, 70, 17));
+        checkBox_6->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_7 = new QCheckBox(groupBox_2);
+        checkBox_7->setObjectName(QStringLiteral("checkBox_7"));
+        checkBox_7->setGeometry(QRect(190, 50, 70, 17));
+        checkBox_7->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_8 = new QCheckBox(groupBox_2);
+        checkBox_8->setObjectName(QStringLiteral("checkBox_8"));
+        checkBox_8->setGeometry(QRect(290, 50, 70, 17));
+        checkBox_8->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        groupBox_3 = new QGroupBox(centralWidget);
+        groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
+        groupBox_3->setGeometry(QRect(390, 520, 301, 81));
+        groupBox_3->setStyleSheet(QLatin1String("QGroupBox\n"
+"{\n"
+"color: white;\n"
+"background-color: #333333;\n"
+"border-width: 0px;\n"
+"border-radius: 3px;\n"
+" border: 1px solid black;\n"
+"}\n"
+""));
+        groupBox_3->setAlignment(Qt::AlignCenter);
+        pushButton_5 = new QPushButton(groupBox_3);
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        pushButton_5->setGeometry(QRect(10, 20, 71, 41));
+        sizePolicy.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
+        pushButton_5->setSizePolicy(sizePolicy);
+        pushButton_5->setMinimumSize(QSize(70, 30));
+        pushButton_5->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"color: white;\n"
+"background-color: #333333;\n"
+"border-width: 0px;\n"
+"border-radius: 8px;\n"
+"border: 1px solid;\n"
+"}"));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons/icon_save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_5->setIcon(icon3);
+        pushButton_5->setIconSize(QSize(23, 23));
+        lineEdit_3 = new QLineEdit(groupBox_3);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setGeometry(QRect(90, 40, 201, 20));
+        lineEdit_3->setStyleSheet(QStringLiteral("border-radius: 8px;"));
+        label_6 = new QLabel(groupBox_3);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(90, 20, 71, 16));
+        label_6->setStyleSheet(QStringLiteral("color :white;"));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -215,7 +308,18 @@ public:
         pushButton_4->setText(QApplication::translate("MainWindow", "Keluar", nullptr));
         label_4->setText(QString());
         label_5->setText(QString());
-        checkBox->setText(QApplication::translate("MainWindow", "CheckBox", nullptr));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Data Penerbangan", nullptr));
+        checkBox->setText(QApplication::translate("MainWindow", "Waktu", nullptr));
+        checkBox_2->setText(QApplication::translate("MainWindow", "Kecepatan", nullptr));
+        checkBox_3->setText(QApplication::translate("MainWindow", "Altitude", nullptr));
+        checkBox_4->setText(QApplication::translate("MainWindow", "Longitude", nullptr));
+        checkBox_5->setText(QApplication::translate("MainWindow", "Latitude", nullptr));
+        checkBox_6->setText(QApplication::translate("MainWindow", "Roll", nullptr));
+        checkBox_7->setText(QApplication::translate("MainWindow", "Pitch", nullptr));
+        checkBox_8->setText(QApplication::translate("MainWindow", "Yaw", nullptr));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "Simpan Video", nullptr));
+        pushButton_5->setText(QApplication::translate("MainWindow", "Save", nullptr));
+        label_6->setText(QApplication::translate("MainWindow", "Lokasi Berkas", nullptr));
     } // retranslateUi
 
 };

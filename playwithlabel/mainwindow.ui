@@ -33,10 +33,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>180</y>
-      <width>701</width>
-      <height>321</height>
+      <x>20</x>
+      <y>170</y>
+      <width>671</width>
+      <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -53,8 +53,8 @@ background-color: #000000;
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>510</y>
+      <x>10</x>
+      <y>460</y>
       <width>90</width>
       <height>50</height>
      </rect>
@@ -100,8 +100,8 @@ border: 1px solid;
      <rect>
       <x>30</x>
       <y>10</y>
-      <width>721</width>
-      <height>151</height>
+      <width>671</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -272,7 +272,7 @@ border: 1px solid;
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>710</x>
       <y>590</y>
       <width>90</width>
       <height>50</height>
@@ -317,8 +317,8 @@ border: 1px solid;
    <widget class="QSlider" name="horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>520</y>
+      <x>150</x>
+      <y>460</y>
       <width>511</width>
       <height>22</height>
      </rect>
@@ -333,8 +333,8 @@ border: 1px solid;
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>520</y>
+      <x>100</x>
+      <y>460</y>
       <width>41</width>
       <height>16</height>
      </rect>
@@ -349,9 +349,9 @@ border: 1px solid;
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>520</y>
-      <width>51</width>
+      <x>670</x>
+      <y>460</y>
+      <width>41</width>
       <height>16</height>
      </rect>
     </property>
@@ -362,18 +362,261 @@ border: 1px solid;
      <string/>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>560</y>
-      <width>70</width>
-      <height>17</height>
+      <x>10</x>
+      <y>520</y>
+      <width>361</width>
+      <height>81</height>
      </rect>
     </property>
-    <property name="text">
-     <string>CheckBox</string>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox
+{
+color: white;
+background-color: #333333;
+border-width: 0px;
+border-radius: 3px;
+ border: 1px solid black;
+}
+</string>
     </property>
+    <property name="title">
+     <string>Data Penerbangan</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Waktu</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Kecepatan</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>20</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Altitude</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_4">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>20</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Longitude</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_5">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Latitude</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_6">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>50</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Roll</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_7">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>50</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Pitch</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_8">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>50</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox{color:white;}</string>
+     </property>
+     <property name="text">
+      <string>Yaw</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>520</y>
+      <width>301</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox
+{
+color: white;
+background-color: #333333;
+border-width: 0px;
+border-radius: 3px;
+ border: 1px solid black;
+}
+</string>
+    </property>
+    <property name="title">
+     <string>Simpan Video</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+color: white;
+background-color: #333333;
+border-width: 0px;
+border-radius: 8px;
+border: 1px solid;
+}</string>
+     </property>
+     <property name="text">
+      <string>Save</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons.qrc">
+       <normaloff>:/icons/icon_save.png</normaloff>:/icons/icon_save.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>23</width>
+       <height>23</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>40</y>
+       <width>201</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 8px;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color :white;</string>
+     </property>
+     <property name="text">
+      <string>Lokasi Berkas</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
