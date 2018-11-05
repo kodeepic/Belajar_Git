@@ -15,9 +15,11 @@ int main(int argc, char *argv[])
 
     Mat image =imread("D:\\Capture gambar\\gambar.png");
     Mat image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
-    Mat image3;
+    Mat image5 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\.png");
+    Mat image3,image4;
     Mat tjn;
     resize(image2,image3,Size(),0.43,0.35);
+    resize(image5,image4, Size(),0.20,0.20);
     double angle = 90;
     //mendapatkan matriks rotasi untuk memutar gambar di sekitar pusatnya dalam koordinat piksel
     Point2f center((image3.cols-1)/2.0, (image3.rows-1)/2.0);
@@ -33,7 +35,7 @@ int main(int argc, char *argv[])
     Rect ROI (0,0,tjn.cols,tjn.rows);
      Mat baru= image(ROI);
     //grayscale
-     Mat gray,tress,maskInv,imgbg,imgfg,sum,dst,fix;
+     Mat gray,tress,maskInv,imgbg,imgfg,sum,dst;
       cvtColor(tjn,gray,CV_BGR2GRAY);
       double thresh = 10;
       double maxValue = 255;
@@ -54,12 +56,44 @@ int main(int argc, char *argv[])
 
        }
      }
+// const int x = 100;
+// const int y = 100;
+
+Rect ROI1 (dst.cols-image4.cols,dst.rows-image4.rows,image4.cols,image4.rows);
+Mat baru1= dst(ROI1);
+/*
+Mat mask(image4);
+image4.copyTo(baru1,mask);
+*/
+
+Mat gray1,tress1,maskInv1,imgbg1,imgfg1,sum1,dst1;
+cvtColor(image4,gray1,CV_BGR2GRAY);
+double thresh1 = 10;
+double maxValue1 =255;
+threshold(gray1,tress1, thresh1, maxValue1, THRESH_BINARY);
+bitwise_not(tress1,maskInv1);
+bitwise_and(baru1,baru1,imgbg1,maskInv1);
+bitwise_and(image4,image4,imgfg1,tress1);
+add(imgbg1,imgfg1,sum1);
+dst1= dst.clone();
+for(int i=0;i<image4.rows;i++){
+    for(int j=0;j<-image4.cols;j++){
+
+        {
+                dst1.at<Vec3b>(i,j)[0]= sum1.at<Vec3b>(i,j)[0];
+                dst1.at<Vec3b>(i,j)[1]= sum1.at<Vec3b>(i,j)[1];
+                dst1.at<Vec3b>(i,j)[2]= sum1.at<Vec3b>(i,j)[2];
+    }
+
+}
+}
 
        namedWindow("image",CV_WINDOW_FREERATIO);
        imshow("image",dst);
        gray.release(); tress.release();maskInv.release();imgbg.release();
        imgfg.release(); baru.release(); sum.release();image.release(); image2.release();
-         cvtColor(dst, fix, CV_BGR2RGB);
+
+        // cvtColor(dst, fix, CV_BGR2RGB);
 /*
 
     Mat gray;
