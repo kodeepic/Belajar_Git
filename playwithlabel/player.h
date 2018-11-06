@@ -24,9 +24,11 @@ private:
     QMutex mutex;
     QWaitCondition condition;
     Mat frame;
+   // int fps;
     int frameRate;
     int totalframe;
     VideoCapture capture;
+    VideoWriter video;
     Mat RGBframe;
     QImage img;
     QImage gambar;

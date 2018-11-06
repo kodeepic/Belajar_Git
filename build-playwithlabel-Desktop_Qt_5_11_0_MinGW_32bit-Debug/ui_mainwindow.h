@@ -188,7 +188,7 @@ public:
         horizontalSlider->setOrientation(Qt::Horizontal);
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(100, 460, 41, 16));
+        label_4->setGeometry(QRect(110, 460, 41, 16));
         label_4->setStyleSheet(QStringLiteral("color :white;"));
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));

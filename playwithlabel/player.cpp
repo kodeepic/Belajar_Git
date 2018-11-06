@@ -22,16 +22,17 @@ Player::Player(QObject *parent) : QThread(parent)
 bool Player :: loadVideo(String filename){
     capture.open(filename);
     if(capture.isOpened())
-        //frame_width = int(capture.get(3));
-        //frame_height = int(capture.get(4));
     {
         frameRate = (int) capture.get(CV_CAP_PROP_FPS);
         totalframe = (int) capture.get(CV_CAP_PROP_FRAME_COUNT);
         qDebug() << "framerate" <<frameRate << "jmlh:" << totalframe;
+
         return true;
     } else{
         return false;
     }
+
+
 }
 void Player::Play()
 {
@@ -118,7 +119,12 @@ QString qstr = QString::fromStdString(d_filename);
 
 void Player :: run()
 {
-
+    int frame_width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
+    int frame_height = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
+     video.open("C:\\Users\\Ariku\\Documents\\coba-coba.avi",CV_FOURCC('M','J','P','G'),frameRate,Size(frame_width,frame_height),true);
+     if (!video.isOpened()) {
+             qDebug() << "Could not open the output video file for write\n"<<endl;
+         }
     int delay =(1000/frameRate);
     while (!stop) {
         if(!capture.read(frame))
@@ -130,7 +136,7 @@ void Player :: run()
         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
         image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
         resize(image4, enlarged, cv::Size(image4.cols*2, image4.rows*2), cv::INTER_NEAREST);
-        resize(enlarged,image5,Size(),0.7,0.7);
+        resize(enlarged,image5,Size(),0.5,0.5);
         resize(image2,image3,Size(),0.50,0.50);
         Rect ROI (0,0,image3.cols,image3.rows);
         baru= frame(ROI);
@@ -159,7 +165,8 @@ void Player :: run()
           Mat baru1= frame(ROI1);
           Mat mask(image5);
           image5.copyTo(baru1,mask);
-    putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
+        video.write(frame);
+   // putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),
@@ -179,7 +186,10 @@ void Player :: run()
         */
         emit processedImage(img);
         this->msleep(delay);
+
     }
+
+
 }
 
 
