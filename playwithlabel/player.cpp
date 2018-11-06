@@ -175,7 +175,7 @@ putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 
     }
 }
 
-
+//hahahahah
 Player ::~Player()
 {
     mutex.lock();
