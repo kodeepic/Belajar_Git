@@ -6,3 +6,5 @@ Program dalam repositori ini digunakan untuk pengolahan gambar citra digital.
 4. Menampilkan data (angka atau grafik) pada video atau gambar dengan bahasa pemograman C++.
 5. Menyimpan hasil pengolahan gambar dengan bahasa pemograman C++.
 6. Menggerakkan animasi atau indikator yang terdapat pada video sesuai dengan data pada excel dengan menngunakan bahasa pemrograman c++.
+
+bye bye

@@ -109,7 +109,8 @@ debug/qrc_icons.cpp: ../playwithlabel/icons.qrc \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/bin/rcc.exe \
 		../playwithlabel/icon_control_paly.png \
 		../playwithlabel/icon_folder.png \
-		../playwithlabel/exit.png
+		../playwithlabel/exit.png \
+		../playwithlabel/icon_save.png
 	C:\Qt\Qt5.11.0\5.11.0\mingw53_32\bin\rcc.exe -name icons ..\playwithlabel\icons.qrc -o debug\qrc_icons.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
