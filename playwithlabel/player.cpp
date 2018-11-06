@@ -10,6 +10,10 @@
 #include <QMessageBox>
 using namespace std;
 
+// Variabel Array untuk menampung data penerbangan
+int ko[10000][10000];
+int ini=1;
+
 
 Player::Player(QObject *parent) : QThread(parent)
 {
@@ -22,6 +26,8 @@ bool Player :: loadVideo(String filename){
     if(capture.isOpened())
     {
         frameRate = (int) capture.get(CV_CAP_PROP_FPS);
+        totalframe = (int) capture.get(CV_CAP_PROP_POS_FRAMES);
+        qDebug() << "framerate" <<frameRate << "jmlh:" << totalframe;
         return true;
     }
     else
@@ -53,21 +59,48 @@ void Player::setCurrentFrame(int frameNumber){
 }
 
 bool Player :: loadData(String d_filename){
-    ifstream myfile;
-    myfile.open(d_filename);
-    if (myfile.is_open())
-    {
-        qDebug()<<"berkas telah dibuka"<< endl;
-        while(myfile.good()){
-            // line;
-            getline(myfile,line,',');
-           // cout<<line<<endl;
+//    ifstream myfile;
+//    myfile.open(d_filename);
+//    if (myfile.is_open())
+//    {
+//        qDebug()<<"berkas telah dibuka"<< endl;
+//        while(myfile.good()){
+//            // line;
+//            getline(myfile,line,',');
+//           // cout<<line<<endl;
+//        }
+//       }
+//    else{
+//        qDebug()<<"tidak ada file yang dibuka"<<endl;
+//    }
+
+// Baca data file CSV dan simpan dalam array (2 dimensi)
+    QFile inputfile (d_filename);
+    inputfile.open(QIODevice::ReadOnly);
+    if (!inputfile.isOpen())
+        return;
+
+    QTextStream stream (&inputfile);
+    QString line = stream.readLine();
+    if (!line.isNull()){
+    int baris=1;
+    int kolom=1;
+    while (kolom < 1001){
+        while (baris < 1001){
+            line = stream.readLine();
+            QByteArray hhh = line.toLocal8Bit();
+            const char *line1= hhh.data();
+                       sscanf(line1,"%d",&ko[baris][kolom]);
+                        qDebug() << "hayo ke:" <<line << "jadinya:%d" << ko[baris][kolom];
+                       baris++;
         }
-       }
-    else{
-        qDebug()<<"tidak ada file yang dibuka"<<endl;
+        kolom++;
     }
 
+ }
+    else {
+        inputfile.close();
+    }
 /*
     QCheckBox *checkbox = new QCheckBox();
     //checkbox->setChecked(false);

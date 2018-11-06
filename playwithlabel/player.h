@@ -25,6 +25,7 @@ private:
     QWaitCondition condition;
     Mat frame;
     int frameRate;
+    int totalframe;
     VideoCapture capture;
     Mat RGBframe;
     QImage img;
