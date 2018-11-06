@@ -8,8 +8,9 @@
 #include <QString>
 #include <QFile>
 #include <QTime>
-//#include <QProgressBar>
-//#include <QPushButton>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 namespace Ui {
 class MainWindow;
 }
@@ -34,6 +35,8 @@ private slots:
 
     void on_horizontalSlider_sliderReleased();
     void on_horizontalSlider_sliderMoved(int position);
+    void on_pushButton_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     Player* myPlayer;

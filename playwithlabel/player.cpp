@@ -20,12 +20,14 @@ Player::Player(QObject *parent) : QThread(parent)
 bool Player :: loadVideo(String filename){
     capture.open(filename);
     if(capture.isOpened())
+        //frame_width = int(capture.get(3));
+        //frame_height = int(capture.get(4));
     {
         frameRate = (int) capture.get(CV_CAP_PROP_FPS);
         return true;
-    }
-    else
+    } else{
         return false;
+    }
 }
 void Player::Play()
 {
@@ -91,9 +93,13 @@ void Player :: run()
         if(!capture.read(frame))
         {
             stop=true;
+            break;
         }
 
         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
+        image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
+        resize(image4, enlarged, cv::Size(image4.cols*2, image4.rows*2), cv::INTER_NEAREST);
+        resize(enlarged,image5,Size(),0.7,0.7);
         resize(image2,image3,Size(),0.50,0.50);
         Rect ROI (0,0,image3.cols,image3.rows);
         baru= frame(ROI);
@@ -118,8 +124,11 @@ void Player :: run()
 
           }
         }
-
-putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
+          Rect ROI1 (frame.cols-image5.cols,image5.rows,image5.cols,image5.rows);
+          Mat baru1= frame(ROI1);
+          Mat mask(image5);
+          image5.copyTo(baru1,mask);
+    putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),
