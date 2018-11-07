@@ -8,6 +8,10 @@
 #include <string>
 #include <QCheckBox>
 #include <QMessageBox>
+#include <stdio.h>
+#include <time.h>
+#include <math.h>
+#include <QSqlQuery>
 //#include <math.h>
 using namespace std;
 
@@ -68,7 +72,9 @@ bool Player :: loadData(String d_filename){
     inputfile.open(QIODevice::ReadOnly);
     if (!inputfile.isOpen())
         return true;
-
+    
+    QSqlQuery qry;
+    
     QTextStream stream (&inputfile);
     QString line = stream.readLine();
     if (!line.isNull()){
@@ -78,7 +84,7 @@ bool Player :: loadData(String d_filename){
             line = stream.readLine();
             QByteArray hhh = line.toLocal8Bit();
             const char *line1= hhh.data();
-                       sscanf(line1,"%f ,%f ,%f ,%f, \"%f\",%d,%d,%d",&ko[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&ko[baris][5],&ko[baris][6],&ko[baris][7],&ko[baris][8]);
+                       sscanf(line1,"%f ,%f ,%f ,%f, \"%f\",%f,%f,%f",&ko[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&ko[baris][5],&ko[baris][6],&ko[baris][7],&ko[baris][8]);
                        qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<ko[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << ko[baris][5] << " " << ko[baris][6];
 
                        baris++;
