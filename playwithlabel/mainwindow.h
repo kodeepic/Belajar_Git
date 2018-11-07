@@ -22,6 +22,7 @@ public:
     ~MainWindow();
     QString d_filename;
     QString datawaktu ;
+    int Data;
 private slots:
     void updatePlayerUI(QImage img);
     void on_pushButton_clicked();

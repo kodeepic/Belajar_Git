@@ -95,8 +95,24 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
             msgBox.exec();
                 }
             }
+
 */
     ui->lineEdit_2->setText(d_filename); //mencatat lokasi file d_filename di lineedit (lokasi berkas)
+    QAxObject* excel     = new QAxObject("Excel.Application");
+    QAxObject* workbooks = excel->querySubObject("Workbooks");
+
+    QAxObject* workbook  = workbooks->querySubObject("Open(const QString&)",d_filename);
+    QAxObject* sheets    = workbook->querySubObject("Worksheets");
+    QAxObject* sheet     = sheets->querySubObject("Item(int)", 1);
+
+    // read the first cells in row 1...18177
+    for (int r = 1; (r <= 1); ++r)
+    {
+        QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r,1);
+        Data = cCell->dynamicCall("Value()").toInt();
+    }
+
+
 }
 
 void MainWindow::on_pushButton_4_clicked() //kalau diklik akan keluar dari ui
@@ -134,22 +150,7 @@ ui->lineEdit_3->setText(lokasi);
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
     if(arg1){
-
-    QAxObject* excel     = new QAxObject("Excel.Application");
-    QAxObject* workbooks = excel->querySubObject("Workbooks");
-
-   QAxObject* workbook  = workbooks->querySubObject("Open(const QString&)",d_filename);
-    QAxObject* sheets    = workbook->querySubObject("Worksheets");
-    QAxObject* sheet     = sheets->querySubObject("Item(int)", 1);
-
-    // read the first cells in row 1...18177
-    for (int r = 1; (r <= 1); ++r)
-    {
-        QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r,1);
-        int Data = cCell->dynamicCall("Value()").toInt();
          datawaktu = QString::number(Data);
-    }
-
     } else{
         qDebug()<<"Data waktu tidak ada"<<endl;
     }
