@@ -118,3 +118,9 @@ void MainWindow::on_horizontalSlider_sliderMoved(int position){
 }
 
 
+
+void MainWindow::on_pushButton_5_clicked()
+{
+
+
+}

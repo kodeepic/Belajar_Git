@@ -16,17 +16,31 @@ TEMPLATE = app
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
+# Kalau di arik
 
-INCLUDEPATH +=C:\OpenCV\opencv\build\install\include
+#INCLUDEPATH +=C:\OpenCV\opencv\build\install\include
 
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_core343.dll
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_highgui343.dll
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_imgcodecs343.dll
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_imgproc343.dll
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_calib3d343.dll
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_videoio343.dll
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_photo343.dll
-LIBS +=C:\OpenCV\opencv\build\bin\libopencv_video343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_core343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_highgui343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_imgcodecs343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_imgproc343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_calib3d343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_videoio343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_photo343.dll
+#LIBS +=C:\OpenCV\opencv\build\bin\libopencv_video343.dll
+
+# Kalau di rahma
+
+INCLUDEPATH += C:\Users\User\Downloads\opencv\build\install\include
+
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_core320.dll
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_highgui320.dll
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_imgcodecs320.dll
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_imgproc320.dll
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_calib3d320.dll
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_videoio320.dll
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_photo320.dll
+LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_video320.dll
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.

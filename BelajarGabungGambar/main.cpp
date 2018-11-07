@@ -11,11 +11,28 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+    Mat image5gray,mask_ani,mask_ani_inv,image5,dst1;
+     Mat image =imread("D:\\Capture gambar\\gambar.png");
+     Mat image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed.png");
+     resize(image4,image5, Size(),0.8,0.8);
+    cvtColor(image5, image5gray, CV_BGR2GRAY);
+    threshold(image5gray, mask_ani, 10, 255, 0);
+      bitwise_not(mask_ani, mask_ani_inv);
+      Mat imgRoi;
+          imgRoi = image(Rect(50, 50, image5.cols,image5.rows));
+          Mat me_back;
+              Mat ani_for;
+               bitwise_and(image5, image5, ani_for, mask_ani);
+                bitwise_and(imgRoi, imgRoi, me_back, mask_ani_inv);
+              Mat dst;
+                  add(me_back, ani_for, dst);
+              dst.copyTo(imgRoi);
 
+/*
 
     Mat image =imread("D:\\Capture gambar\\gambar.png");
     Mat image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
-    Mat image5 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\.png");
+    Mat image5 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\learncorel1.png");
     Mat image3,image4;
     Mat tjn;
     resize(image2,image3,Size(),0.43,0.35);
@@ -56,16 +73,18 @@ int main(int argc, char *argv[])
 
        }
      }
+
+
 // const int x = 100;
 // const int y = 100;
 
 Rect ROI1 (dst.cols-image4.cols,dst.rows-image4.rows,image4.cols,image4.rows);
 Mat baru1= dst(ROI1);
-/*
+
 Mat mask(image4);
 image4.copyTo(baru1,mask);
-*/
 
+/*
 Mat gray1,tress1,maskInv1,imgbg1,imgfg1,sum1,dst1;
 cvtColor(image4,gray1,CV_BGR2GRAY);
 double thresh1 = 10;
@@ -87,11 +106,12 @@ for(int i=0;i<image4.rows;i++){
 
 }
 }
+*/
 
        namedWindow("image",CV_WINDOW_FREERATIO);
-       imshow("image",dst);
-       gray.release(); tress.release();maskInv.release();imgbg.release();
-       imgfg.release(); baru.release(); sum.release();image.release(); image2.release();
+       imshow("image",image);
+       //gray.release(); tress.release();maskInv.release();imgbg.release();
+      // imgfg.release(); baru.release(); sum.release();image.release(); image2.release();
 
         // cvtColor(dst, fix, CV_BGR2RGB);
 /*

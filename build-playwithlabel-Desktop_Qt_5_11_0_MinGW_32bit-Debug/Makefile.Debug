@@ -14,10 +14,10 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -W -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -W -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\playwithlabel -I. -IC:\OpenCV\opencv\build\install\include -I..\..\..\Qt\5.11.0\mingw53_32\include -I..\..\..\Qt\5.11.0\mingw53_32\include\ActiveQt -I..\..\..\Qt\5.11.0\mingw53_32\include\QtWidgets -I..\..\..\Qt\5.11.0\mingw53_32\include\QtGui -I..\..\..\Qt\5.11.0\mingw53_32\include\QtANGLE -I..\..\..\Qt\5.11.0\mingw53_32\include\QtSql -I..\..\..\Qt\5.11.0\mingw53_32\include\QtCore -Idebug -I. -I..\..\..\Qt\5.11.0\mingw53_32\mkspecs\win32-g++ 
+INCPATH       = -I..\playwithlabel -I. -IC:\Users\User\Downloads\opencv\build\install\include -I..\..\..\Qt\5.11.0\mingw53_32\include -I..\..\..\Qt\5.11.0\mingw53_32\include\ActiveQt -I..\..\..\Qt\5.11.0\mingw53_32\include\QtWidgets -I..\..\..\Qt\5.11.0\mingw53_32\include\QtGui -I..\..\..\Qt\5.11.0\mingw53_32\include\QtANGLE -I..\..\..\Qt\5.11.0\mingw53_32\include\QtSql -I..\..\..\Qt\5.11.0\mingw53_32\include\QtCore -Idebug -I. -I..\..\..\Qt\5.11.0\mingw53_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
-LIBS        =        -lmingw32 -LD:\Qt\5.11.0\mingw53_32\lib D:\Qt\5.11.0\mingw53_32\lib\libqtmaind.a -LC:\openssl\lib -LC:\Utils\my_sql\my_sql\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 C:\OpenCV\opencv\build\bin\libopencv_core343.dll C:\OpenCV\opencv\build\bin\libopencv_highgui343.dll C:\OpenCV\opencv\build\bin\libopencv_imgcodecs343.dll C:\OpenCV\opencv\build\bin\libopencv_imgproc343.dll C:\OpenCV\opencv\build\bin\libopencv_calib3d343.dll C:\OpenCV\opencv\build\bin\libopencv_videoio343.dll C:\OpenCV\opencv\build\bin\libopencv_photo343.dll C:\OpenCV\opencv\build\bin\libopencv_video343.dll D:\Qt\5.11.0\mingw53_32\lib\libQt5AxContainerd.a -LD:\Qt\5.11.0\mingw53_32\lib D:\Qt\5.11.0\mingw53_32\lib\libQt5AxBased.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Widgetsd.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Guid.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Cored.a -lole32 -loleaut32 -luser32 -lgdi32 -ladvapi32 -luuid D:\Qt\5.11.0\mingw53_32\lib\libQt5Widgetsd.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Guid.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Sqld.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Cored.a 
+LIBS        =        -lmingw32 -LD:\Qt\5.11.0\mingw53_32\lib D:\Qt\5.11.0\mingw53_32\lib\libqtmaind.a -LC:\openssl\lib -LC:\Utils\my_sql\my_sql\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 C:\Users\User\Downloads\opencv\build\bin\libopencv_core320.dll C:\Users\User\Downloads\opencv\build\bin\libopencv_highgui320.dll C:\Users\User\Downloads\opencv\build\bin\libopencv_imgcodecs320.dll C:\Users\User\Downloads\opencv\build\bin\libopencv_imgproc320.dll C:\Users\User\Downloads\opencv\build\bin\libopencv_calib3d320.dll C:\Users\User\Downloads\opencv\build\bin\libopencv_videoio320.dll C:\Users\User\Downloads\opencv\build\bin\libopencv_photo320.dll C:\Users\User\Downloads\opencv\build\bin\libopencv_video320.dll D:\Qt\5.11.0\mingw53_32\lib\libQt5AxContainerd.a -LD:\Qt\5.11.0\mingw53_32\lib D:\Qt\5.11.0\mingw53_32\lib\libQt5AxBased.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Widgetsd.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Guid.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Cored.a -lole32 -loleaut32 -luser32 -lgdi32 -ladvapi32 -luuid D:\Qt\5.11.0\mingw53_32\lib\libQt5Widgetsd.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Guid.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Sqld.a D:\Qt\5.11.0\mingw53_32\lib\libQt5Cored.a 
 QMAKE         = D:\Qt\5.11.0\mingw53_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -243,6 +243,43 @@ debug/moc_mainwindow.cpp: ../../../Qt/5.11.0/mingw53_32/include/QtWidgets/QMainW
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QImage \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QWaitCondition \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/qwaitcondition.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvdef.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/hal/interface.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/version.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/base.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/opencv_modules.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ptr.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/neon_utils.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/traits.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/matx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/saturate.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/fast_math.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/bufferpool.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/persistence.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/operations.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/utility.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/optim.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ovx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs/imgcodecs_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio/videoio_c.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QPaintEvent \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QString \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QFile \
@@ -251,7 +288,7 @@ debug/moc_mainwindow.cpp: ../../../Qt/5.11.0/mingw53_32/include/QtWidgets/QMainW
 		../playwithlabel/mainwindow.h \
 		debug/moc_predefs.h \
 		../../../Qt/5.11.0/mingw53_32/bin/moc.exe
-	D:\Qt\5.11.0\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -ID:/Qt/5.11.0/mingw53_32/mkspecs/win32-g++ -ID:/copas/Belajar_Git/playwithlabel -IC:/OpenCV/opencv/build/install/include -ID:/Qt/5.11.0/mingw53_32/include -ID:/Qt/5.11.0/mingw53_32/include/ActiveQt -ID:/Qt/5.11.0/mingw53_32/include/QtWidgets -ID:/Qt/5.11.0/mingw53_32/include/QtGui -ID:/Qt/5.11.0/mingw53_32/include/QtANGLE -ID:/Qt/5.11.0/mingw53_32/include/QtSql -ID:/Qt/5.11.0/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\playwithlabel\mainwindow.h -o debug\moc_mainwindow.cpp
+	D:\Qt\5.11.0\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -ID:/Qt/5.11.0/mingw53_32/mkspecs/win32-g++ -ID:/copas/Belajar_Git/playwithlabel -IC:/Users/User/Downloads/opencv/build/install/include -ID:/Qt/5.11.0/mingw53_32/include -ID:/Qt/5.11.0/mingw53_32/include/ActiveQt -ID:/Qt/5.11.0/mingw53_32/include/QtWidgets -ID:/Qt/5.11.0/mingw53_32/include/QtGui -ID:/Qt/5.11.0/mingw53_32/include/QtANGLE -ID:/Qt/5.11.0/mingw53_32/include/QtSql -ID:/Qt/5.11.0/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\playwithlabel\mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_player.cpp: ../../../Qt/5.11.0/mingw53_32/include/QtCore/QMutex \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/qmutex.h \
@@ -330,6 +367,43 @@ debug/moc_player.cpp: ../../../Qt/5.11.0/mingw53_32/include/QtCore/QMutex \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/qpainterpath.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QWaitCondition \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/qwaitcondition.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvdef.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/hal/interface.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/version.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/base.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/opencv_modules.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ptr.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/neon_utils.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/traits.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/matx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/saturate.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/fast_math.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/bufferpool.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/persistence.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/operations.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/utility.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/optim.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ovx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs/imgcodecs_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio/videoio_c.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QPaintEvent \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/qevent.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/qkeysequence.h \
@@ -354,7 +428,7 @@ debug/moc_player.cpp: ../../../Qt/5.11.0/mingw53_32/include/QtCore/QMutex \
 		../playwithlabel/player.h \
 		debug/moc_predefs.h \
 		../../../Qt/5.11.0/mingw53_32/bin/moc.exe
-	D:\Qt\5.11.0\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -ID:/Qt/5.11.0/mingw53_32/mkspecs/win32-g++ -ID:/copas/Belajar_Git/playwithlabel -IC:/OpenCV/opencv/build/install/include -ID:/Qt/5.11.0/mingw53_32/include -ID:/Qt/5.11.0/mingw53_32/include/ActiveQt -ID:/Qt/5.11.0/mingw53_32/include/QtWidgets -ID:/Qt/5.11.0/mingw53_32/include/QtGui -ID:/Qt/5.11.0/mingw53_32/include/QtANGLE -ID:/Qt/5.11.0/mingw53_32/include/QtSql -ID:/Qt/5.11.0/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\playwithlabel\player.h -o debug\moc_player.cpp
+	D:\Qt\5.11.0\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -ID:/Qt/5.11.0/mingw53_32/mkspecs/win32-g++ -ID:/copas/Belajar_Git/playwithlabel -IC:/Users/User/Downloads/opencv/build/install/include -ID:/Qt/5.11.0/mingw53_32/include -ID:/Qt/5.11.0/mingw53_32/include/ActiveQt -ID:/Qt/5.11.0/mingw53_32/include/QtWidgets -ID:/Qt/5.11.0/mingw53_32/include/QtGui -ID:/Qt/5.11.0/mingw53_32/include/QtANGLE -ID:/Qt/5.11.0/mingw53_32/include/QtSql -ID:/Qt/5.11.0/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.11.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\playwithlabel\player.h -o debug\moc_player.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -501,6 +575,43 @@ debug/main.o: ../playwithlabel/main.cpp ../playwithlabel/mainwindow.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QImage \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QWaitCondition \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/qwaitcondition.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvdef.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/hal/interface.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/version.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/base.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/opencv_modules.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ptr.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/neon_utils.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/traits.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/matx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/saturate.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/fast_math.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/bufferpool.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/persistence.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/operations.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/utility.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/optim.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ovx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs/imgcodecs_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio/videoio_c.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QPaintEvent \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QString \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QFile \
@@ -635,6 +746,43 @@ debug/mainwindow.o: ../playwithlabel/mainwindow.cpp ../playwithlabel/mainwindow.
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QImage \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QWaitCondition \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/qwaitcondition.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvdef.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/hal/interface.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/version.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/base.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/opencv_modules.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ptr.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/neon_utils.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/traits.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/matx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/saturate.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/fast_math.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/bufferpool.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/persistence.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/operations.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/utility.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/optim.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ovx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs/imgcodecs_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio/videoio_c.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QPaintEvent \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QString \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QFile \
@@ -763,6 +911,43 @@ debug/player.o: ../playwithlabel/player.cpp ../playwithlabel/player.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/qpainterpath.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/QWaitCondition \
 		../../../Qt/5.11.0/mingw53_32/include/QtCore/qwaitcondition.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvdef.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/hal/interface.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/version.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/base.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/opencv_modules.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ptr.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/neon_utils.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/traits.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/matx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/saturate.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/fast_math.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/bufferpool.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/mat.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/persistence.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/operations.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/cvstd.inl.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/utility.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/core_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/optim.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/core/ovx.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/imgproc_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgproc/types_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio.hpp \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/highgui/highgui_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/imgcodecs/imgcodecs_c.h \
+		C:/Users/User/Downloads/opencv/build/install/include/opencv2/videoio/videoio_c.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/QPaintEvent \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/qevent.h \
 		../../../Qt/5.11.0/mingw53_32/include/QtGui/qkeysequence.h \
