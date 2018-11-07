@@ -60,7 +60,8 @@ void Player::setCurrentFrame(int frameNumber){
     capture.set(CV_CAP_PROP_POS_FRAMES,frameNumber);
 }
 
-bool Player :: loadData(String d_filename){
+//bool Player :: loadData(String d_filename){
+    /*
     QString qstr = QString::fromStdString(d_filename);
     auto excel     = new QAxObject("Excel.Application");
     auto workbooks = excel->querySubObject("Workbooks");
@@ -75,6 +76,7 @@ bool Player :: loadData(String d_filename){
         auto cCell = sheet->querySubObject("Cells(int,int)",r,1);
         qDebug() << cCell->dynamicCall("Value()").toInt();
     }
+    */
  /*
 //    ifstream myfile;
 //    myfile.open(d_filename);
@@ -130,9 +132,9 @@ QString qstr = QString::fromStdString(d_filename);
         msgeBox.exec();
     }
 */
-    return true;
+  //  return true;
 
-}
+//}
 bool Player :: lokasiVideo(String lokasi){
      lokvideo = QString::fromStdString(lokasi);
     //qDebug()<<lokvideo<<endl;
@@ -140,6 +142,11 @@ bool Player :: lokasiVideo(String lokasi){
    // cout<<lokasivideo<<endl;
     return true;
 
+}
+bool Player :: loadWaktu(String datawaktu){
+    waktu = QString ::fromStdString(datawaktu);
+    DataWaktu = waktu.toLocal8Bit().constData();
+    return true;
 }
 void Player :: run()
 {
@@ -191,7 +198,7 @@ void Player :: run()
           Mat mask(image5);
           image5.copyTo(baru1,mask);
         video.write(frame);
-   // putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataWaktu,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),

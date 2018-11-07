@@ -37,14 +37,15 @@ private:
    // QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
     int ko[10000][10000];
     int ini=1;
-    QString lokvideo;
-    string lokasivideo;
+    QString lokvideo,waktu;
+    string lokasivideo,DataWaktu;
 public:
     //explicit Player(QWidget *parent = nullptr);
     Player(QObject *parent = 0);
     ~Player();
     bool loadVideo(String filename);    //memanggil filename dari mainwindow.cpp
-    bool loadData (String d_filename); //memanggil d_filename dari mainwindow.cpp
+   // bool loadData (String d_filename); //memanggil d_filename dari mainwindow.cpp
+    bool loadWaktu (String datawaktu);
     bool lokasiVideo(String lokasi);
     void Play();
     void Stop();

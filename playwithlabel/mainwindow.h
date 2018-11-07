@@ -20,6 +20,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent =0);
     ~MainWindow();
+    QString d_filename;
+    QString datawaktu ;
 private slots:
     void updatePlayerUI(QImage img);
     void on_pushButton_clicked();
@@ -36,6 +38,8 @@ private slots:
     void on_horizontalSlider_sliderReleased();
     void on_horizontalSlider_sliderMoved(int position);
     void on_pushButton_5_clicked();
+
+    void on_checkBox_stateChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;

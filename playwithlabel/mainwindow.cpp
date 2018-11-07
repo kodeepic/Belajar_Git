@@ -2,7 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QProgressBar>
 #include <QPainter>
-
+#include <QAxObject>
+#include <QDebug>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -83,9 +84,9 @@ QString MainWindow::getFormattedTime(int timeInSeconds){
 void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan dilakukan
 {
 
-   QString d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
+    d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
                                                   tr("Video Files(*.m *.xlsx *.csv)")); //membuka dokumen untuk memilih file yang tersedia(sesuai ekstensi)
-
+/*
     //kalau gak ada file pesan dibawah ini akan keluar
     if(!d_filename.isEmpty()){
         if(!myPlayer->loadData(d_filename.toLatin1().data())){
@@ -94,7 +95,7 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
             msgBox.exec();
                 }
             }
-
+*/
     ui->lineEdit_2->setText(d_filename); //mencatat lokasi file d_filename di lineedit (lokasi berkas)
 }
 
@@ -128,4 +129,33 @@ if(!myPlayer->lokasiVideo(lokasi.toLatin1().data())){
     msgBox.exec();
         }
 ui->lineEdit_3->setText(lokasi);
+}
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+    if(arg1){
+
+    QAxObject* excel     = new QAxObject("Excel.Application");
+    QAxObject* workbooks = excel->querySubObject("Workbooks");
+
+   QAxObject* workbook  = workbooks->querySubObject("Open(const QString&)",d_filename);
+    QAxObject* sheets    = workbook->querySubObject("Worksheets");
+    QAxObject* sheet     = sheets->querySubObject("Item(int)", 1);
+
+    // read the first cells in row 1...18177
+    for (int r = 1; (r <= 1); ++r)
+    {
+        QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r,1);
+        int Data = cCell->dynamicCall("Value()").toInt();
+         datawaktu = QString::number(Data);
+    }
+
+    } else{
+        qDebug()<<"Data waktu tidak ada"<<endl;
+    }
+    if(!myPlayer->loadWaktu(datawaktu.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
 }
