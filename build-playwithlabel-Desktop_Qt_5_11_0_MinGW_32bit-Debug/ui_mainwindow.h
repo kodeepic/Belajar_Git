@@ -103,7 +103,7 @@ public:
         pushButton_2->setIconSize(QSize(23, 23));
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(30, 10, 671, 141));
+        groupBox->setGeometry(QRect(20, 10, 671, 141));
         groupBox->setStyleSheet(QLatin1String("QGroupBox\n"
 "{\n"
 "color: white;\n"

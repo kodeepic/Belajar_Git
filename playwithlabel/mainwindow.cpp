@@ -121,6 +121,11 @@ void MainWindow::on_horizontalSlider_sliderMoved(int position){
 
 void MainWindow::on_pushButton_5_clicked()
 {
-
-
+QString lokasi = QString("D:\\Magang\\videohasil.avi");
+if(!myPlayer->lokasiVideo(lokasi.toLatin1().data())){
+    QMessageBox msgBox;
+    msgBox.setText("The selected data could not be opened");
+    msgBox.exec();
+        }
+ui->lineEdit_3->setText(lokasi);
 }

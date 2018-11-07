@@ -8,6 +8,7 @@
 #include <string>
 #include <QCheckBox>
 #include <QMessageBox>
+#include <QAxObject>
 using namespace std;
 
 // Variabel Array untuk menampung data penerbangan
@@ -60,6 +61,21 @@ void Player::setCurrentFrame(int frameNumber){
 }
 
 bool Player :: loadData(String d_filename){
+    QString qstr = QString::fromStdString(d_filename);
+    auto excel     = new QAxObject("Excel.Application");
+    auto workbooks = excel->querySubObject("Workbooks");
+    //QString d_filename = "C:\\Users\\Ariku\\Documents\\Data.xlsx";
+    auto workbook  = workbooks->querySubObject("Open(const QString&)",qstr);
+    auto sheets    = workbook->querySubObject("Worksheets");
+    auto sheet     = sheets->querySubObject("Item(int)", 1);
+
+    // read the first cells in row 1...18177
+    for (int r = 1; (r <= 18177); ++r)
+    {
+        auto cCell = sheet->querySubObject("Cells(int,int)",r,1);
+        qDebug() << cCell->dynamicCall("Value()").toInt();
+    }
+ /*
 //    ifstream myfile;
 //    myfile.open(d_filename);
 //    if (myfile.is_open())
@@ -102,6 +118,7 @@ QString qstr = QString::fromStdString(d_filename);
     else {
         inputfile.close();
     }
+*/
 /*
     QCheckBox *checkbox = new QCheckBox();
     //checkbox->setChecked(false);
@@ -116,21 +133,29 @@ QString qstr = QString::fromStdString(d_filename);
     return true;
 
 }
+bool Player :: lokasiVideo(String lokasi){
+     lokvideo = QString::fromStdString(lokasi);
+    //qDebug()<<lokvideo<<endl;
+    lokasivideo = lokvideo.toLocal8Bit().constData(); //Qstring to std string
+   // cout<<lokasivideo<<endl;
+    return true;
 
+}
 void Player :: run()
 {
     int frame_width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
     int frame_height = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
-     video.open("C:\\Users\\Ariku\\Documents\\coba-coba.avi",CV_FOURCC('M','J','P','G'),frameRate,Size(frame_width,frame_height),true);
-     if (!video.isOpened()) {
-             qDebug() << "Could not open the output video file for write\n"<<endl;
-         }
+    video.open(lokasivideo,CV_FOURCC('M','J','P','G'),frameRate,Size(frame_width,frame_height),true);
+    if (!video.isOpened()) {
+            qDebug() << "Could not open the output video file for write\n"<<endl;
+        }
     int delay =(1000/frameRate);
     while (!stop) {
         if(!capture.read(frame))
         {
             stop=true;
             break;
+
         }
 
         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
