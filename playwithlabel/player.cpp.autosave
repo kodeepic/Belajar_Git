@@ -8,6 +8,7 @@
 #include <string>
 #include <QCheckBox>
 #include <QMessageBox>
+
 using namespace std;
 
 // Variabel Array untuk menampung data penerbangan

@@ -33,7 +33,7 @@ private:
     Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru,vect,image3,image4,enlarged,image5;
     string line; //jika ingin menggunakan putText via opencv
     QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
-    int ko[10000][10000];
+    float ko[10000][10000];
     int ini=1;
 
 public:
