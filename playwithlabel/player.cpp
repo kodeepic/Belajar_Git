@@ -148,6 +148,41 @@ bool Player :: loadWaktu(String datawaktu){
     DataWaktu = waktu.toLocal8Bit().constData();
     return true;
 }
+bool Player :: loadKeceptan(String datakecepatan){
+    kecepatan =QString ::fromStdString(datakecepatan);
+    DataKecepatan = kecepatan.toLocal8Bit().constData();
+     return true;
+}
+bool Player ::loadAltitude(String dataaltitude){
+    altitude=QString :: fromStdString(dataaltitude);
+    DataAltitude = altitude.toLocal8Bit().constData();
+    return true;
+}
+bool Player :: loadRoll(String dataroll){
+    roll=QString :: fromStdString(dataroll);
+    DataRoll = roll.toLocal8Bit().constData();
+    return true;
+}
+bool Player :: loadLongitude(String datalongitude){
+    longitude=QString :: fromStdString(datalongitude);
+    DataLongitude = longitude.toLocal8Bit().constData();
+    return true;
+}
+bool Player :: loadPitch(String datapitch){
+    pitch=QString :: fromStdString(datapitch);
+    DataPitch = pitch.toLocal8Bit().constData();
+    return true;
+}
+bool Player :: loadLatitude(String datalatitude){
+    latitude=QString :: fromStdString(datalatitude);
+    DataLatitude = latitude.toLocal8Bit().constData();
+    return true;
+}
+bool Player :: loadYaw(String datayaw){
+    yaw=QString :: fromStdString(datayaw);
+    DataYaw = yaw.toLocal8Bit().constData();
+    return true;
+}
 void Player :: run()
 {
     int frame_width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
@@ -198,7 +233,14 @@ void Player :: run()
           Mat mask(image5);
           image5.copyTo(baru1,mask);
         video.write(frame);
-    putText(frame,DataWaktu,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataWaktu,Point2f(100,100),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataKecepatan,Point2f(200,200),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataAltitude,Point2f(300,300),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataRoll,Point2f(350,350),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataLongitude,Point2f(400,400),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataPitch,Point2f(425,425),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataLatitude,Point2f(450,450),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+    putText(frame,DataYaw,Point2f(475,475),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),

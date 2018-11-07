@@ -37,8 +37,8 @@ private:
    // QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
     int ko[10000][10000];
     int ini=1;
-    QString lokvideo,waktu;
-    string lokasivideo,DataWaktu;
+    QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;
+    string lokasivideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
 public:
     //explicit Player(QWidget *parent = nullptr);
     Player(QObject *parent = 0);
@@ -46,6 +46,13 @@ public:
     bool loadVideo(String filename);    //memanggil filename dari mainwindow.cpp
    // bool loadData (String d_filename); //memanggil d_filename dari mainwindow.cpp
     bool loadWaktu (String datawaktu);
+    bool loadKeceptan(String datakecepatan);
+    bool loadAltitude (String dataaltitude);
+    bool loadRoll(String dataroll);
+    bool loadLongitude(String datalongitude);
+    bool loadPitch(String datapitch);
+    bool loadLatitude(String datalatitude);
+    bool loadYaw(String datayaw);
     bool lokasiVideo(String lokasi);
     void Play();
     void Stop();

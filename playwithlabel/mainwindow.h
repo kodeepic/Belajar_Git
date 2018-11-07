@@ -21,8 +21,8 @@ public:
     explicit MainWindow(QWidget *parent =0);
     ~MainWindow();
     QString d_filename;
-    QString datawaktu ;
-    int Data;
+    QString datawaktu,datakecepatan,dataaltitude,dataroll,datalongitude,datapitch,datalatitude,datayaw;
+    int Data,Data1,Data2,Data3,Data4,Data5,Data6,Data7;
 private slots:
     void updatePlayerUI(QImage img);
     void on_pushButton_clicked();
@@ -41,6 +41,20 @@ private slots:
     void on_pushButton_5_clicked();
 
     void on_checkBox_stateChanged(int arg1);
+
+    void on_checkBox_2_stateChanged(int arg1);
+
+    void on_checkBox_3_stateChanged(int arg1);
+
+    void on_checkBox_6_stateChanged(int arg1);
+
+    void on_checkBox_4_stateChanged(int arg1);
+
+    void on_checkBox_7_stateChanged(int arg1);
+
+    void on_checkBox_5_stateChanged(int arg1);
+
+    void on_checkBox_8_stateChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
