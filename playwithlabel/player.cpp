@@ -73,7 +73,7 @@ bool Player :: loadData(String d_filename){
     if (!inputfile.isOpen())
         return true;
     
-    QSqlQuery qry;
+//    QSqlQuery qry;
     
     QTextStream stream (&inputfile);
     QString line = stream.readLine();
