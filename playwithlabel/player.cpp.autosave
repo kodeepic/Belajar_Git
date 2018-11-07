@@ -8,7 +8,11 @@
 #include <string>
 #include <QCheckBox>
 #include <QMessageBox>
-
+#include <stdio.h>
+#include <time.h>
+#include <math.h>
+#include <QSqlQuery>
+//#include <math.h>
 using namespace std;
 
 // Variabel Array untuk menampung data penerbangan
@@ -60,27 +64,17 @@ void Player::setCurrentFrame(int frameNumber){
 }
 
 bool Player :: loadData(String d_filename){
-//    ifstream myfile;
-//    myfile.open(d_filename);
-//    if (myfile.is_open())
-//    {
-//        qDebug()<<"berkas telah dibuka"<< endl;
-//        while(myfile.good()){
-//            // line;
-//            getline(myfile,line,',');
-//           // cout<<line<<endl;
-//        }
-//       }
-//    else{
-//        qDebug()<<"tidak ada file yang dibuka"<<endl;
-//    }
-QString qstr = QString::fromStdString(d_filename);
+//MATFILE *pmat;
+//matOpen();
+    QString qstr = QString::fromStdString(d_filename);
 // Baca data file CSV dan simpan dalam array (2 dimensi)
     QFile inputfile (qstr);
     inputfile.open(QIODevice::ReadOnly);
     if (!inputfile.isOpen())
         return true;
-
+    
+    QSqlQuery qry;
+    
     QTextStream stream (&inputfile);
     QString line = stream.readLine();
     if (!line.isNull()){
@@ -91,7 +85,8 @@ QString qstr = QString::fromStdString(d_filename);
             QByteArray hhh = line.toLocal8Bit();
             const char *line1= hhh.data();
                        sscanf(line1,"%f ,%f ,%f ,%f, \"%f\",%d,%d,%d",&ko[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&ko[baris][5],&ko[baris][6],&ko[baris][7],&ko[baris][8]);
-                       qDebug() << "hayo ke:" <<line << "jadinya: " <<ko[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << ko[baris][5] << " " << ko[baris][6];
+                       qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<ko[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << ko[baris][5] << " " << ko[baris][6];
+
                        baris++;
         }
 
@@ -110,6 +105,8 @@ QString qstr = QString::fromStdString(d_filename);
         msgeBox.exec();
     }
 */
+
+
     return true;
 
 }

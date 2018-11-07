@@ -42,17 +42,17 @@ LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_videoio320.dll
 LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_photo320.dll
 LIBS +=C:\Users\User\Downloads\opencv\build\bin\libopencv_video320.dll
 
-INCLUDEPATH += C:\Program Files (x86)\MATLAB\R2015b\extern\include
+#INCLUDEPATH += C:\Program Files (x86)\MATLAB\R2015b\extern\include
 
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libeng.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libma.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmex.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmwblas.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmqblascompact32.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmxlapack.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmwmathutil.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmx.lib
-LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libut.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libeng.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libma.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmex.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmwblas.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmqblascompact32.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmxlapack.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmwmathutil.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libmx.lib
+#LIBS += C:\Program Files (x86)\MATLAB\R2015b\extern\lib\win32\microsoft\libut.lib
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
