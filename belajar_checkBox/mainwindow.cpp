@@ -12,7 +12,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+/*
 void MainWindow::on_pushButton_clicked()
 {
     if(ui->checkBox->isChecked()){
@@ -21,7 +21,7 @@ void MainWindow::on_pushButton_clicked()
         QMessageBox::information(this,"title","belum berhasil");
     }
 }
-
+*/
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
     if(arg1){
