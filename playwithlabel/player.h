@@ -36,7 +36,7 @@ private:
   // string line; //jika ingin menggunakan putText via opencv
    // QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
     int ko[10000][10000];
-    int ini=1;
+    int ini,r=1;
     QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;
     string lokasivideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
 public:

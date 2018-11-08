@@ -144,8 +144,10 @@ bool Player :: lokasiVideo(String lokasi){
 
 }
 bool Player :: loadWaktu(String datawaktu){
+
     waktu = QString ::fromStdString(datawaktu);
-    DataWaktu = waktu.toLocal8Bit().constData();
+    DataWaktu= waktu.toLocal8Bit().constData();
+
     return true;
 }
 bool Player :: loadKeceptan(String datakecepatan){
@@ -185,6 +187,7 @@ bool Player :: loadYaw(String datayaw){
 }
 void Player :: run()
 {
+     //int blinks_number = 1;
     int frame_width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
     int frame_height = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
     video.open(lokasivideo,CV_FOURCC('M','J','P','G'),frameRate,Size(frame_width,frame_height),true);
@@ -203,7 +206,7 @@ void Player :: run()
         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
         image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
         resize(image4, enlarged, cv::Size(image4.cols*2, image4.rows*2), cv::INTER_NEAREST);
-        resize(enlarged,image5,Size(),0.5,0.5);
+        resize(enlarged,image5,Size(),0.6,0.6);
         resize(image2,image3,Size(),0.50,0.50);
         Rect ROI (0,0,image3.cols,image3.rows);
         baru= frame(ROI);
@@ -228,19 +231,47 @@ void Player :: run()
 
           }
         }
-          Rect ROI1 (frame.cols-image5.cols,image5.rows,image5.cols,image5.rows);
+          Rect ROI1 (frame.cols-image5.cols,image5.rows-200,image5.cols,image5.rows);
           Mat baru1= frame(ROI1);
           Mat mask(image5);
           image5.copyTo(baru1,mask);
         video.write(frame);
-    putText(frame,DataWaktu,Point2f(100,100),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
-    putText(frame,DataKecepatan,Point2f(200,200),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
-    putText(frame,DataAltitude,Point2f(300,300),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
-    putText(frame,DataRoll,Point2f(350,350),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
-    putText(frame,DataLongitude,Point2f(400,400),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
-    putText(frame,DataPitch,Point2f(425,425),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
-    putText(frame,DataLatitude,Point2f(450,450),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
-    putText(frame,DataYaw,Point2f(475,475),FONT_HERSHEY_PLAIN,2,Scalar(0,0,255), 2 , 8 , false);
+        Mat roi = frame(cv::Rect(110, 370, 500, 200));
+        Mat color(roi.size(), CV_8UC3, cv::Scalar(0,0, 0));
+            double alpha = 0.4;
+        addWeighted(color, alpha, roi, 1.0 - alpha , 0.0, roi);
+        if(!DataWaktu.empty()){
+            putText(frame,"Waktu : -",Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+        }
+    putText(frame,"Waktu : "+ DataWaktu,Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+       if(!DataKecepatan.empty()){
+    putText(frame,"Kecepatan : -",Point2f(380,430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+        }
+    putText(frame,"Kecepatan : "+ DataKecepatan,Point2f(380,430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    if(!DataAltitude.empty()){
+    putText(frame,"Altitude : -",Point2f(300,300),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    }
+    putText(frame,"Altitude : "+DataAltitude,Point2f(300,300),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    if (!DataRoll.empty()){
+     putText(frame,"Roll : -",Point2f(350,350),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    }
+    putText(frame,"Roll : "+DataRoll,Point2f(350,350),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    if (!DataLongitude.empty()){
+    putText(frame,"Longitude : -",Point2f(400,400),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    }
+    putText(frame,"Longitude : "+DataLongitude,Point2f(400,400),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    if(!DataPitch.empty()){
+        putText(frame,"Pitch : -",Point2f(425,425),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    }
+    putText(frame,"Pitch : "+DataPitch,Point2f(425,425),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    if(!DataLatitude.empty()){
+        putText(frame,"Latitude : -",Point2f(450,450),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    }
+    putText(frame,"Latitude : "+DataLatitude,Point2f(450,450),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    if(!DataYaw.empty()){
+        putText(frame,"Yaw : -",Point2f(475,475),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    }
+    putText(frame,"Yaw : "+DataYaw,Point2f(475,475),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),
