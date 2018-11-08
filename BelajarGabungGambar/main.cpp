@@ -28,6 +28,12 @@ int main(int argc, char *argv[])
                   add(me_back, ani_for, dst);
               dst.copyTo(imgRoi);
 
+
+              Mat roi = image(cv::Rect(170, 350, 400, 200));
+              Mat color(roi.size(), CV_8UC3, cv::Scalar(0,0, 0));
+                  double alpha = 0.4;
+              addWeighted(color, alpha, roi, 1.0 - alpha , 0.0, roi);
+              putText(image, "Waktu",Point(175, 380),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
 /*
 
     Mat image =imread("D:\\Capture gambar\\gambar.png");
