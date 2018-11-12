@@ -36,15 +36,18 @@ private:
   // string line; //jika ingin menggunakan putText via opencv
    // QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
     int ko[10000][10000];
-    int ini,r=1;
-    QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;
-    string lokasivideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
+    int ini=1;
+   // QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;
+    //string lokasivideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
+    QString lokvideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
+    string lokasivideo;
+     int kunci;
 public:
     //explicit Player(QWidget *parent = nullptr);
     Player(QObject *parent = 0);
     ~Player();
     bool loadVideo(String filename);    //memanggil filename dari mainwindow.cpp
-   // bool loadData (String d_filename); //memanggil d_filename dari mainwindow.cpp
+    bool loadData (String d_filename); //memanggil d_filename dari mainwindow.cpp
     bool loadWaktu (String datawaktu);
     bool loadKeceptan(String datakecepatan);
     bool loadAltitude (String dataaltitude);
@@ -61,6 +64,8 @@ public:
     double getFrameRate();
     double getCurrentFrame();
     double getNumberOfFrames();
+    int wak =0 ;
+    int kec, alt,bat,rol,pit,yaw,log,lat;
 signals:
 void processedImage(const QImage &image);
 protected:

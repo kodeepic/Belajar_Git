@@ -60,39 +60,9 @@ void Player::setCurrentFrame(int frameNumber){
     capture.set(CV_CAP_PROP_POS_FRAMES,frameNumber);
 }
 
-//bool Player :: loadData(String d_filename){
-    /*
-    QString qstr = QString::fromStdString(d_filename);
-    auto excel     = new QAxObject("Excel.Application");
-    auto workbooks = excel->querySubObject("Workbooks");
-    //QString d_filename = "C:\\Users\\Ariku\\Documents\\Data.xlsx";
-    auto workbook  = workbooks->querySubObject("Open(const QString&)",qstr);
-    auto sheets    = workbook->querySubObject("Worksheets");
-    auto sheet     = sheets->querySubObject("Item(int)", 1);
+bool Player :: loadData(String d_filename){
 
-    // read the first cells in row 1...18177
-    for (int r = 1; (r <= 18177); ++r)
-    {
-        auto cCell = sheet->querySubObject("Cells(int,int)",r,1);
-        qDebug() << cCell->dynamicCall("Value()").toInt();
-    }
-    */
- /*
-//    ifstream myfile;
-//    myfile.open(d_filename);
-//    if (myfile.is_open())
-//    {
-//        qDebug()<<"berkas telah dibuka"<< endl;
-//        while(myfile.good()){
-//            // line;
-//            getline(myfile,line,',');
-//           // cout<<line<<endl;
-//        }
-//       }
-//    else{
-//        qDebug()<<"tidak ada file yang dibuka"<<endl;
-//    }
-QString qstr = QString::fromStdString(d_filename);
+    QString qstr = QString::fromStdString(d_filename);
 // Baca data file CSV dan simpan dalam array (2 dimensi)
     QFile inputfile (qstr);
     inputfile.open(QIODevice::ReadOnly);
@@ -103,38 +73,23 @@ QString qstr = QString::fromStdString(d_filename);
     QString line = stream.readLine();
     if (!line.isNull()){
     int baris=1;
-    int kolom=1;
-    while (kolom < 1001){
-        while (baris < 1001){
-            line = stream.readLine();
-            QByteArray hhh = line.toLocal8Bit();
-            const char *line1= hhh.data();
-                       sscanf(line1,"%d",&ko[baris][kolom]);
-                        qDebug() << "hayo ke:" <<line << "jadinya:%d" << &ko[baris][kolom];
-                       baris++;
-        }
-        kolom++;
+    while (baris <=totalframe){
+        line = stream.readLine();
+        QByteArray hhh = line.toLocal8Bit();
+        const char *line1= hhh.data();
+                   sscanf(line1,"%d ,%d ,%d ,%d, %d,%d,%d,%d",&ko[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&ko[baris][5],&ko[baris][6],&ko[baris][7],&ko[baris][8]);
+                   qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<ko[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << ko[baris][5] << " " << ko[baris][6];
+
+                   baris++;
     }
 
  }
     else {
         inputfile.close();
     }
-*/
-/*
-    QCheckBox *checkbox = new QCheckBox();
-    //checkbox->setChecked(false);
-    if (!checkbox->isChecked()){
-        putText(frame,line,Point2f(100,100),FONT_HERSHEY_PLAIN,2,  Scalar(0,0,255), 2 , 8 , false);
-    }else{
-        QMessageBox msgeBox;
-        msgeBox.setText("Anda tidak menampilkan data");
-        msgeBox.exec();
-    }
-*/
-  //  return true;
+   return true;
 
-//}
+}
 bool Player :: lokasiVideo(String lokasi){
      lokvideo = QString::fromStdString(lokasi);
     //qDebug()<<lokvideo<<endl;
@@ -144,50 +99,155 @@ bool Player :: lokasiVideo(String lokasi){
 
 }
 bool Player :: loadWaktu(String datawaktu){
-
+    QString ok = QString::fromStdString(datawaktu);
+  int maka= ok.toInt();
+    if (maka >0){
+        DataWaktu= "Waktu : ";
+        wak =1;
+    }
+   else {
+        DataWaktu= "0";
+        wak =0;
+    }
+    return true;
+/*
     waktu = QString ::fromStdString(datawaktu);
     DataWaktu= waktu.toLocal8Bit().constData();
 
     return true;
+    */
 }
 bool Player :: loadKeceptan(String datakecepatan){
+    QString ok1 = QString::fromStdString(datakecepatan);
+    int moka = ok1.toInt();;
+    if (moka >0){
+        DataKecepatan= "Kecepatan: ";
+        kec =1;
+    }
+    else {
+        DataKecepatan= "Kecepatan : -";
+        kec =0;
+    }
+    qDebug() << " " <<kec;
+     return true;
+    /*
     kecepatan =QString ::fromStdString(datakecepatan);
     DataKecepatan = kecepatan.toLocal8Bit().constData();
      return true;
+     */
 }
 bool Player ::loadAltitude(String dataaltitude){
+    QString ok2 = QString::fromStdString(dataaltitude);
+    int mika = ok2.toInt();;
+    if (mika>0){
+        DataAltitude= "Altitude: ";
+        alt =1;
+    }
+    else {
+        DataAltitude= "Altitude: -";
+        alt =0;
+    }
+    return true;
+    /*
     altitude=QString :: fromStdString(dataaltitude);
     DataAltitude = altitude.toLocal8Bit().constData();
     return true;
+    */
 }
 bool Player :: loadRoll(String dataroll){
+    /*
     roll=QString :: fromStdString(dataroll);
     DataRoll = roll.toLocal8Bit().constData();
     return true;
+    */
+    QString ok3 = QString::fromStdString(dataroll);
+    int mina = ok3.toInt();;
+    if (mina >0){
+        DataRoll= "Roll: ";
+        rol =1;
+    }
+    else {
+        DataRoll= "Roll: -";
+        rol =0;
+    }
+    return true;
 }
 bool Player :: loadLongitude(String datalongitude){
+    /*
     longitude=QString :: fromStdString(datalongitude);
     DataLongitude = longitude.toLocal8Bit().constData();
     return true;
+    */
+    QString ok4 = QString::fromStdString(datalongitude);
+    int minu = ok4.toInt();;
+    if (minu >0){
+        DataLongitude= "Longitude: ";
+        log =1;
+    }
+    else {
+        DataLongitude= "Longitude: -";
+        log =0;
+    }
+    return true;
 }
 bool Player :: loadPitch(String datapitch){
+    QString ok5 = QString::fromStdString(datapitch);
+    int mona = ok5.toInt();;
+    if (mona >0){
+        DataPitch= "Pitch: ";
+        pit =1;
+    }
+    else {
+        DataPitch= "Pitch: -";
+        pit =0;
+    }
+    return true;
+    /*
     pitch=QString :: fromStdString(datapitch);
     DataPitch = pitch.toLocal8Bit().constData();
     return true;
+    */
 }
 bool Player :: loadLatitude(String datalatitude){
+    QString ok6 = QString::fromStdString(datalatitude);
+    int mono = ok6.toInt();;
+    if (mono >0){
+        DataLatitude= "Latitude: ";
+        lat =1;
+    }
+    else {
+        DataLatitude= "Latitude: -";
+        lat =0;
+    }
+    return true;
+    /*
     latitude=QString :: fromStdString(datalatitude);
     DataLatitude = latitude.toLocal8Bit().constData();
     return true;
+    */
+
 }
 bool Player :: loadYaw(String datayaw){
+    QString ok7 = QString::fromStdString(datayaw);
+    int melu = ok7.toInt();;
+    if (melu >0){
+        DataYaw= "Yaw: ";
+        yaw =1;
+    }
+    else {
+        DataYaw= "Yaw: -";
+        yaw =0;
+    }
+    return true;
+    /*
     yaw=QString :: fromStdString(datayaw);
     DataYaw = yaw.toLocal8Bit().constData();
     return true;
+    */
 }
 void Player :: run()
 {
-     //int blinks_number = 1;
+     kunci =1;
     int frame_width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
     int frame_height = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
     video.open(lokasivideo,CV_FOURCC('M','J','P','G'),frameRate,Size(frame_width,frame_height),true);
@@ -200,13 +260,11 @@ void Player :: run()
         {
             stop=true;
             break;
-
         }
 
         image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
         image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
-        resize(image4, enlarged, cv::Size(image4.cols*2, image4.rows*2), cv::INTER_NEAREST);
-        resize(enlarged,image5,Size(),0.6,0.6);
+        resize(image4, enlarged, cv::Size(frame.cols-(0.90*frame.cols), frame.rows-(0.15*frame.rows)), cv::INTER_NEAREST);
         resize(image2,image3,Size(),0.50,0.50);
         Rect ROI (0,0,image3.cols,image3.rows);
         baru= frame(ROI);
@@ -231,47 +289,110 @@ void Player :: run()
 
           }
         }
-          Rect ROI1 (frame.cols-image5.cols,image5.rows-200,image5.cols,image5.rows);
+          Rect ROI1 (frame.cols-enlarged.cols-20,frame.rows-enlarged.rows-50,enlarged.cols,enlarged.rows);
           Mat baru1= frame(ROI1);
-          Mat mask(image5);
-          image5.copyTo(baru1,mask);
+          Mat mask(enlarged);
+          enlarged.copyTo(baru1,mask);
         video.write(frame);
         Mat roi = frame(cv::Rect(110, 370, 500, 200));
         Mat color(roi.size(), CV_8UC3, cv::Scalar(0,0, 0));
             double alpha = 0.4;
         addWeighted(color, alpha, roi, 1.0 - alpha , 0.0, roi);
-        if(!DataWaktu.empty()){
-            putText(frame,"Waktu : -",Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+        QString Time;
+        int omo;
+        if (wak > 0){
+            omo = ko[kunci][1];
+            QString angka = QString::number(omo);
+
+             Time = DataWaktu + angka;
         }
-    putText(frame,"Waktu : "+ DataWaktu,Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-       if(!DataKecepatan.empty()){
-    putText(frame,"Kecepatan : -",Point2f(380,430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+        else {
+            Time = DataWaktu;
         }
-    putText(frame,"Kecepatan : "+ DataKecepatan,Point2f(380,430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    if(!DataAltitude.empty()){
-    putText(frame,"Altitude : -",Point2f(300,300),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    }
-    putText(frame,"Altitude : "+DataAltitude,Point2f(300,300),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    if (!DataRoll.empty()){
-     putText(frame,"Roll : -",Point2f(350,350),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    }
-    putText(frame,"Roll : "+DataRoll,Point2f(350,350),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    if (!DataLongitude.empty()){
-    putText(frame,"Longitude : -",Point2f(400,400),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    }
-    putText(frame,"Longitude : "+DataLongitude,Point2f(400,400),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    if(!DataPitch.empty()){
-        putText(frame,"Pitch : -",Point2f(425,425),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    }
-    putText(frame,"Pitch : "+DataPitch,Point2f(425,425),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    if(!DataLatitude.empty()){
-        putText(frame,"Latitude : -",Point2f(450,450),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    }
-    putText(frame,"Latitude : "+DataLatitude,Point2f(450,450),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    if(!DataYaw.empty()){
-        putText(frame,"Yaw : -",Point2f(475,475),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    }
-    putText(frame,"Yaw : "+DataYaw,Point2f(475,475),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+        string waktu1 = Time.toLocal8Bit().constData();
+        QString fast;
+        if (kec > 0){
+            int om1 = ko[kunci][2];
+            QString angku = QString::number(om1);
+            fast = DataKecepatan + angku;
+        }
+        else {
+            fast = DataKecepatan;
+        }
+        string kecepatan1 = fast.toLocal8Bit().constData();
+        QString ALT;
+        if (alt > 0){
+            int om2 = ko[kunci][3];
+            QString angkk = QString::number(om2);
+             ALT = DataAltitude + angkk;
+        }
+        else {
+            ALT = DataAltitude;
+        }
+        string Altitude1 = ALT.toLocal8Bit().constData();
+        QString Rol;
+        if (rol > 0){
+            int om3 = ko[kunci][4];
+            QString angk = QString::number(om3);
+             Rol = DataRoll + angk;
+        }
+        else {
+            Rol = DataRoll;
+        }
+        string Roll1 = Rol.toLocal8Bit().constData();
+        QString Long;
+        if (log > 0){
+            int om4 = ko[kunci][5];
+            QString angkl = QString::number(om4);
+             Long = DataLongitude + angkl;
+        }
+        else {
+             Long = DataLongitude;
+        }
+
+        string Longitude1 = Long.toLocal8Bit().constData();
+        QString Pitc;
+        if (pit > 0){
+            int om5 = ko[kunci][6];
+            QString ang = QString::number(om5);
+            Pitc = DataPitch + ang;
+        }
+        else {
+            Pitc = DataPitch;
+        }
+        string Pitch1 = Pitc.toLocal8Bit().constData();
+        QString Lat;
+        if (lat > 0){
+            int om6 = ko[kunci][7];
+            QString anka = QString::number(om6);
+            Lat = DataLatitude + anka;
+        }
+        else {
+            Lat = DataLatitude;
+        }
+        string Latitude1 = Lat.toLocal8Bit().constData();
+        QString Yaw;
+        if (yaw > 0){
+            int om7 = ko[kunci][8];
+            QString angko = QString::number(om7);
+            Yaw = DataYaw + angko;
+        }
+        else {
+            Yaw = DataYaw;
+        }
+        string Yaw1 = Yaw.toLocal8Bit().constData();
+        if(waktu1=="0"){
+       putText(frame,"Waktu : -",Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+        }
+    putText(frame,waktu1,Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,kecepatan1,Point2f(380,430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Altitude1,Point2f(300,300),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Roll1,Point2f(350,350),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Longitude1,Point2f(400,400),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Pitch1,Point2f(425,425),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Latitude1,Point2f(450,450),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Yaw1 ,Point2f(475,475),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),
@@ -283,18 +404,10 @@ void Player :: run()
                     frame.cols,frame.rows,QImage::Format_Indexed8);
 
         }
-        /*
-        QPainter p(&img);
-        p.setPen(QPen(Qt::red));
-        p.setFont(QFont("Times",100,QFont::Bold));
-        p.drawText(img.rect(),Qt::AlignCenter,qstr);
-        */
         emit processedImage(img);
         this->msleep(delay);
-
+   kunci ++;
     }
-
-
 }
 
 

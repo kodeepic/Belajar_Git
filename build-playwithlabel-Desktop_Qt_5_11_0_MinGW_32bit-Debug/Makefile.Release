@@ -846,7 +846,11 @@ release/mainwindow.o: ../playwithlabel/mainwindow.cpp ../playwithlabel/mainwindo
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QProgressBar \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qprogressbar.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/QPainter \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpainter.h
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpainter.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/QAxObject \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxobject.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxbase.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\playwithlabel\mainwindow.cpp
 
 release/player.o: ../playwithlabel/player.cpp ../playwithlabel/player.h \
@@ -1123,7 +1127,10 @@ release/player.o: ../playwithlabel/player.cpp ../playwithlabel/player.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qcursor.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qmessagebox.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qdialog.h
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/QAxObject \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxobject.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxbase.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\player.o ..\playwithlabel\player.cpp
 
 release/qrc_icons.o: release/qrc_icons.cpp 

@@ -86,7 +86,7 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
 
     d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
                                                   tr("Video Files(*.m *.xlsx *.csv)")); //membuka dokumen untuk memilih file yang tersedia(sesuai ekstensi)
-/*
+
     //kalau gak ada file pesan dibawah ini akan keluar
     if(!d_filename.isEmpty()){
         if(!myPlayer->loadData(d_filename.toLatin1().data())){
@@ -95,9 +95,8 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
             msgBox.exec();
                 }
             }
-
-*/
     ui->lineEdit_2->setText(d_filename); //mencatat lokasi file d_filename di lineedit (lokasi berkas)
+    /*
     QAxObject* excel     = new QAxObject("Excel.Application");
     QAxObject* workbooks = excel->querySubObject("Workbooks");
 
@@ -127,6 +126,7 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
         QAxObject* yaw=sheet->querySubObject("Cells(int,int)",r,8);
         Data7 =yaw->dynamicCall("Value()").toInt();
     }
+  */
 }
 
 void MainWindow::on_pushButton_4_clicked() //kalau diklik akan keluar dari ui
@@ -163,6 +163,23 @@ ui->lineEdit_3->setText(lokasi);
 
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
+    int alma;;
+    if(arg1){
+        alma =1;
+    }
+    else{
+            alma =0;
+ //       qDebug()<<"Data waktu tidak ada"<<endl;
+
+    }
+    datawaktu = QString::number(alma);
+    qDebug() << " " << datawaktu;
+    if(!myPlayer->loadWaktu(datawaktu.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+    /*
     if(arg1){
          datawaktu= QString::number(Data);
 
@@ -175,11 +192,26 @@ void MainWindow::on_checkBox_stateChanged(int arg1)
         msgBox.exec();
 
     }
-
+*/
 }
 
 void MainWindow::on_checkBox_2_stateChanged(int arg1)
 {
+    int omo;
+    if(arg1){
+        omo = 1;
+    }
+    else{
+        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        omo = 0;
+    }
+    datakecepatan = QString::number(omo);
+    if(!myPlayer->loadKeceptan( datakecepatan.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+/*
 if(arg1){
 datakecepatan = QString::number(Data1);
 }else{
@@ -190,10 +222,26 @@ QMessageBox msgBox;
 msgBox.setText("The selected data could not be opened");
 msgBox.exec();
     }
+    */
 }
 
 void MainWindow::on_checkBox_3_stateChanged(int arg1)
 {
+    int ini;
+    if(arg1){
+        ini = 1;
+    }
+    else{
+        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        ini = 0;
+    }
+    dataaltitude = QString::number(ini);
+    if(!myPlayer->loadAltitude(dataaltitude.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+    /*
 if(arg1){
 dataaltitude = QString::number(Data2);
     }else{
@@ -204,10 +252,26 @@ dataaltitude = QString::number(Data2);
         msgBox.setText("The selected data could not be opened");
         msgBox.exec();
             }
+            */
 }
 
 void MainWindow::on_checkBox_6_stateChanged(int arg1)
 {
+    int imu;
+    if(arg1){
+        imu = 1;
+    }
+    else{
+        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        imu = 0;
+    }
+    dataroll = QString::number(imu);
+    if(!myPlayer->loadRoll(dataroll.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+    /*
     if(arg1){
         dataroll = QString::number(Data3);
     }else{
@@ -218,10 +282,26 @@ void MainWindow::on_checkBox_6_stateChanged(int arg1)
         msgBox.setText("The selected data could not be opened");
         msgBox.exec();
             }
+            */
 }
 
 void MainWindow::on_checkBox_4_stateChanged(int arg1)
 {
+    int ina;
+    if(arg1){
+       ina = 1;
+    }
+    else{
+        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        ina = 0;
+    }
+    datalongitude = QString::number(ina);
+    if(!myPlayer->loadLongitude(datalongitude.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+    /*
     if(arg1){
         datalongitude = QString::number(Data4);
     }else{
@@ -232,10 +312,26 @@ void MainWindow::on_checkBox_4_stateChanged(int arg1)
         msgBox.setText("The selected data could not be opened");
         msgBox.exec();
             }
+            */
 }
 
 void MainWindow::on_checkBox_7_stateChanged(int arg1)
 {
+    int iny;
+    if(arg1){
+        iny = 1;
+    }
+    else{
+        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        iny = 0;
+    }
+    datapitch = QString::number(iny);
+    if(!myPlayer->loadPitch(datapitch.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+    /*
     if(arg1){
         datapitch = QString::number(Data5);
     }else{
@@ -246,10 +342,26 @@ void MainWindow::on_checkBox_7_stateChanged(int arg1)
         msgBox.setText("The selected data could not be opened");
         msgBox.exec();
             }
+            */
 }
 
 void MainWindow::on_checkBox_5_stateChanged(int arg1)
 {
+    int inl;
+    if(arg1){
+        inl = 1;
+    }
+    else{
+        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        inl = 0;
+    }
+    dataaltitude = QString::number(inl);
+    if(!myPlayer->loadLatitude(datalatitude.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+    /*
     if(arg1){
         datalatitude = QString::number(Data6);
     }else{
@@ -260,10 +372,25 @@ void MainWindow::on_checkBox_5_stateChanged(int arg1)
         msgBox.setText("The selected data could not be opened");
         msgBox.exec();
             }
+            */
 }
 
 void MainWindow::on_checkBox_8_stateChanged(int arg1)
 {
+    int loh;
+    if(arg1){
+        loh = 1;
+    }else{
+        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        loh= 0;
+    }
+    datayaw = QString::number(loh);
+    if(!myPlayer->loadYaw(datayaw.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+    /*
     if(arg1){
         datayaw = QString::number(Data7);
     }else{
@@ -274,4 +401,5 @@ void MainWindow::on_checkBox_8_stateChanged(int arg1)
         msgBox.setText("The selected data could not be opened");
         msgBox.exec();
             }
+    */
 }
