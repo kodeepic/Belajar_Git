@@ -32,7 +32,7 @@ private:
     Mat RGBframe;
     QImage img;
     QImage gambar;
-    Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru,vect,image3,image4,enlarged,image5,tjn,flip1;
+    Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru,vect,image3,image4,enlarged,image5,tjn,flip1,gfatas,grafikatas,enlarged1;
   // string line; //jika ingin menggunakan putText via opencv
    // QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
     int ko[10000][10000];

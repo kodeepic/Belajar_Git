@@ -300,20 +300,30 @@ void Player :: run()
 
           }
         }
+          //grafik skala sebelah kanan frame//
           Rect ROI1 (frame.cols-enlarged.cols-20,frame.rows-enlarged.rows-50,enlarged.cols,enlarged.rows);
           Mat baru1= frame(ROI1);
           Mat mask(enlarged);
           enlarged.copyTo(baru1,mask);
-        video.write(frame);
-        Mat roi = frame(cv::Rect(110, 370, 500, 200));
-        Mat color(roi.size(), CV_8UC3, cv::Scalar(0,0, 0));
-            double alpha = 0.4;
+          video.write(frame);
+          Mat roi = frame(cv::Rect(110, 370, 500, 200));
+          Mat color(roi.size(), CV_8UC3, cv::Scalar(0,0, 0));
+        double alpha = 0.4;
         addWeighted(color, alpha, roi, 1.0 - alpha , 0.0, roi);
+        //grafik skala sebelah kiri frame//
         flip(enlarged,flip1,+1);
         Rect ROI2(frame.cols-flip1.cols-640,frame.rows-flip1.rows-50,flip1.cols,flip1.rows);
         Mat baru2 = frame(ROI2);
         Mat mask1(flip1);
         flip1.copyTo(baru2,mask1);
+        //grafik skala sebelah atas frame //
+        resize(enlarged,enlarged1,Size(),0.8,0.8);
+        transpose(enlarged1,gfatas);
+        flip(gfatas,grafikatas,0);
+        Rect ROI3(frame.cols-555,frame.rows-image4.rows-330,grafikatas.cols,grafikatas.rows);
+        Mat baru3 =frame(ROI3);
+        Mat mask2(grafikatas);
+        grafikatas.copyTo(baru3,mask2);
         QString Time;
         int omo;
         if (wak > 0){
