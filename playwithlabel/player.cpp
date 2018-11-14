@@ -306,10 +306,21 @@ void Player :: run()
           Mat mask(enlarged);
           enlarged.copyTo(baru1,mask);
           video.write(frame);
+          /*
           Mat roi = frame(cv::Rect(110, 370, 500, 200));
           Mat color(roi.size(), CV_8UC3, cv::Scalar(0,0, 0));
         double alpha = 0.4;
         addWeighted(color, alpha, roi, 1.0 - alpha , 0.0, roi);
+        */
+          // menambahkan background
+          int x = frame.cols*0.2 ;
+          int y = frame.rows*0.67;
+          int lebar = frame.cols*0.6;
+          int tinggi= frame.rows*0.3;
+          Mat roi =frame(cv::Rect(x,y,lebar,tinggi));
+          Mat color (roi.size(),CV_8UC3,cv::Scalar(0,0,0));
+          double alpha =0.4;
+          addWeighted(color,alpha,roi,1.0 - alpha,0.0,roi);
         //grafik skala sebelah kiri frame//
         flip(enlarged,flip1,+1);
         Rect ROI2(frame.cols-flip1.cols-640,frame.rows-flip1.rows-50,flip1.cols,flip1.rows);
@@ -410,14 +421,18 @@ void Player :: run()
         if(waktu1=="0"){
        putText(frame,"Waktu : -",Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
         }
-    putText(frame,waktu1,Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,kecepatan1,Point2f(380,430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,Altitude1,Point2f(300,300),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,Roll1,Point2f(350,350),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,Longitude1,Point2f(400,400),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,Pitch1,Point2f(425,425),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,Latitude1,Point2f(450,450),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,Yaw1 ,Point2f(475,475),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+        //Posisi
+        int x1 = frame.cols*0.2 +10;
+        int y1 = frame.rows*0.67 +20;
+        int x2 = lebar/2 +x1 +10;
+    putText(frame,waktu1,Point(x1,y1),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,kecepatan1,Point2f(x1,y1+40),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Altitude1,Point2f(x1,y1+80),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Roll1,Point2f(x1,y1+120),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Longitude1,Point2f(x2,y1),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Pitch1,Point2f(x2,y1+40),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Latitude1,Point2f(x2,y1+80),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,Yaw1 ,Point2f(x2,y1+120),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
 
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
