@@ -6,5 +6,6 @@
         <file>icon_save.png</file>
         <file>full-screen-icon-11.png</file>
         <file>full-screen-icon-png-32.png</file>
+        <file>exit-fullscreen-512.png</file>
     </qresource>
 </RCC>

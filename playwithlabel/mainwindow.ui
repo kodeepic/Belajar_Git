@@ -621,7 +621,7 @@ border: 1px solid;
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>690</x>
       <y>450</y>
       <width>51</width>
       <height>41</height>

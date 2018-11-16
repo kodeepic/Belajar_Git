@@ -281,7 +281,7 @@ public:
         label_6->setStyleSheet(QStringLiteral("color :white;"));
         pushButton_6 = new QPushButton(centralWidget);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(670, 450, 51, 41));
+        pushButton_6->setGeometry(QRect(690, 450, 51, 41));
         pushButton_6->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
 "color: white;\n"

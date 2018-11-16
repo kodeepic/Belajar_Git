@@ -5,6 +5,8 @@
 #include <QAxObject>
 #include <QDebug>
 #include <QToolTip>
+#include <QSize>
+#include <QIcon>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -411,9 +413,18 @@ void MainWindow::on_checkBox_8_stateChanged(int arg1)
 
 void MainWindow::on_pushButton_6_clicked()
 {
-    ui->label->setWindowFlags(Qt::Window);
-    ui->label->showMaximized();
-
-   // ui->label->setWindowFlags(Qt::Widget);
-   // ui->label->show();
+        ui->label->setWindowFlags(Qt::Window);
+        ui->label->showMaximized();
+        ui->pushButton_6->setIcon(QIcon(":/icons/exit-fullscreen-512.png"));
+        ui->pushButton_6->setIconSize(QSize(45,45));
+        //ui->pushButton_6->setToolTip("<font color=white>Keluar dari layar penuh</font>");
 }
+
+
+       // ui->label->setWindowFlags(Qt::Widget);
+       // ui->label->show();
+
+
+
+
+

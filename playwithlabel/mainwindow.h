@@ -23,6 +23,7 @@ public:
     QString d_filename;
     QString datawaktu,datakecepatan,dataaltitude,dataroll,datalongitude,datapitch,datalatitude,datayaw;
     int Data,Data1,Data2,Data3,Data4,Data5,Data6,Data7;
+
 private slots:
     void updatePlayerUI(QImage img);
     void on_pushButton_clicked();
@@ -56,7 +57,9 @@ private slots:
 
     void on_checkBox_8_stateChanged(int arg1);
 
-    void on_pushButton_6_clicked();
+   void on_pushButton_6_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;
