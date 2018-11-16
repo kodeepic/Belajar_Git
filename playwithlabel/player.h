@@ -64,6 +64,8 @@ public:
     double getFrameRate();
     double getCurrentFrame();
     double getNumberOfFrames();
+    double ngurutinwaktu();
+    double nyatuin3waktu();
     int wak =0 ;
     int kec, alt,bat,rol,pit,yaw,log,lat;
 signals:

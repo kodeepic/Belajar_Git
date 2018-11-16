@@ -148,11 +148,10 @@ void MainWindow::on_horizontalSlider_sliderMoved(int position){
     ui->label_4->setText(getFormattedTime(position/(int)myPlayer->getFrameRate()));
 }
 
-
-
 void MainWindow::on_pushButton_5_clicked()
 {
-QString lokasi = QString("D:\\Magang\\videohasil.avi");
+QString lokasi = QFileDialog::getSaveFileName(this,tr("menyimpan video"),"",tr("video penerbangan(*.avi);;All File"
+                                                                               "(*)"));
 if(!myPlayer->lokasiVideo(lokasi.toLatin1().data())){
     QMessageBox msgBox;
     msgBox.setText("The selected data could not be opened");

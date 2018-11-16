@@ -32,8 +32,6 @@ bool Player :: loadVideo(String filename){
     } else{
         return false;
     }
-
-
 }
 void Player::Play()
 {
@@ -47,7 +45,6 @@ void Player::Play()
 
 double Player::getCurrentFrame(){
     return capture.get(CV_CAP_PROP_POS_FRAMES);
-
 }
 double Player::getNumberOfFrames(){
     return double(capture.get(CV_CAP_PROP_FRAME_COUNT));
@@ -61,7 +58,10 @@ void Player::setCurrentFrame(int frameNumber){
 }
 
 bool Player :: loadData(String d_filename){
+       // int data[160] =atoi(d_filename.c_str());
+        //for(i=0;i<=160;i++){ data[]
 
+        //}
     QString qstr = QString::fromStdString(d_filename);
 // Baca data file CSV dan simpan dalam array (2 dimensi)
     QFile inputfile (qstr);
@@ -79,9 +79,9 @@ bool Player :: loadData(String d_filename){
         const char *line1= hhh.data();
                    sscanf(line1,"%d ,%d ,%d ,%d, %d,%d,%d,%d",&ko[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&ko[baris][5],&ko[baris][6],&ko[baris][7],&ko[baris][8]);
                    qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<ko[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << ko[baris][5] << " " << ko[baris][6];
+                          baris++;
 
-                   baris++;
-    }
+                             }
 
  }
     else {
@@ -90,6 +90,24 @@ bool Player :: loadData(String d_filename){
    return true;
 
 }
+double Player :: nyatuin3waktu(){
+
+    return true;
+}
+/*
+double Player :: ngurutinwaktu(){
+    for(int i=0;i<=totalframe;i++){
+        for(int j=0;j<=totalframe-i;j++){
+            if(ko[j]>ko[j+1]){
+                int temp = ko[j];
+                ko[j]=ko[j+1];
+                ko[j+1]=temp;
+            }
+        }
+    }
+    return true;
+}
+*/
 bool Player :: lokasiVideo(String lokasi){
      lokvideo = QString::fromStdString(lokasi);
     //qDebug()<<lokvideo<<endl;

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QFileDialog>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -29,4 +30,11 @@ void MainWindow::on_checkBox_stateChanged(int arg1)
     }else{
         QMessageBox::information(this,"title","benar belum berhasil");
     }
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString filename = QFileDialog::getSaveFileName(this,tr("menyimpan video"),"",tr("video penerbangan(*.avi);;All File"
+                                                                                    "(*)"));
+    ui->lineEdit->setText(filename);
 }
