@@ -4,6 +4,7 @@
 #include <QPainter>
 #include <QAxObject>
 #include <QDebug>
+#include <QToolTip>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -14,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->pushButton_2->setEnabled(false); //pushbutton tidak aktif jika tidak file yang diunggah
     ui->horizontalSlider->setEnabled(false); //horizontal tidak aktif jika tidak file yang diunggah
+    ui->pushButton_6->setToolTip("<font color=white>layar penuh</font>");
+
 }
 
 void MainWindow::updatePlayerUI(QImage img)
@@ -23,6 +26,7 @@ void MainWindow::updatePlayerUI(QImage img)
         ui->label->setPixmap(QPixmap::fromImage(img).scaled(ui->label->size(),Qt::KeepAspectRatio,Qt::FastTransformation));
         ui->horizontalSlider->setValue(myPlayer->getCurrentFrame());
         ui->label_4->setText(getFormattedTime((int)myPlayer->getCurrentFrame()/(int)myPlayer->getFrameRate()));
+
     }
 }
 
@@ -52,7 +56,9 @@ void MainWindow::on_pushButton_clicked()
             ui->pushButton_2->setEnabled(true); //pushbutton menjadi aktif
             ui->horizontalSlider->setEnabled(true); //horizontal akan aktif
             ui->horizontalSlider->setMaximum(myPlayer->getNumberOfFrames()); //akan berjalan sampai ukuran max video
-            ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate()) ); //mencatat dan menampilkan durasi video
+            ui->label_5->setText(getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate()) );
+            //mencatat dan menampilkan durasi video
+
         }
        ui->lineEdit->setText(filename); //menampilkan alamat filename di lineedit (lokasi video)
     }
@@ -401,4 +407,13 @@ void MainWindow::on_checkBox_8_stateChanged(int arg1)
         msgBox.exec();
             }
     */
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    ui->label->setWindowFlags(Qt::Window);
+    ui->label->showMaximized();
+
+   // ui->label->setWindowFlags(Qt::Widget);
+   // ui->label->show();
 }

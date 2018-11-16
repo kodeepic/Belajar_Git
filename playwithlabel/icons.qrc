@@ -4,5 +4,7 @@
         <file>icon_folder.png</file>
         <file>exit.png</file>
         <file>icon_save.png</file>
+        <file>full-screen-icon-11.png</file>
+        <file>full-screen-icon-png-32.png</file>
     </qresource>
 </RCC>

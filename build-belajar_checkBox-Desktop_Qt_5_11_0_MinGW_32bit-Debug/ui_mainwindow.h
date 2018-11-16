@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -30,6 +31,9 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QLineEdit *lineEdit;
+    QPushButton *pushButton_3;
+    QLabel *label;
+    QPushButton *pushButton_4;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -53,6 +57,20 @@ public:
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(110, 160, 171, 20));
+        pushButton_3 = new QPushButton(centralWidget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(40, 200, 75, 23));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(160, 200, 101, 31));
+        label->setStyleSheet(QLatin1String("QLabel\n"
+"{\n"
+"background-color: #000000;\n"
+"\n"
+"}"));
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setGeometry(QRect(260, 110, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -76,6 +94,9 @@ public:
         checkBox->setText(QApplication::translate("MainWindow", "CheckBox", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        label->setText(QString());
+        pushButton_4->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

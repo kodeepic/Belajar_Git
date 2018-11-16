@@ -56,6 +56,7 @@ public:
     QPushButton *pushButton_5;
     QLineEdit *lineEdit_3;
     QLabel *label_6;
+    QPushButton *pushButton_6;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -77,7 +78,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 170, 671, 281));
+        label->setGeometry(QRect(20, 170, 691, 281));
         label->setStyleSheet(QLatin1String("QLabel\n"
 "{\n"
 "background-color: #000000;\n"
@@ -278,6 +279,21 @@ public:
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(90, 20, 71, 16));
         label_6->setStyleSheet(QStringLiteral("color :white;"));
+        pushButton_6 = new QPushButton(centralWidget);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        pushButton_6->setGeometry(QRect(670, 450, 51, 41));
+        pushButton_6->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"color: white;\n"
+"background-color: #333333;\n"
+"border-width: 0px;;\n"
+"border: 1px solid;\n"
+"}\n"
+"QToolTip { color: #fff; background-color: #000; border: none; }"));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons/full-screen-icon-png-32.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_6->setIcon(icon4);
+        pushButton_6->setIconSize(QSize(50, 50));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -320,6 +336,7 @@ public:
         groupBox_3->setTitle(QApplication::translate("MainWindow", "Simpan Video", nullptr));
         pushButton_5->setText(QApplication::translate("MainWindow", "Save", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "Lokasi Berkas", nullptr));
+        pushButton_6->setText(QString());
     } // retranslateUi
 
 };

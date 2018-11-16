@@ -35,7 +35,7 @@
      <rect>
       <x>20</x>
       <y>170</y>
-      <width>671</width>
+      <width>691</width>
       <height>281</height>
      </rect>
     </property>
@@ -617,6 +617,39 @@ border: 1px solid;
       <string>Lokasi Berkas</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>450</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+color: white;
+background-color: #333333;
+border-width: 0px;;
+border: 1px solid;
+}
+QToolTip { color: #fff; background-color: #000; border: none; }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/icons/full-screen-icon-png-32.png</normaloff>:/icons/full-screen-icon-png-32.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
