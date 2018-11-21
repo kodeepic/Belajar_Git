@@ -7,6 +7,7 @@
 #include <QToolTip>
 #include <QSize>
 #include <QIcon>
+#include <QGridLayout>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -18,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_2->setEnabled(false); //pushbutton tidak aktif jika tidak file yang diunggah
     ui->horizontalSlider->setEnabled(false); //horizontal tidak aktif jika tidak file yang diunggah
     ui->pushButton_6->setToolTip("<font color=white>layar penuh</font>");
+    ui->pushButton_7->setToolTip("<font colot=white>keluar layar penuh</font>");
 
 }
 
@@ -415,16 +417,19 @@ void MainWindow::on_pushButton_6_clicked()
 {
         ui->label->setWindowFlags(Qt::Window);
         ui->label->showMaximized();
-        ui->pushButton_6->setIcon(QIcon(":/icons/exit-fullscreen-512.png"));
-        ui->pushButton_6->setIconSize(QSize(45,45));
         //ui->pushButton_6->setToolTip("<font color=white>Keluar dari layar penuh</font>");
+
+           // ui->pushButton_6->setIcon(QIcon(":/icons/exit-fullscreen-512.png"));
+            //ui->pushButton_6->setIconSize(QSize(45,45));
+
+            //ui->pushButton_6->setIcon(QIcon(":/icons/full-screen-icon-11.png"));
+            //ui->pushButton_6->setIconSize(QSize(50,50));
+            //
+
 }
 
-
-       // ui->label->setWindowFlags(Qt::Widget);
-       // ui->label->show();
-
-
-
-
-
+void MainWindow::on_pushButton_7_clicked()
+{
+    ui->label->setWindowFlags(Qt::Widget);
+    ui->label->show();
+}

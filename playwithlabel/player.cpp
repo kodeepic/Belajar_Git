@@ -467,9 +467,35 @@ void Player :: run()
         this->msleep(delay);
    kunci ++;
     }
+
+}
+/*
+void Player :: ~run(){
+    int frame_width1 = capture.get(CV_CAP_PROP_FRAME_WIDTH);
+    int frame_height1 = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
+    VideoWriter video("outcpp.avi",CV_FOURCC('M','J','P','G'),10, Size(frame_width1,frame_height1));
+    while(1){
+       Mat video1,img1;
+       capture>>video1;
+       if(video1.empty()){
+           break;
+       }
+       video.write(video1);
+       if (video1.channels()==3){
+           cv::cvtColor(video1, RGBframe, CV_BGR2RGB);
+           img1 = QImage((const unsigned char*)(RGBframe.data),
+                        RGBframe.cols,RGBframe.rows,QImage::Format_RGB888);
+       }
+       else
+       {
+           img1 =QImage((const unsigned char*)(video1.data),
+                   video1.cols,video1.rows,QImage::Format_Indexed8);
+
+       }
+    }
 }
 
-
+*/
 Player ::~Player()
 {
     mutex.lock();
