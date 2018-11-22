@@ -107,10 +107,14 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_icons.cpp
 release/qrc_icons.cpp: ../playwithlabel/icons.qrc \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/bin/rcc.exe \
+		../playwithlabel/exit-fullscreen-512.png \
 		../playwithlabel/icon_control_paly.png \
+		../playwithlabel/full-screen-icon-png-32.png \
 		../playwithlabel/icon_folder.png \
 		../playwithlabel/exit.png \
-		../playwithlabel/icon_save.png
+		../playwithlabel/full-screen-icon-11.png \
+		../playwithlabel/icon_save.png \
+		../playwithlabel/logo.png
 	C:\Qt\Qt5.11.0\5.11.0\mingw53_32\bin\rcc.exe -name icons ..\playwithlabel\icons.qrc -o release\qrc_icons.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -820,6 +824,11 @@ release/mainwindow.o: ../playwithlabel/mainwindow.cpp ../playwithlabel/mainwindo
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QGroupBox \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qgroupbox.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLineEdit \
@@ -838,10 +847,12 @@ release/mainwindow.o: ../playwithlabel/mainwindow.cpp ../playwithlabel/mainwindo
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QSlider \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qslider.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qabstractslider.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QStatusBar \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qstatusbar.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QToolBar \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtoolbar.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QProgressBar \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qprogressbar.h \
@@ -850,7 +861,11 @@ release/mainwindow.o: ../playwithlabel/mainwindow.cpp ../playwithlabel/mainwindo
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/QAxObject \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxobject.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxbase.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDebug
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDebug \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QToolTip \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtooltip.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QSize \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QGridLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\playwithlabel\mainwindow.cpp
 
 release/player.o: ../playwithlabel/player.cpp ../playwithlabel/player.h \
@@ -1130,7 +1145,9 @@ release/player.o: ../playwithlabel/player.cpp ../playwithlabel/player.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/QAxObject \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxobject.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxbase.h
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxbase.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QTime \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QDate
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\player.o ..\playwithlabel\player.cpp
 
 release/qrc_icons.o: release/qrc_icons.cpp 

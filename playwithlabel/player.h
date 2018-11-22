@@ -39,7 +39,7 @@ private:
     int ini=1;
    // QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;
     //string lokasivideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
-    QString lokvideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
+    QString lokvideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw,jam,tanggal;
     string lokasivideo;
      int kunci;
 public:

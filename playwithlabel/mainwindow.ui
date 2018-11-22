@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>500</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>900</width>
-    <height>500</height>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -57,6 +57,60 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
+      <item>
+       <widget class="QWidget" name="horizontalWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>330</width>
+          <height>100</height>
+         </size>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>110</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+border-image: url(:/logos/logo.png);}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
       <item>
        <widget class="QWidget" name="horizontalWidget_5" native="true">
         <property name="sizePolicy">
@@ -151,7 +205,7 @@ border: 1px solid;
                <string>Buka Data</string>
               </property>
               <property name="icon">
-               <iconset>
+               <iconset resource="icons.qrc">
                 <normaloff>:/icons/icon_folder.png</normaloff>:/icons/icon_folder.png</iconset>
               </property>
               <property name="iconSize">
@@ -196,7 +250,7 @@ border: 1px solid;
                <string>Buka Video</string>
               </property>
               <property name="icon">
-               <iconset>
+               <iconset resource="icons.qrc">
                 <normaloff>:/icons/icon_folder.png</normaloff>:/icons/icon_folder.png</iconset>
               </property>
               <property name="iconSize">
@@ -506,7 +560,7 @@ border-radius: 1px;
              <property name="minimumSize">
               <size>
                <width>100</width>
-               <height>70</height>
+               <height>65</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -561,7 +615,7 @@ border: 1px solid;
                <string>Save</string>
               </property>
               <property name="icon">
-               <iconset>
+               <iconset resource="icons.qrc">
                 <normaloff>:/icons/icon_save.png</normaloff>:/icons/icon_save.png</iconset>
               </property>
               <property name="iconSize">
@@ -715,7 +769,7 @@ border: 1px solid;
            <string>Putar Video</string>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="icons.qrc">
             <normaloff>:/icons/icon_control_paly.png</normaloff>:/icons/icon_control_paly.png</iconset>
           </property>
           <property name="iconSize">
@@ -729,10 +783,13 @@ border: 1px solid;
         <item>
          <widget class="QLabel" name="label_4">
           <property name="styleSheet">
-           <string notr="true">color :white;</string>
+           <string notr="true">QLabel{
+color :white;
+}
+QToolTip { color: #ffffff; background-color: #000000; border: none; }</string>
           </property>
           <property name="text">
-           <string>label1</string>
+           <string>--:--</string>
           </property>
          </widget>
         </item>
@@ -749,10 +806,13 @@ border: 1px solid;
         <item>
          <widget class="QLabel" name="label_5">
           <property name="styleSheet">
-           <string notr="true">color :white;</string>
+           <string notr="true">QLabel{
+color :white;
+}
+QToolTip { color: #ffffff; background-color: #000000; border: none; }</string>
           </property>
           <property name="text">
-           <string>label2</string>
+           <string>--:--</string>
           </property>
          </widget>
         </item>
@@ -784,7 +844,7 @@ QToolTip { color: #fff; background-color: #000; border: none; }</string>
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="icons.qrc">
             <normaloff>:/icons/full-screen-icon-png-32.png</normaloff>:/icons/full-screen-icon-png-32.png</iconset>
           </property>
           <property name="iconSize">
@@ -823,7 +883,7 @@ QToolTip { color: #fff; background-color: #000; border: none; }</string>
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="icons.qrc">
             <normaloff>:/icons/exit-fullscreen-512.png</normaloff>:/icons/exit-fullscreen-512.png</iconset>
           </property>
           <property name="iconSize">
@@ -891,7 +951,7 @@ border: 1px solid;
            <string>Keluar</string>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="icons.qrc">
             <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
           </property>
           <property name="iconSize">
@@ -929,6 +989,8 @@ border: 1px solid;
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

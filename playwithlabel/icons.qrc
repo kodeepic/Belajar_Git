@@ -8,4 +8,7 @@
         <file>full-screen-icon-png-32.png</file>
         <file>exit-fullscreen-512.png</file>
     </qresource>
+    <qresource prefix="/logos">
+        <file>logo.png</file>
+    </qresource>
 </RCC>

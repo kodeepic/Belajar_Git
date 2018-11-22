@@ -18,8 +18,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->pushButton_2->setEnabled(false); //pushbutton tidak aktif jika tidak file yang diunggah
     ui->horizontalSlider->setEnabled(false); //horizontal tidak aktif jika tidak file yang diunggah
-    ui->pushButton_6->setToolTip("<font color=white>layar penuh</font>");
-    ui->pushButton_7->setToolTip("<font colot=white>keluar layar penuh</font>");
+    ui->pushButton_6->setToolTip("<font color=white>Layar Penuh</font>");
+    ui->pushButton_7->setToolTip("<font color=white>Keluar Layar Penuh</font>");
+    ui->label_4->setToolTip("<font color=white>Pergerakan Waktu</font>");
+    ui->label_5->setToolTip("<font color=white>Total Waktu</font>");
 
 }
 
@@ -95,7 +97,7 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
 {
 
     d_filename = QFileDialog::getOpenFileName(this,tr("Open Data"),".",
-                                                  tr("Video Files(*.m *.xlsx *.csv)")); //membuka dokumen untuk memilih file yang tersedia(sesuai ekstensi)
+                                                  tr("Video Files(*.mat *.xlsx *.csv)")); //membuka dokumen untuk memilih file yang tersedia(sesuai ekstensi)
 
     //kalau gak ada file pesan dibawah ini akan keluar
     if(!d_filename.isEmpty()){
@@ -415,8 +417,10 @@ void MainWindow::on_checkBox_8_stateChanged(int arg1)
 
 void MainWindow::on_pushButton_6_clicked()
 {
-        ui->label->setWindowFlags(Qt::Window);
+        ui->label->setWindowFlags(Qt::Window|Qt::WindowMaximizeButtonHint);
         ui->label->showMaximized();
+        ui->pushButton_6->setEnabled(false);
+
         //ui->pushButton_6->setToolTip("<font color=white>Keluar dari layar penuh</font>");
 
            // ui->pushButton_6->setIcon(QIcon(":/icons/exit-fullscreen-512.png"));
@@ -424,12 +428,24 @@ void MainWindow::on_pushButton_6_clicked()
 
             //ui->pushButton_6->setIcon(QIcon(":/icons/full-screen-icon-11.png"));
             //ui->pushButton_6->setIconSize(QSize(50,50));
-            //
-
 }
-
 void MainWindow::on_pushButton_7_clicked()
 {
     ui->label->setWindowFlags(Qt::Widget);
     ui->label->show();
+    ui->pushButton_6->setEnabled(true);
 }
+/*
+void MainWindow::keyPressEvent(QKeyEvent *e)
+{
+     Qt::WindowFlags flags=windowFlags();
+        if(isFullScreen()){
+            if (e->key()==Qt::Key_Escape){
+                setWindowFlags(flags|Qt::Widget);
+            }
+        }
+
+       ui->label->setWindowFlags(flags);
+       ui->label->show();
+ }
+*/

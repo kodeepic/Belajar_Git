@@ -9,6 +9,8 @@
 #include <QCheckBox>
 #include <QMessageBox>
 #include <QAxObject>
+#include <QTime>
+#include <QDate>
 using namespace std;
 
 // Variabel Array untuk menampung data penerbangan
@@ -345,6 +347,7 @@ void Player :: run()
         Mat baru2 = frame(ROI2);
         Mat mask1(flip1);
         flip1.copyTo(baru2,mask1);
+        /*
         //grafik skala sebelah atas frame //
         resize(enlarged,enlarged1,Size(),0.8,0.8);
         transpose(enlarged1,gfatas);
@@ -353,6 +356,7 @@ void Player :: run()
         Mat baru3 =frame(ROI3);
         Mat mask2(grafikatas);
         grafikatas.copyTo(baru3,mask2);
+        */
         QString Time;
         int omo;
         if (wak > 0){
@@ -451,7 +455,15 @@ void Player :: run()
     putText(frame,Pitch1,Point2f(x2,y1+40),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,Latitude1,Point2f(x2,y1+80),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,Yaw1 ,Point2f(x2,y1+120),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-
+        //menambahkan tanggal dan waktu
+        QDate cd = QDate::currentDate();
+        QTime ct = QTime::currentTime();
+          tanggal= cd.toString();
+           jam   = ct.toString();
+           string tanggalbaru = tanggal.toLocal8Bit().constData();
+           string jambaru = jam.toLocal8Bit().constData();
+    putText(frame,tanggalbaru+" | "+jambaru,Point2f(frame.cols-300,frame.rows*0.05),FONT_HERSHEY_SIMPLEX,0.6,Scalar(0,0,0),1.6,LINE_AA);
+      //konversi BGR ke RGB
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),

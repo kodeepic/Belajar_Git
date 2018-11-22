@@ -35,6 +35,10 @@ public:
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout_7;
     QVBoxLayout *verticalLayout_14;
+    QWidget *horizontalWidget;
+    QHBoxLayout *horizontalLayout;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_7;
     QWidget *horizontalWidget_5;
     QHBoxLayout *horizontalLayout_12;
     QHBoxLayout *horizontalLayout_14;
@@ -87,13 +91,13 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(900, 500);
+        MainWindow->resize(900, 550);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
         MainWindow->setSizePolicy(sizePolicy);
-        MainWindow->setMinimumSize(QSize(900, 500));
+        MainWindow->setMinimumSize(QSize(900, 550));
         MainWindow->setStyleSheet(QLatin1String("#centralWidget { background:rgba(0,0,0,220);}\n"
 ""));
         centralWidget = new QWidget(MainWindow);
@@ -107,6 +111,39 @@ public:
         verticalLayout_14->setSpacing(6);
         verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
         verticalLayout_14->setContentsMargins(0, 0, 0, 0);
+        horizontalWidget = new QWidget(centralWidget);
+        horizontalWidget->setObjectName(QStringLiteral("horizontalWidget"));
+        sizePolicy.setHeightForWidth(horizontalWidget->sizePolicy().hasHeightForWidth());
+        horizontalWidget->setSizePolicy(sizePolicy);
+        horizontalWidget->setMinimumSize(QSize(330, 100));
+        horizontalLayout = new QHBoxLayout(horizontalWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout_2->setContentsMargins(0, -1, -1, -1);
+        label_7 = new QLabel(horizontalWidget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
+        label_7->setSizePolicy(sizePolicy1);
+        label_7->setMinimumSize(QSize(300, 110));
+        label_7->setStyleSheet(QLatin1String("QLabel{\n"
+"border-image: url(:/logos/logo.png);}"));
+
+        horizontalLayout_2->addWidget(label_7);
+
+
+        horizontalLayout->addLayout(horizontalLayout_2);
+
+
+        verticalLayout_14->addWidget(horizontalWidget);
+
         horizontalWidget_5 = new QWidget(centralWidget);
         horizontalWidget_5->setObjectName(QStringLiteral("horizontalWidget_5"));
         sizePolicy.setHeightForWidth(horizontalWidget_5->sizePolicy().hasHeightForWidth());
@@ -122,9 +159,6 @@ public:
         horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
         groupBox = new QGroupBox(horizontalWidget_5);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
         groupBox->setSizePolicy(sizePolicy1);
         groupBox->setMinimumSize(QSize(50, 40));
@@ -288,7 +322,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy3);
-        groupBox_3->setMinimumSize(QSize(100, 70));
+        groupBox_3->setMinimumSize(QSize(100, 65));
         groupBox_3->setStyleSheet(QLatin1String("QGroupBox\n"
 "{\n"
 "color: white;\n"
@@ -397,7 +431,10 @@ public:
 
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setStyleSheet(QStringLiteral("color :white;"));
+        label_4->setStyleSheet(QLatin1String("QLabel{\n"
+"color :white;\n"
+"}\n"
+"QToolTip { color: #ffffff; background-color: #000000; border: none; }"));
 
         horizontalLayout_8->addWidget(label_4);
 
@@ -410,7 +447,10 @@ public:
 
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setStyleSheet(QStringLiteral("color :white;"));
+        label_5->setStyleSheet(QLatin1String("QLabel{\n"
+"color :white;\n"
+"}\n"
+"QToolTip { color: #ffffff; background-color: #000000; border: none; }"));
 
         horizontalLayout_8->addWidget(label_5);
 
@@ -511,6 +551,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        label_7->setText(QString());
         groupBox->setTitle(QApplication::translate("MainWindow", "Unggah Berkas", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "Buka Data", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "Buka Video", nullptr));
@@ -530,8 +571,8 @@ public:
         label_6->setText(QApplication::translate("MainWindow", "Lokasi Berkas", nullptr));
         label->setText(QString());
         pushButton_2->setText(QApplication::translate("MainWindow", "Putar Video", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "label1", nullptr));
-        label_5->setText(QApplication::translate("MainWindow", "label2", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "--:--", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "--:--", nullptr));
         pushButton_6->setText(QString());
         pushButton_7->setText(QString());
         pushButton_4->setText(QApplication::translate("MainWindow", "Keluar", nullptr));
