@@ -416,6 +416,10 @@ void Player :: run()
          putText(frame,"180",Point(58, 108),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
          putText(frame,"190",Point(58,83),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
          putText(frame,"200",Point(74, 61),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         Rect r=Rect(22,68,70,20);
+         //Rect s=Rect(22,164,85,20);
+
+         //rectangle(frame,s,Scalar(255,255,255),2,8,0);
         /*
         //grafik skala sebelah atas frame //
         resize(enlarged,enlarged1,Size(),0.8,0.8);
@@ -463,6 +467,21 @@ void Player :: run()
             int om3 = ko[kunci][4];
             QString angk = QString::number(om3);
              Rol = DataRoll + angk;
+             if(om3>=235.56 && om3<=238.03){
+              rectangle(frame,r,Scalar(255,255,255),2,8,0);
+             }if(om3>=232.6 && om3<=235.55){
+                 Rect p=Rect(22,90,70,20);
+                 rectangle(frame,p,Scalar(255,255,255),2,8,0);
+             }if(om3>=238.03 && om3<=242.6){
+                Rect p=Rect(22,118,70,20);
+                rectangle(frame,p,Scalar(255,255,255),2,8,0);
+             }if(om3>=242.6 && om3<=245.6){
+                 Rect p=Rect(22,140,70,20);
+                 rectangle(frame,p,Scalar(255,255,255),2,8,0);
+             }if(om3>245.6 && om3<=251.6){
+                 Rect p=Rect(22,164,85,20);
+                 rectangle(frame,p,Scalar(255,255,255),2,8,0);
+             }
         }
         else {
             Rol = DataRoll;

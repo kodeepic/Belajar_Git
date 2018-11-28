@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
      putText(frame,"200",Point(74, 61),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
      Rect r=Rect(22,68,70,20);
      Rect s=Rect(22,164,85,20);
-     rectangle(frame,r,Scalar(255,255,255),1,8,0);
-     rectangle(frame,s,Scalar(255,255,255),1,8,0);
+     rectangle(frame,r,Scalar(255,255,255),2,8,0);
+     rectangle(frame,s,Scalar(255,255,255),2,8,0);
     imshow( "Frame",frame);
     /*
     VideoCapture cap("C:\\Users\\Ariku\\Documents\\MATLAB\\terbang.mp4");

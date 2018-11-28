@@ -420,7 +420,6 @@ void MainWindow::on_pushButton_6_clicked()
         ui->label->setWindowFlags(Qt::Window|Qt::WindowMaximizeButtonHint);
         ui->label->showMaximized();
         ui->pushButton_6->setEnabled(false);
-
         //ui->pushButton_6->setToolTip("<font color=white>Keluar dari layar penuh</font>");
 
            // ui->pushButton_6->setIcon(QIcon(":/icons/exit-fullscreen-512.png"));

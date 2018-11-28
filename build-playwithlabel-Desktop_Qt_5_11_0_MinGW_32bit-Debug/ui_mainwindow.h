@@ -99,7 +99,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(900, 600);
+        MainWindow->resize(900, 578);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -128,6 +128,7 @@ public:
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -250,6 +251,9 @@ public:
 
         horizontalWidget1 = new QWidget(centralWidget);
         horizontalWidget1->setObjectName(QStringLiteral("horizontalWidget1"));
+        sizePolicy.setHeightForWidth(horizontalWidget1->sizePolicy().hasHeightForWidth());
+        horizontalWidget1->setSizePolicy(sizePolicy);
+        horizontalWidget1->setMinimumSize(QSize(330, 0));
         horizontalLayout_4 = new QHBoxLayout(horizontalWidget1);
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -261,12 +265,9 @@ public:
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
         groupBox_4 = new QGroupBox(horizontalWidget1);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
-        groupBox_4->setSizePolicy(sizePolicy2);
-        groupBox_4->setMinimumSize(QSize(40, 65));
+        sizePolicy1.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
+        groupBox_4->setSizePolicy(sizePolicy1);
+        groupBox_4->setMinimumSize(QSize(45, 65));
         groupBox_4->setStyleSheet(QLatin1String("QGroupBox\n"
 "{\n"
 "color: white;\n"
@@ -405,11 +406,11 @@ public:
         horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
         groupBox_3 = new QGroupBox(horizontalWidget_3);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
-        groupBox_3->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
+        groupBox_3->setSizePolicy(sizePolicy2);
         groupBox_3->setMinimumSize(QSize(100, 65));
         groupBox_3->setStyleSheet(QLatin1String("QGroupBox\n"
 "{\n"
@@ -476,8 +477,11 @@ public:
         verticalLayout_17->setObjectName(QStringLiteral("verticalLayout_17"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy3);
         label->setMinimumSize(QSize(200, 300));
         label->setLayoutDirection(Qt::LeftToRight);
         label->setStyleSheet(QLatin1String("QLabel\n"
@@ -510,7 +514,11 @@ public:
 "border-width: 0px;\n"
 "border-radius: 8px;\n"
 "border: 1px solid;\n"
-"}"));
+"}\n"
+"QPushButton:hover { background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius: 8px;\n"
+"border: 0px solid;}"));
         QIcon icon3;
         icon3.addFile(QStringLiteral(":/icons/icon_control_paly.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_2->setIcon(icon3);
