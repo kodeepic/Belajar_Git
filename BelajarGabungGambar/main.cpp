@@ -11,6 +11,75 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+    Mat frame = imread("D:\\Capture gambar\\gambar.png");
+    putText(frame,"10",Point(58, 514),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"20",Point(58, 489),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"30",Point(58, 465),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"40",Point(58, 440),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"50",Point(74, 418),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"60",Point(58, 396),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"70",Point(58, 372),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"80",Point(58, 347),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    putText(frame,"90",Point(58, 321),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"100",Point(74, 298),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"110",Point(58, 276),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"120",Point(58, 252),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"130",Point(58, 229),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"140",Point(58, 203),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"150",Point(74, 179),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"160",Point(58, 156),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"170",Point(58, 132),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"180",Point(58, 108),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"190",Point(58,83),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+     putText(frame,"200",Point(74, 61),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+    imshow( "Frame",frame);
+    /*
+    VideoCapture cap("C:\\Users\\Ariku\\Documents\\MATLAB\\terbang.mp4");
+
+     // Check if camera opened successfully
+     if(!cap.isOpened()){
+       cout << "Error opening video stream or file" << endl;
+       return -1;
+     }
+     // Default resolution of the frame is obtained.The default resolution is system dependent.
+     int frame_width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
+     int frame_height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
+
+     // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
+     VideoWriter video("D:\\ujicoba1.avi",CV_FOURCC('M','J','P','G'),10, Size(frame_width,frame_height));
+     while(1)
+     {
+       Mat frame;
+
+       // Capture frame-by-frame
+       cap >> frame;
+
+       // If the frame is empty, break immediately
+       if (frame.empty())
+         break;
+
+       // Write the frame into the file 'outcpp.avi'
+       video.write(frame);
+
+       // Display the resulting frame
+      imshow( "Frame", frame );
+
+       // Press  ESC on keyboard to  exit
+      char c = (char)waitKey(1);
+      if( c == 27 )
+         break;
+     }
+
+     // When everything done, release the video capture and write object
+     cap.release();
+     video.release();
+
+     // Closes all the windows
+     destroyAllWindows();
+     return 0;
+*/
+
+    /*
     Mat image5gray,mask_ani,mask_ani_inv,image5,dst1;
      Mat image =imread("D:\\Capture gambar\\gambar.png");
      Mat image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed.png");
@@ -34,6 +103,7 @@ int main(int argc, char *argv[])
                   double alpha = 0.4;
               addWeighted(color, alpha, roi, 1.0 - alpha , 0.0, roi);
               putText(image, "Waktu",Point(175, 380),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+              */
 /*
 
     Mat image =imread("D:\\Capture gambar\\gambar.png");
@@ -114,8 +184,8 @@ for(int i=0;i<image4.rows;i++){
 }
 */
 
-       namedWindow("image",CV_WINDOW_FREERATIO);
-       imshow("image",image);
+       //namedWindow("image",CV_WINDOW_FREERATIO);
+      // imshow("image",image);
        //gray.release(); tress.release();maskInv.release();imgbg.release();
       // imgfg.release(); baru.release(); sum.release();image.release(); image2.release();
 
@@ -232,7 +302,7 @@ for(int i=0;i<image4.rows;i++){
     namedWindow("output",CV_WINDOW_FREERATIO);
     imshow("output",image);
     */
-  waitKey(0);
+//  waitKey(0);
   return a.exec();
       }
 //
