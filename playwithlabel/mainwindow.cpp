@@ -466,3 +466,13 @@ void MainWindow::on_checkBox_9_stateChanged(int arg1)
         msgBox.exec();
             }
 }
+
+void MainWindow :: keyPressEvent(QKeyEvent *e){
+    if(e->key() != Qt::Key_Escape){
+        ui->centralWidget->setEnabled(true);
+           //MainWindow::keyPressEvent(e);
+    }else{
+       ui->label->setWindowFlags(Qt::Widget);
+        ui->label->show();
+    }
+}

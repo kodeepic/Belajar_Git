@@ -63,6 +63,7 @@ private slots:
   // void setWindowFlags(Qt::WindowFlags flags);
 
    void on_checkBox_9_stateChanged(int arg1);
+   void keyPressEvent(QKeyEvent *e);
 
 private:
     Ui::MainWindow *ui;
