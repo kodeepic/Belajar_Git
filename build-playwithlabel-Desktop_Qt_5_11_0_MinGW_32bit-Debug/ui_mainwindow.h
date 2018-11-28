@@ -49,6 +49,13 @@ public:
     QLineEdit *lineEdit;
     QLabel *label_3;
     QLineEdit *lineEdit_2;
+    QWidget *horizontalWidget1;
+    QHBoxLayout *horizontalLayout_4;
+    QHBoxLayout *horizontalLayout_5;
+    QGroupBox *groupBox_4;
+    QPushButton *pushButton_8;
+    QLineEdit *lineEdit_4;
+    QLabel *label_8;
     QWidget *horizontalWidget_7;
     QHBoxLayout *horizontalLayout_15;
     QHBoxLayout *horizontalLayout_16;
@@ -61,6 +68,7 @@ public:
     QCheckBox *checkBox_6;
     QCheckBox *checkBox_7;
     QCheckBox *checkBox_8;
+    QCheckBox *checkBox_9;
     QWidget *horizontalWidget_3;
     QHBoxLayout *horizontalLayout_10;
     QHBoxLayout *horizontalLayout_13;
@@ -91,7 +99,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(900, 550);
+        MainWindow->resize(900, 600);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -132,7 +140,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
         label_7->setSizePolicy(sizePolicy1);
-        label_7->setMinimumSize(QSize(300, 110));
+        label_7->setMinimumSize(QSize(300, 100));
         label_7->setStyleSheet(QLatin1String("QLabel{\n"
 "border-image: url(:/logos/logo.png);}"));
 
@@ -148,7 +156,7 @@ public:
         horizontalWidget_5->setObjectName(QStringLiteral("horizontalWidget_5"));
         sizePolicy.setHeightForWidth(horizontalWidget_5->sizePolicy().hasHeightForWidth());
         horizontalWidget_5->setSizePolicy(sizePolicy);
-        horizontalWidget_5->setMinimumSize(QSize(330, 150));
+        horizontalWidget_5->setMinimumSize(QSize(330, 140));
         horizontalLayout_12 = new QHBoxLayout(horizontalWidget_5);
         horizontalLayout_12->setSpacing(6);
         horizontalLayout_12->setContentsMargins(11, 11, 11, 11);
@@ -176,7 +184,7 @@ public:
         pushButton_3->setGeometry(QRect(10, 80, 90, 50));
         sizePolicy.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
         pushButton_3->setSizePolicy(sizePolicy);
-        pushButton_3->setMinimumSize(QSize(90, 50));
+        pushButton_3->setMinimumSize(QSize(70, 40));
         pushButton_3->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
 "color: white;\n"
@@ -184,7 +192,11 @@ public:
 "border-width: 0px;\n"
 "border-radius: 8px;\n"
 "border: 1px solid;\n"
-"}"));
+"}\n"
+"QPushButton:hover { background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius: 8px;\n"
+"border: 0px solid;}"));
         QIcon icon;
         icon.addFile(QStringLiteral(":/icons/icon_folder.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_3->setIcon(icon);
@@ -192,11 +204,8 @@ public:
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(10, 20, 90, 50));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy2);
+        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy);
         pushButton->setMinimumSize(QSize(90, 50));
         pushButton->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
@@ -205,6 +214,12 @@ public:
 "border-width: 0px;\n"
 "border-radius: 8px;\n"
 "border: 1px solid;\n"
+"}\n"
+"QPushButton:hover { \n"
+"background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius: 8px;\n"
+"border: 0px solid;\n"
 "}"));
         pushButton->setIcon(icon);
         pushButton->setIconSize(QSize(23, 23));
@@ -222,7 +237,7 @@ public:
         label_3->setStyleSheet(QStringLiteral("color :white;"));
         lineEdit_2 = new QLineEdit(groupBox);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(110, 100, 211, 20));
+        lineEdit_2->setGeometry(QRect(110, 100, 211, 21));
         lineEdit_2->setStyleSheet(QStringLiteral("border-radius: 8px;"));
 
         horizontalLayout_14->addWidget(groupBox);
@@ -232,6 +247,75 @@ public:
 
 
         verticalLayout_14->addWidget(horizontalWidget_5);
+
+        horizontalWidget1 = new QWidget(centralWidget);
+        horizontalWidget1->setObjectName(QStringLiteral("horizontalWidget1"));
+        horizontalLayout_4 = new QHBoxLayout(horizontalWidget1);
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        groupBox_4 = new QGroupBox(horizontalWidget1);
+        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
+        groupBox_4->setSizePolicy(sizePolicy2);
+        groupBox_4->setMinimumSize(QSize(40, 65));
+        groupBox_4->setStyleSheet(QLatin1String("QGroupBox\n"
+"{\n"
+"color: white;\n"
+"background-color: #333333;\n"
+"border-width: 0px;\n"
+"border-radius: 1px;\n"
+" border: 1px solid black;\n"
+"}\n"
+""));
+        groupBox_4->setAlignment(Qt::AlignCenter);
+        pushButton_8 = new QPushButton(groupBox_4);
+        pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
+        pushButton_8->setGeometry(QRect(10, 10, 90, 50));
+        sizePolicy.setHeightForWidth(pushButton_8->sizePolicy().hasHeightForWidth());
+        pushButton_8->setSizePolicy(sizePolicy);
+        pushButton_8->setMinimumSize(QSize(90, 50));
+        pushButton_8->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"color: white;\n"
+"background-color: #333333;\n"
+"border-width: 0px;\n"
+"border-radius: 8px;\n"
+"border: 1px solid;\n"
+"}\n"
+"QPushButton:hover { \n"
+"background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius: 8px;\n"
+"border: 0px solid;}"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/icon_datasinkron.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_8->setIcon(icon1);
+        pushButton_8->setIconSize(QSize(23, 23));
+        lineEdit_4 = new QLineEdit(groupBox_4);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        lineEdit_4->setGeometry(QRect(110, 30, 211, 21));
+        lineEdit_4->setStyleSheet(QStringLiteral("border-radius: 8px;"));
+        label_8 = new QLabel(groupBox_4);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(110, 10, 101, 20));
+        label_8->setStyleSheet(QStringLiteral("color :white;"));
+
+        horizontalLayout_5->addWidget(groupBox_4);
+
+
+        horizontalLayout_4->addLayout(horizontalLayout_5);
+
+
+        verticalLayout_14->addWidget(horizontalWidget1);
 
         horizontalWidget_7 = new QWidget(centralWidget);
         horizontalWidget_7->setObjectName(QStringLiteral("horizontalWidget_7"));
@@ -293,6 +377,10 @@ public:
         checkBox_8->setObjectName(QStringLiteral("checkBox_8"));
         checkBox_8->setGeometry(QRect(270, 50, 70, 17));
         checkBox_8->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
+        checkBox_9 = new QCheckBox(groupBox_2);
+        checkBox_9->setObjectName(QStringLiteral("checkBox_9"));
+        checkBox_9->setGeometry(QRect(10, 80, 70, 17));
+        checkBox_9->setStyleSheet(QStringLiteral("QCheckBox{color:white;}"));
 
         horizontalLayout_16->addWidget(groupBox_2);
 
@@ -335,10 +423,10 @@ public:
         groupBox_3->setAlignment(Qt::AlignCenter);
         pushButton_5 = new QPushButton(groupBox_3);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setGeometry(QRect(10, 20, 71, 41));
+        pushButton_5->setGeometry(QRect(10, 10, 90, 50));
         sizePolicy.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
         pushButton_5->setSizePolicy(sizePolicy);
-        pushButton_5->setMinimumSize(QSize(70, 30));
+        pushButton_5->setMinimumSize(QSize(90, 50));
         pushButton_5->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
 "color: white;\n"
@@ -346,18 +434,22 @@ public:
 "border-width: 0px;\n"
 "border-radius: 8px;\n"
 "border: 1px solid;\n"
-"}"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons/icon_save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_5->setIcon(icon1);
+"}\n"
+"QPushButton:hover { background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius: 8px;\n"
+"border: 0px solid;}"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons/icon_save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_5->setIcon(icon2);
         pushButton_5->setIconSize(QSize(23, 23));
         lineEdit_3 = new QLineEdit(groupBox_3);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(100, 30, 221, 20));
+        lineEdit_3->setGeometry(QRect(110, 30, 211, 21));
         lineEdit_3->setStyleSheet(QStringLiteral("border-radius: 8px;"));
         label_6 = new QLabel(groupBox_3);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(100, 10, 71, 16));
+        label_6->setGeometry(QRect(110, 10, 71, 16));
         label_6->setStyleSheet(QStringLiteral("color :white;"));
 
         horizontalLayout_13->addWidget(groupBox_3);
@@ -384,11 +476,8 @@ public:
         verticalLayout_17->setObjectName(QStringLiteral("verticalLayout_17"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy4);
+        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy2);
         label->setMinimumSize(QSize(200, 300));
         label->setLayoutDirection(Qt::LeftToRight);
         label->setStyleSheet(QLatin1String("QLabel\n"
@@ -422,9 +511,9 @@ public:
 "border-radius: 8px;\n"
 "border: 1px solid;\n"
 "}"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons/icon_control_paly.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_2->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons/icon_control_paly.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_2->setIcon(icon3);
         pushButton_2->setIconSize(QSize(23, 23));
 
         horizontalLayout_8->addWidget(pushButton_2);
@@ -466,10 +555,16 @@ public:
 "border-width: 0px;;\n"
 "border: 1px solid;\n"
 "}\n"
-"QToolTip { color: #fff; background-color: #000; border: none; }"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icons/full-screen-icon-png-32.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_6->setIcon(icon3);
+"QToolTip { color: #fff; background-color: #000; border: none; }\n"
+"QPushButton:hover{\n"
+"background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius: 0px;\n"
+"border: 0px solid;\n"
+"}"));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons/full-screen-icon-png-32.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_6->setIcon(icon4);
         pushButton_6->setIconSize(QSize(50, 50));
 
         horizontalLayout_8->addWidget(pushButton_6);
@@ -486,10 +581,16 @@ public:
 "border-width: 0px;;\n"
 "border: 1px solid;\n"
 "}\n"
-"QToolTip { color: #fff; background-color: #000; border: none; }"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/icons/exit-fullscreen-512.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_7->setIcon(icon4);
+"QToolTip { color: #fff; background-color: #000; border: none; }\n"
+"QPushButton:hover{\n"
+"background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius: 0px;\n"
+"border: 0px solid;\n"
+"}"));
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons/exit-fullscreen-512.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_7->setIcon(icon5);
         pushButton_7->setIconSize(QSize(46, 46));
 
         horizontalLayout_8->addWidget(pushButton_7);
@@ -517,10 +618,16 @@ public:
 "border-width: 0px;\n"
 "border-radius: 10px;\n"
 "border: 1px solid;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #27a9e3;\n"
+"border-width: 0px;\n"
+"border-radius:10px;\n"
+"border: 0px solid;\n"
 "}"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/icons/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_4->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/icons/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_4->setIcon(icon6);
         pushButton_4->setIconSize(QSize(23, 23));
 
         horizontalLayout_11->addWidget(pushButton_4);
@@ -557,6 +664,9 @@ public:
         pushButton->setText(QApplication::translate("MainWindow", "Buka Video", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Lokasi Berkas Video</p></body></html>", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Lokasi Berkas Data", nullptr));
+        groupBox_4->setTitle(QApplication::translate("MainWindow", "Sinkronisasi Data", nullptr));
+        pushButton_8->setText(QApplication::translate("MainWindow", "Sinkron", nullptr));
+        label_8->setText(QApplication::translate("MainWindow", "Masukkan nilai waktu", nullptr));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Data Penerbangan", nullptr));
         checkBox->setText(QApplication::translate("MainWindow", "Waktu", nullptr));
         checkBox_2->setText(QApplication::translate("MainWindow", "Kecepatan", nullptr));
@@ -566,8 +676,9 @@ public:
         checkBox_6->setText(QApplication::translate("MainWindow", "Roll", nullptr));
         checkBox_7->setText(QApplication::translate("MainWindow", "Pitch", nullptr));
         checkBox_8->setText(QApplication::translate("MainWindow", "Yaw", nullptr));
+        checkBox_9->setText(QApplication::translate("MainWindow", "Baterai", nullptr));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "Simpan Video", nullptr));
-        pushButton_5->setText(QApplication::translate("MainWindow", "Save", nullptr));
+        pushButton_5->setText(QApplication::translate("MainWindow", "Simpan", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "Lokasi Berkas", nullptr));
         label->setText(QString());
         pushButton_2->setText(QApplication::translate("MainWindow", "Putar Video", nullptr));

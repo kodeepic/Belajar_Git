@@ -35,7 +35,8 @@ private:
     Mat gray,tress,maskInv,imgbg,imgfg,sum,image2,baru,vect,image3,image4,enlarged,image5,tjn,flip1,gfatas,grafikatas,enlarged1;
   // string line; //jika ingin menggunakan putText via opencv
    // QString qstr = QString::fromStdString(line); //jika ingin ditampilkan dalam Drawtext via QPainter
-    int ko[10000][10000];
+    float ko[10000][10000];
+   int golwaktu [10000][10000];
     int ini=1;
    // QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;
     //string lokasivideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
@@ -57,6 +58,7 @@ public:
     bool loadLatitude(String datalatitude);
     bool loadYaw(String datayaw);
     bool lokasiVideo(String lokasi);
+    bool loadBaterai(String databaterai);
     void Play();
     void Stop();
     bool isStopped() const;
@@ -64,10 +66,13 @@ public:
     double getFrameRate();
     double getCurrentFrame();
     double getNumberOfFrames();
-    double ngurutinwaktu();
-    double nyatuin3waktu();
+    bool MengurutkanData();
     int wak =0 ;
-    int kec, alt,bat,rol,pit,yaw,log,lat;
+    int kec, alt,bat,rol,pit,yaw,log,lat,Baterai;
+    int columnCount;
+    int rowCount;
+    //int data[100][100];
+    //bool pengurutan;
 signals:
 void processedImage(const QImage &image);
 protected:

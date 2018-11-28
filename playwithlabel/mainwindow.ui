@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>550</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -94,7 +94,7 @@
              <property name="minimumSize">
               <size>
                <width>300</width>
-               <height>110</height>
+               <height>100</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -122,7 +122,7 @@ border-image: url(:/logos/logo.png);}</string>
         <property name="minimumSize">
          <size>
           <width>330</width>
-          <height>150</height>
+          <height>140</height>
          </size>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -187,8 +187,8 @@ border-radius: 1px;
               </property>
               <property name="minimumSize">
                <size>
-                <width>90</width>
-                <height>50</height>
+                <width>70</width>
+                <height>40</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -199,7 +199,11 @@ background-color: #333333;
 border-width: 0px;
 border-radius: 8px;
 border: 1px solid;
-}</string>
+}
+QPushButton:hover { background-color: #27a9e3;
+border-width: 0px;
+border-radius: 8px;
+border: 0px solid;}</string>
               </property>
               <property name="text">
                <string>Buka Data</string>
@@ -225,7 +229,7 @@ border: 1px solid;
                </rect>
               </property>
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -244,6 +248,12 @@ background-color: #333333;
 border-width: 0px;
 border-radius: 8px;
 border: 1px solid;
+}
+QPushButton:hover { 
+background-color: #27a9e3;
+border-width: 0px;
+border-radius: 8px;
+border: 0px solid;
 }</string>
               </property>
               <property name="text">
@@ -311,11 +321,157 @@ border: 1px solid;
                 <x>110</x>
                 <y>100</y>
                 <width>211</width>
-                <height>20</height>
+                <height>21</height>
                </rect>
               </property>
               <property name="styleSheet">
                <string notr="true">border-radius: 8px;</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="horizontalWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox_4">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>65</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QGroupBox
+{
+color: white;
+background-color: #333333;
+border-width: 0px;
+border-radius: 1px;
+ border: 1px solid black;
+}
+</string>
+             </property>
+             <property name="title">
+              <string>Sinkronisasi Data</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <widget class="QPushButton" name="pushButton_8">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>90</width>
+                <height>50</height>
+               </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton
+{
+color: white;
+background-color: #333333;
+border-width: 0px;
+border-radius: 8px;
+border: 1px solid;
+}
+QPushButton:hover { 
+background-color: #27a9e3;
+border-width: 0px;
+border-radius: 8px;
+border: 0px solid;}</string>
+              </property>
+              <property name="text">
+               <string>Sinkron</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons.qrc">
+                <normaloff>:/icons/icon_datasinkron.png</normaloff>:/icons/icon_datasinkron.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>23</width>
+                <height>23</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_4">
+              <property name="geometry">
+               <rect>
+                <x>110</x>
+                <y>30</y>
+                <width>211</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 8px;</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_8">
+              <property name="geometry">
+               <rect>
+                <x>110</x>
+                <y>10</y>
+                <width>101</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color :white;</string>
+              </property>
+              <property name="text">
+               <string>Masukkan nilai waktu</string>
               </property>
              </widget>
             </widget>
@@ -513,6 +669,22 @@ border-radius: 1px;
                <string>Yaw</string>
               </property>
              </widget>
+             <widget class="QCheckBox" name="checkBox_9">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>80</y>
+                <width>70</width>
+                <height>17</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox{color:white;}</string>
+              </property>
+              <property name="text">
+               <string>Baterai</string>
+              </property>
+             </widget>
             </widget>
            </item>
           </layout>
@@ -584,9 +756,9 @@ border-radius: 3px;
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>20</y>
-                <width>71</width>
-                <height>41</height>
+                <y>10</y>
+                <width>90</width>
+                <height>50</height>
                </rect>
               </property>
               <property name="sizePolicy">
@@ -597,8 +769,8 @@ border-radius: 3px;
               </property>
               <property name="minimumSize">
                <size>
-                <width>70</width>
-                <height>30</height>
+                <width>90</width>
+                <height>50</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -609,10 +781,14 @@ background-color: #333333;
 border-width: 0px;
 border-radius: 8px;
 border: 1px solid;
-}</string>
+}
+QPushButton:hover { background-color: #27a9e3;
+border-width: 0px;
+border-radius: 8px;
+border: 0px solid;}</string>
               </property>
               <property name="text">
-               <string>Save</string>
+               <string>Simpan</string>
               </property>
               <property name="icon">
                <iconset resource="icons.qrc">
@@ -628,10 +804,10 @@ border: 1px solid;
              <widget class="QLineEdit" name="lineEdit_3">
               <property name="geometry">
                <rect>
-                <x>100</x>
+                <x>110</x>
                 <y>30</y>
-                <width>221</width>
-                <height>20</height>
+                <width>211</width>
+                <height>21</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -641,7 +817,7 @@ border: 1px solid;
              <widget class="QLabel" name="label_6">
               <property name="geometry">
                <rect>
-                <x>100</x>
+                <x>110</x>
                 <y>10</y>
                 <width>71</width>
                 <height>16</height>
@@ -838,7 +1014,13 @@ background-color: #333333;
 border-width: 0px;;
 border: 1px solid;
 }
-QToolTip { color: #fff; background-color: #000; border: none; }</string>
+QToolTip { color: #fff; background-color: #000; border: none; }
+QPushButton:hover{
+background-color: #27a9e3;
+border-width: 0px;
+border-radius: 0px;
+border: 0px solid;
+}</string>
           </property>
           <property name="text">
            <string/>
@@ -877,7 +1059,13 @@ background-color: #333333;
 border-width: 0px;;
 border: 1px solid;
 }
-QToolTip { color: #fff; background-color: #000; border: none; }</string>
+QToolTip { color: #fff; background-color: #000; border: none; }
+QPushButton:hover{
+background-color: #27a9e3;
+border-width: 0px;
+border-radius: 0px;
+border: 0px solid;
+}</string>
           </property>
           <property name="text">
            <string/>
@@ -945,6 +1133,12 @@ background-color: #333333;
 border-width: 0px;
 border-radius: 10px;
 border: 1px solid;
+}
+QPushButton:hover{
+background-color: #27a9e3;
+border-width: 0px;
+border-radius:10px;
+border: 0px solid;
 }</string>
           </property>
           <property name="text">

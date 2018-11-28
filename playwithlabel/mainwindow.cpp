@@ -449,3 +449,21 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
        ui->label->show();
  }
 */
+
+void MainWindow::on_checkBox_9_stateChanged(int arg1)
+{
+    int bat;
+    if(arg1){
+        bat = 1;
+    }
+    else{
+        qDebug()<<"Data baterai tidak ada"<<endl;
+        bat = 0;
+    }
+    databaterai = QString::number(bat);
+    if(!myPlayer->loadBaterai(databaterai.toLatin1().data())){
+        QMessageBox msgBox;
+        msgBox.setText("The selected data could not be opened");
+        msgBox.exec();
+            }
+}

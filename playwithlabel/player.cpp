@@ -60,6 +60,53 @@ void Player::setCurrentFrame(int frameNumber){
 }
 
 bool Player :: loadData(String d_filename){
+    /*
+    QString qstr = QString::fromStdString(d_filename);
+    QAxObject* excel     = new QAxObject("Excel.Application");
+    QAxObject* workbooks = excel->querySubObject("Workbooks");
+    //QString d_filename = "D:\\contoh.xlsx"; //hapus coment kalau mau run
+    QAxObject* workbook  = workbooks->querySubObject("Open(const QString&)",d_filename);
+    QAxObject* sheets    = workbook->querySubObject("Worksheets");
+    QAxObject* sheet     = sheets->querySubObject("Item(int)", 1);
+    QAxObject * range = sheet->querySubObject("UsedRange");
+    QAxObject * rows = range->querySubObject( "Rows" );
+    rowCount = rows->dynamicCall( "Count()" ).toInt();
+    QAxObject* columns = range->querySubObject( "Columns" );
+     columnCount = columns->property("Count").toInt();
+   // qDebug()<<rowCount*columnCount<<endl;
+    // read the first cells in row 1...18177
+    for (int r = 1; (r <= rowCount*columnCount); ++r)
+    {
+        if(r<=rowCount){
+            QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r,1);
+             data[r][1]= cCell->dynamicCall("Value()").toInt();
+            QAxObject* cCell1 = sheet->querySubObject("Cells(int,int)",r,4);
+             data[r][2]=cCell1->dynamicCall("Value()").toInt();
+             data[r][3]=1;
+             data[r][4]=1;
+        }else if((r>rowCount)&&(r<=rowCount*2)){
+             QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r-(rowCount),2);
+             data[r][1]= cCell->dynamicCall("Value()").toInt();
+             QAxObject* cCell2 = sheet->querySubObject("Cells(int,int)",r-(rowCount),5);
+              data[r][3]=cCell2->dynamicCall("Value()").toInt();
+              data[r][2]=1;
+              data[r][4]=1;
+        }else{
+            QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r-(rowCount*2),3);
+             data[r][1]= cCell->dynamicCall("Value()").toInt();
+             QAxObject* cCell3 = sheet->querySubObject("Cells(int,int)",r-(rowCount*2),6);
+             data[r][4]= cCell3->dynamicCall("Value()").toInt();
+             data[r][2]=1;
+             data[r][3]=1;
+             if(data[r][1]==0){
+                 break;
+             }
+        }
+      */
+
+
+
+
        // int data[160] =atoi(d_filename.c_str());
         //for(i=0;i<=160;i++){ data[]
 
@@ -74,13 +121,13 @@ bool Player :: loadData(String d_filename){
     QTextStream stream (&inputfile);
     QString line = stream.readLine();
     if (!line.isNull()){
-    int baris=1;
-    while (baris <=totalframe){
+   int baris=1;
+    while (baris <=10000){
         line = stream.readLine();
         QByteArray hhh = line.toLocal8Bit();
         const char *line1= hhh.data();
-                   sscanf(line1,"%d ,%d ,%d ,%d, %d,%d,%d,%d",&ko[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&ko[baris][5],&ko[baris][6],&ko[baris][7],&ko[baris][8]);
-                   qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<ko[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << ko[baris][5] << " " << ko[baris][6];
+                   sscanf(line1,"%d ,%f ,%f ,%f, %d,%f,%d,%f",&golwaktu[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&golwaktu[baris][5],&ko[baris][6],&golwaktu[baris][7],&ko[baris][8]);
+                   qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<golwaktu[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << golwaktu[baris][5] << " " << ko[baris][6];
                           baris++;
 
                              }
@@ -92,24 +139,16 @@ bool Player :: loadData(String d_filename){
    return true;
 
 }
-double Player :: nyatuin3waktu(){
+bool Player :: MengurutkanData(){
+    int jbaris=1;
+    for(int bris=1;bris<=(totalframe*2);bris++){
+        if(totalframe){
 
-    return true;
-}
-/*
-double Player :: ngurutinwaktu(){
-    for(int i=0;i<=totalframe;i++){
-        for(int j=0;j<=totalframe-i;j++){
-            if(ko[j]>ko[j+1]){
-                int temp = ko[j];
-                ko[j]=ko[j+1];
-                ko[j+1]=temp;
-            }
+
         }
     }
     return true;
 }
-*/
 bool Player :: lokasiVideo(String lokasi){
      lokvideo = QString::fromStdString(lokasi);
     //qDebug()<<lokvideo<<endl;
@@ -145,10 +184,9 @@ bool Player :: loadKeceptan(String datakecepatan){
         kec =1;
     }
     else {
-        DataKecepatan= "Kecepatan : -";
+        DataKecepatan= "0";
         kec =0;
     }
-    qDebug() << " " <<kec;
      return true;
     /*
     kecepatan =QString ::fromStdString(datakecepatan);
@@ -164,7 +202,7 @@ bool Player ::loadAltitude(String dataaltitude){
         alt =1;
     }
     else {
-        DataAltitude= "Altitude: -";
+        DataAltitude= "0";
         alt =0;
     }
     return true;
@@ -187,7 +225,7 @@ bool Player :: loadRoll(String dataroll){
         rol =1;
     }
     else {
-        DataRoll= "Roll: -";
+        DataRoll= "0";
         rol =0;
     }
     return true;
@@ -205,7 +243,7 @@ bool Player :: loadLongitude(String datalongitude){
         log =1;
     }
     else {
-        DataLongitude= "Longitude: -";
+        DataLongitude= "0";
         log =0;
     }
     return true;
@@ -218,7 +256,7 @@ bool Player :: loadPitch(String datapitch){
         pit =1;
     }
     else {
-        DataPitch= "Pitch: -";
+        DataPitch= "0";
         pit =0;
     }
     return true;
@@ -236,7 +274,7 @@ bool Player :: loadLatitude(String datalatitude){
         lat =1;
     }
     else {
-        DataLatitude= "Latitude: -";
+        DataLatitude= "0";
         lat =0;
     }
     return true;
@@ -255,7 +293,7 @@ bool Player :: loadYaw(String datayaw){
         yaw =1;
     }
     else {
-        DataYaw= "Yaw: -";
+        DataYaw= "0";
         yaw =0;
     }
     return true;
@@ -264,6 +302,16 @@ bool Player :: loadYaw(String datayaw){
     DataYaw = yaw.toLocal8Bit().constData();
     return true;
     */
+}
+bool Player :: loadBaterai(String databaterai){
+    QString ok8 =QString::fromStdString(databaterai);
+    int bate =ok8.toInt();;
+    if(bate>0){
+        Baterai=1;
+    }else{
+        Baterai=0;
+    }
+    return true;
 }
 void Player :: run()
 {
@@ -281,45 +329,46 @@ void Player :: run()
             stop=true;
             break;
         }
+        if(Baterai>0){
+            image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
+            resize(image2,image3,Size(),0.50,0.50);
+            double angle =-90;
+            //mendapatkan matriks rotasi untuk memutar gambar di sekitar pusatnya dalam koordinat piksel
+            Point2f center((image3.cols-1)/2.0, (image3.rows-1)/2.0);
+            //tentukan bounding rectangle, center tidak relevan
+            Mat rot = getRotationMatrix2D(center, angle, 1.0);
+            Rect2f bbox = cv::RotatedRect(cv::Point2f(), image3.size(), angle).boundingRect2f();
+            //menyesuaikan transformasi matriks
+            rot.at<double>(0,2) += bbox.width/2.0 - image3.cols/2.0;
+            rot.at<double>(1,2) += bbox.height/2.0 - image3.rows/2.0;
+            //wrapsemua kedalam mat tjn
+            warpAffine(image3, tjn, rot, bbox.size());
+            Rect ROI (0,0,tjn.cols,tjn.rows);
+            baru= frame(ROI);
+           //grayscale
+             cvtColor(tjn,gray,CV_BGR2GRAY);
+             double thresh = 10;
+             double maxValue = 255;
+             threshold(gray,tress, thresh, maxValue, THRESH_BINARY);
+              bitwise_not(tress,maskInv);
+              bitwise_and(baru,baru,imgbg,maskInv);
+              bitwise_and(tjn,tjn,imgfg,tress);
+              add(imgbg,imgfg,sum);
+                frame=frame.clone();
+              for(int i=0;i<tjn.rows;i++){
+                  for(int j=0;j<tjn.cols;j++){
 
-        image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
-        image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
-        resize(image4, enlarged, cv::Size(frame.cols-(0.90*frame.cols), frame.rows-(0.15*frame.rows)), cv::INTER_NEAREST);
-        resize(image2,image3,Size(),0.50,0.50);
-        double angle =-90;
-        //mendapatkan matriks rotasi untuk memutar gambar di sekitar pusatnya dalam koordinat piksel
-        Point2f center((image3.cols-1)/2.0, (image3.rows-1)/2.0);
-        //tentukan bounding rectangle, center tidak relevan
-        Mat rot = getRotationMatrix2D(center, angle, 1.0);
-        Rect2f bbox = cv::RotatedRect(cv::Point2f(), image3.size(), angle).boundingRect2f();
-        //menyesuaikan transformasi matriks
-        rot.at<double>(0,2) += bbox.width/2.0 - image3.cols/2.0;
-        rot.at<double>(1,2) += bbox.height/2.0 - image3.rows/2.0;
-        //wrapsemua kedalam mat tjn
-        warpAffine(image3, tjn, rot, bbox.size());
-        Rect ROI (0,0,tjn.cols,tjn.rows);
-        baru= frame(ROI);
-       //grayscale
-         cvtColor(tjn,gray,CV_BGR2GRAY);
-         double thresh = 10;
-         double maxValue = 255;
-         threshold(gray,tress, thresh, maxValue, THRESH_BINARY);
-          bitwise_not(tress,maskInv);
-          bitwise_and(baru,baru,imgbg,maskInv);
-          bitwise_and(tjn,tjn,imgfg,tress);
-          add(imgbg,imgfg,sum);
-            frame=frame.clone();
-          for(int i=0;i<tjn.rows;i++){
-              for(int j=0;j<tjn.cols;j++){
+                      {
+                              frame.at<Vec3b>(i,j)[0]= sum.at<Vec3b>(i,j)[0];
+                              frame.at<Vec3b>(i,j)[1]= sum.at<Vec3b>(i,j)[1];
+                              frame.at<Vec3b>(i,j)[2]= sum.at<Vec3b>(i,j)[2];
+                  }
 
-                  {
-                          frame.at<Vec3b>(i,j)[0]= sum.at<Vec3b>(i,j)[0];
-                          frame.at<Vec3b>(i,j)[1]= sum.at<Vec3b>(i,j)[1];
-                          frame.at<Vec3b>(i,j)[2]= sum.at<Vec3b>(i,j)[2];
               }
-
-          }
+            }
         }
+          image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
+          resize(image4, enlarged, cv::Size(frame.cols-(0.90*frame.cols), frame.rows-(0.15*frame.rows)), cv::INTER_NEAREST);
           //grafik skala sebelah kanan frame//
           Rect ROI1 (frame.cols-enlarged.cols-20,frame.rows-enlarged.rows-50,enlarged.cols,enlarged.rows);
           Mat baru1= frame(ROI1);
@@ -347,6 +396,26 @@ void Player :: run()
         Mat baru2 = frame(ROI2);
         Mat mask1(flip1);
         flip1.copyTo(baru2,mask1);
+        putText(frame,"10",Point(58, 514),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"20",Point(58, 489),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"30",Point(58, 465),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"40",Point(58, 440),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"50",Point(74, 418),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"60",Point(58, 396),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"70",Point(58, 372),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"80",Point(58, 347),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+        putText(frame,"90",Point(58, 321),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"100",Point(74, 298),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"110",Point(58, 276),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"120",Point(58, 252),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"130",Point(58, 229),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"140",Point(58, 203),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"150",Point(74, 179),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"160",Point(58, 156),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"170",Point(58, 132),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"180",Point(58, 108),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"190",Point(58,83),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
+         putText(frame,"200",Point(74, 61),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
         /*
         //grafik skala sebelah atas frame //
         resize(enlarged,enlarged1,Size(),0.8,0.8);
@@ -360,10 +429,10 @@ void Player :: run()
         QString Time;
         int omo;
         if (wak > 0){
-            omo = ko[kunci][1];
+            omo = golwaktu[kunci][1];
             QString angka = QString::number(omo);
 
-             Time = DataWaktu + angka;
+             Time = DataWaktu + angka +"us";
         }
         else {
             Time = DataWaktu;
@@ -371,7 +440,7 @@ void Player :: run()
         string waktu1 = Time.toLocal8Bit().constData();
         QString fast;
         if (kec > 0){
-            int om1 = ko[kunci][2];
+            float om1 = ko[kunci][2];
             QString angku = QString::number(om1);
             fast = DataKecepatan + angku;
         }
@@ -381,7 +450,7 @@ void Player :: run()
         string kecepatan1 = fast.toLocal8Bit().constData();
         QString ALT;
         if (alt > 0){
-            int om2 = ko[kunci][3];
+            float om2 = ko[kunci][3];
             QString angkk = QString::number(om2);
              ALT = DataAltitude + angkk;
         }
@@ -463,6 +532,8 @@ void Player :: run()
            string tanggalbaru = tanggal.toLocal8Bit().constData();
            string jambaru = jam.toLocal8Bit().constData();
     putText(frame,tanggalbaru+" | "+jambaru,Point2f(frame.cols-300,frame.rows*0.05),FONT_HERSHEY_SIMPLEX,0.6,Scalar(0,0,0),1.6,LINE_AA);
+    imwrite("D:\\Capture gambar\\gambar.png", frame); //write the image to a file as JPEG
+
       //konversi BGR ke RGB
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
@@ -473,13 +544,11 @@ void Player :: run()
         {
             img =QImage((const unsigned char*)(frame.data),
                     frame.cols,frame.rows,QImage::Format_Indexed8);
-
         }
         emit processedImage(img);
         this->msleep(delay);
    kunci ++;
     }
-
 }
 /*
 void Player :: ~run(){
