@@ -107,11 +107,13 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_icons.cpp
 debug/qrc_icons.cpp: ../playwithlabel/icons.qrc \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/bin/rcc.exe \
+		../playwithlabel/icon_control_pause.png \
 		../playwithlabel/exit-fullscreen-512.png \
-		../playwithlabel/icon_control_paly.png \
+		../playwithlabel/icon_datasinkron.png \
 		../playwithlabel/full-screen-icon-png-32.png \
 		../playwithlabel/icon_folder.png \
 		../playwithlabel/exit.png \
+		../playwithlabel/icon_control_play1.png \
 		../playwithlabel/full-screen-icon-11.png \
 		../playwithlabel/icon_save.png \
 		../playwithlabel/logo.png
@@ -809,55 +811,13 @@ debug/mainwindow.o: ../playwithlabel/mainwindow.cpp ../playwithlabel/mainwindow.
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qdatetime.h \
 		ui_mainwindow.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/QIcon \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QCheckBox \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qcheckbox.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QGroupBox \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qgroupbox.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QMenuBar \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qmenu.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QSlider \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QSpacerItem \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QStatusBar \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qstatusbar.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QToolBar \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QProgressBar \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qprogressbar.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qframe.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/QPainter \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpainter.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/qpen.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/QAxObject \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxobject.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/ActiveQt/qaxbase.h \
@@ -865,7 +825,12 @@ debug/mainwindow.o: ../playwithlabel/mainwindow.cpp ../playwithlabel/mainwindow.
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QToolTip \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qtooltip.h \
 		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtCore/QSize \
-		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QGridLayout
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtGui/QIcon \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/QGridLayout \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/Qt5.11.0/5.11.0/mingw53_32/include/QtWidgets/qboxlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\playwithlabel\mainwindow.cpp
 
 debug/player.o: ../playwithlabel/player.cpp ../playwithlabel/player.h \

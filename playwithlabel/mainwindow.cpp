@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    isMaximized = false;
     myPlayer =new Player();
     QObject ::connect(myPlayer, SIGNAL(processedImage(QImage)),
                       this,SLOT(updatePlayerUI(QImage)));
@@ -22,8 +23,57 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_7->setToolTip("<font color=white>Keluar Layar Penuh</font>");
     ui->label_4->setToolTip("<font color=white>Pergerakan Waktu</font>");
     ui->label_5->setToolTip("<font color=white>Total Waktu</font>");
+    ui->label->installEventFilter(this);
+     connect(this,SIGNAL(doubleClicked()),SLOT(onDoubleClicked()));
 
 }
+void MainWindow::onDoubleClicked()
+{
+if ((ui->label->windowState() == Qt::WindowFullScreen) && isMaximized)
+{  qDebug("Parent");
+ // ui->label->setParent(this);
+  // setCentralWidget(ui->label);
+ ui->label->setWindowFlags(Qt::Widget);
+ // ui->label->setWindowState(ui->label->windowState() | Qt::WindowNoState);
+ // ui->label->windowState()==Qt::WindowNoState;
+   isMaximized =false;
+  ui->label->showNormal();
+
+}else{
+    qDebug("Maximize");
+        isMaximized = true;
+       //ui->label->setParent(NULL);
+      ui->label->setWindowFlags(Qt::Window);
+      ui->label->setWindowState(ui->label->windowState() | Qt::WindowFullScreen);
+     ui->label->show();
+}
+}
+bool MainWindow::eventFilter(QObject *target, QEvent *event)
+{
+if (target == ui->label)
+{
+if (event->type() == QEvent::MouseButtonDblClick)
+{
+QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+if (mouseEvent->button() == Qt::LeftButton )
+{
+emit doubleClicked();
+return QMainWindow::eventFilter(target,event);
+}
+}
+}
+return QMainWindow::eventFilter(target,event);
+}
+/*
+void MainWindow :: PemutarGambar()
+{
+    cv::resize(image,image,Size(512,384),0,0,INTER_LINEAR);
+    cv::cvtColor(image,image,CV_BGR2RGB);
+    QImage imdisplay((uchar*)image.data,image.cols,image.rows,image.step,QImage::Format_RGB888);
+    ui->label->setPixmap(QPixmap::fromImage(imdisplay));
+}
+*/
+
 
 void MainWindow::updatePlayerUI(QImage img)
 {

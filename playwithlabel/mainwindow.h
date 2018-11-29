@@ -66,10 +66,15 @@ private slots:
    void keyPressEvent(QKeyEvent *e);
 
    void on_pushButton_8_clicked();
-
+   void onDoubleClicked();
+signals:
+   void doubleClicked();
+protected:
+   bool eventFilter(QObject *target, QEvent *event);
 private:
     Ui::MainWindow *ui;
     Player* myPlayer;
+     bool isMaximized;
    // QProgressBar *bar;
  //   QPushButton *button;
 
