@@ -21,9 +21,15 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-
+    void onDoubleClicked();
+signals:
+    void doubleClicked();
+protected:
+    bool eventFilter(QObject *target, QEvent *event);
 private:
     Ui::MainWindow *ui;
+    QWidget *widget;
+    bool isMaximized;
  //   Mat image;
 };
 
