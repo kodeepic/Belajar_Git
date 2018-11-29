@@ -21,7 +21,7 @@ public:
     explicit MainWindow(QWidget *parent =0);
     ~MainWindow();
     QString d_filename;
-    QString datawaktu,datakecepatan,dataaltitude,dataroll,datalongitude,datapitch,datalatitude,datayaw,databaterai;
+    QString datawaktu,datakecepatan,dataaltitude,dataroll,datalongitude,datapitch,datalatitude,datayaw,databaterai,KDS;
     int Data,Data1,Data2,Data3,Data4,Data5,Data6,Data7;
 
 private slots:
@@ -64,6 +64,8 @@ private slots:
 
    void on_checkBox_9_stateChanged(int arg1);
    void keyPressEvent(QKeyEvent *e);
+
+   void on_pushButton_8_clicked();
 
 private:
     Ui::MainWindow *ui;

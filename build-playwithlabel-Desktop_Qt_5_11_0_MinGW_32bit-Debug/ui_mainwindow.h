@@ -506,23 +506,24 @@ public:
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
-        pushButton_2->setMinimumSize(QSize(90, 50));
+        pushButton_2->setMinimumSize(QSize(40, 40));
         pushButton_2->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
 "color: white;\n"
 "background-color: #333333;\n"
 "border-width: 0px;\n"
-"border-radius: 8px;\n"
+"border-radius: 0px;\n"
 "border: 1px solid;\n"
 "}\n"
 "QPushButton:hover { background-color: #27a9e3;\n"
 "border-width: 0px;\n"
-"border-radius: 8px;\n"
-"border: 0px solid;}"));
+"border-radius: 0px;\n"
+"border: 0px solid;}\n"
+"QToolTip { color: #fff; background-color: #000; border: none; }"));
         QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icons/icon_control_paly.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QStringLiteral(":/icons/icon_control_play1.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_2->setIcon(icon3);
-        pushButton_2->setIconSize(QSize(23, 23));
+        pushButton_2->setIconSize(QSize(50, 50));
 
         horizontalLayout_8->addWidget(pushButton_2);
 
@@ -537,7 +538,7 @@ public:
 
         horizontalSlider = new QSlider(centralWidget);
         horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setStyleSheet(QStringLiteral(""));
+        horizontalSlider->setStyleSheet(QStringLiteral("QToolTip { color: #ffffff; background-color: #ffffff; border: none; }"));
         horizontalSlider->setOrientation(Qt::Horizontal);
 
         horizontalLayout_8->addWidget(horizontalSlider);
@@ -689,7 +690,7 @@ public:
         pushButton_5->setText(QApplication::translate("MainWindow", "Simpan", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "Lokasi Berkas", nullptr));
         label->setText(QString());
-        pushButton_2->setText(QApplication::translate("MainWindow", "Putar Video", nullptr));
+        pushButton_2->setText(QString());
         label_4->setText(QApplication::translate("MainWindow", "--:--", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "--:--", nullptr));
         pushButton_6->setText(QString());

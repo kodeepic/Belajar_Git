@@ -74,11 +74,15 @@ void MainWindow :: on_pushButton_2_clicked() //kalau pushbutton 2 sudah diklik m
     if(myPlayer->isStopped())
     {
         myPlayer->Play(); //jika mplayer berputar
-        ui->pushButton_2->setText(tr("Stop")); //tulisan pushbutton jadi stop
+        ui->pushButton_2->setIcon(QIcon(":/icons/icon_control_pause.png"));
+        ui->pushButton_2->setIconSize(QSize(50,50));
+        ui->pushButton_2->setToolTip("<font color=white>Pause the playback</font>"); //tulisan puhbutton jadi play
     }else
     {
         myPlayer->Stop(); //jika mplayer berhenti
-        ui->pushButton_2->setText(tr("Play")); //tulisan puhbutton jadi play
+        ui->pushButton_2->setToolTip("<font color=white>Play</font>"); //tulisan pushbutton jadi stop
+        ui->pushButton_2->setIcon(QIcon(":/icons/icon_control_play1.png"));
+        ui->pushButton_2->setIconSize(QSize(50,50));
     }
 
 }
@@ -303,7 +307,7 @@ void MainWindow::on_checkBox_4_stateChanged(int arg1)
        ina = 1;
     }
     else{
-        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        qDebug()<<"Data longitude tidak ada"<<endl;
         ina = 0;
     }
     datalongitude = QString::number(ina);
@@ -333,7 +337,7 @@ void MainWindow::on_checkBox_7_stateChanged(int arg1)
         iny = 1;
     }
     else{
-        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        qDebug()<<"Data pitch tidak ada"<<endl;
         iny = 0;
     }
     datapitch = QString::number(iny);
@@ -363,7 +367,7 @@ void MainWindow::on_checkBox_5_stateChanged(int arg1)
         inl = 1;
     }
     else{
-        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        qDebug()<<"Data altitude tidak ada"<<endl;
         inl = 0;
     }
     dataaltitude = QString::number(inl);
@@ -392,7 +396,7 @@ void MainWindow::on_checkBox_8_stateChanged(int arg1)
     if(arg1){
         loh = 1;
     }else{
-        qDebug()<<"Data kecepatan tidak ada"<<endl;
+        qDebug()<<"Data yaw tidak ada"<<endl;
         loh= 0;
     }
     datayaw = QString::number(loh);
@@ -468,11 +472,24 @@ void MainWindow::on_checkBox_9_stateChanged(int arg1)
 }
 
 void MainWindow :: keyPressEvent(QKeyEvent *e){
-    if(e->key() != Qt::Key_Escape){
-        ui->centralWidget->setEnabled(true);
-           //MainWindow::keyPressEvent(e);
-    }else{
-       ui->label->setWindowFlags(Qt::Widget);
-        ui->label->show();
+    if(e->key() == Qt::Key_Escape){
+            ui->label->setWindowFlag(Qt::Window, false);
+           ui->label->setWindowFlags(Qt::Widget);
+            ui->label->show();
+        }
+    else{
+        QWidget::keyPressEvent(e);
+
+    }
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    QString str = ui->lineEdit_4->text();
+    KDS = str;
+    if (!myPlayer->SetPoint(KDS.toLatin1().data())){
+        QMessageBox  msgBox;
+        msgBox.setText("Data tida keluar");
+        msgBox.exec();
     }
 }

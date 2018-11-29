@@ -60,85 +60,361 @@ void Player::setCurrentFrame(int frameNumber){
 }
 
 bool Player :: loadData(String d_filename){
-    /*
-    QString qstr = QString::fromStdString(d_filename);
-    QAxObject* excel     = new QAxObject("Excel.Application");
-    QAxObject* workbooks = excel->querySubObject("Workbooks");
-    //QString d_filename = "D:\\contoh.xlsx"; //hapus coment kalau mau run
-    QAxObject* workbook  = workbooks->querySubObject("Open(const QString&)",d_filename);
-    QAxObject* sheets    = workbook->querySubObject("Worksheets");
-    QAxObject* sheet     = sheets->querySubObject("Item(int)", 1);
-    QAxObject * range = sheet->querySubObject("UsedRange");
-    QAxObject * rows = range->querySubObject( "Rows" );
-    rowCount = rows->dynamicCall( "Count()" ).toInt();
-    QAxObject* columns = range->querySubObject( "Columns" );
-     columnCount = columns->property("Count").toInt();
-   // qDebug()<<rowCount*columnCount<<endl;
-    // read the first cells in row 1...18177
-    for (int r = 1; (r <= rowCount*columnCount); ++r)
-    {
-        if(r<=rowCount){
-            QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r,1);
-             data[r][1]= cCell->dynamicCall("Value()").toInt();
-            QAxObject* cCell1 = sheet->querySubObject("Cells(int,int)",r,4);
-             data[r][2]=cCell1->dynamicCall("Value()").toInt();
-             data[r][3]=1;
-             data[r][4]=1;
-        }else if((r>rowCount)&&(r<=rowCount*2)){
-             QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r-(rowCount),2);
-             data[r][1]= cCell->dynamicCall("Value()").toInt();
-             QAxObject* cCell2 = sheet->querySubObject("Cells(int,int)",r-(rowCount),5);
-              data[r][3]=cCell2->dynamicCall("Value()").toInt();
-              data[r][2]=1;
-              data[r][4]=1;
-        }else{
-            QAxObject* cCell = sheet->querySubObject("Cells(int,int)",r-(rowCount*2),3);
-             data[r][1]= cCell->dynamicCall("Value()").toInt();
-             QAxObject* cCell3 = sheet->querySubObject("Cells(int,int)",r-(rowCount*2),6);
-             data[r][4]= cCell3->dynamicCall("Value()").toInt();
-             data[r][2]=1;
-             data[r][3]=1;
-             if(data[r][1]==0){
-                 break;
-             }
-        }
-      */
-
-
-
-
-       // int data[160] =atoi(d_filename.c_str());
-        //for(i=0;i<=160;i++){ data[]
-
-        //}
     QString qstr = QString::fromStdString(d_filename);
 // Baca data file CSV dan simpan dalam array (2 dimensi)
     QFile inputfile (qstr);
     inputfile.open(QIODevice::ReadOnly);
+     QTextStream stream (&inputfile);
     if (!inputfile.isOpen())
         return true;
+    int baris =1;int wow=2;int ATT;int BAT;int GPS;
+                  JML =0;JML1 =0;
 
-    QTextStream stream (&inputfile);
-    QString line = stream.readLine();
-    if (!line.isNull()){
-   int baris=1;
-    while (baris <=10000){
-        line = stream.readLine();
-        QByteArray hhh = line.toLocal8Bit();
-        const char *line1= hhh.data();
-                   sscanf(line1,"%d ,%f ,%f ,%f, %d,%f,%d,%f",&golwaktu[baris][1],&ko[baris][2],&ko[baris][3],&ko[baris][4],&golwaktu[baris][5],&ko[baris][6],&golwaktu[baris][7],&ko[baris][8]);
-                   qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<golwaktu[baris][1]<< " " << ko[baris][2] << " " << ko[baris][3] << " " << ko[baris][4] << " " << golwaktu[baris][5] << " " << ko[baris][6];
-                          baris++;
+                  while (baris <wow){
+                    QString line = stream.readLine();
+                    if (!line.isNull()){
+                        QByteArray hhh = line.toLocal8Bit();
+                        const char *line1= hhh.data();
+                        sscanf(line1,"%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",&lo[baris][1],&lo[baris][2],&lo[baris][3],&lo[baris][4],&lo[baris][5],&lo[baris][6],&lo[baris][7],&lo[baris][8],&lo[baris][9],&lo[baris][10]);
+                        qDebug() << "baris" << baris <<"hayo ke:" <<line << "jadinya: " <<lo[baris][1]<< " " << lo[baris][10];
+                        if(lo[baris][1]==0){ATT=0;} else {ATT=1;}
+                        if(lo[baris][7]==0){GPS=0;} else {GPS=1;}
+                        if(lo[baris][5]==0){BAT=0;} else {BAT=1;}
+                        int KDS = ATT + GPS +BAT;
+                               if(KDS==3){JML=JML+3;JML1=JML1+2;}
+                                   else if (KDS==2){JML=JML+2;JML1=JML1+2;}
+                                       else {JML=JML+1;JML1=JML1+1;}
+                                  qDebug() << "" << JML << " " << JML1;
+                                  baris++;wow++;}
+                                   else {wow =0;}
+                    }
+                  // Proses pengurutan data
+                          //Pengurutan
+                          //Tahap1
+                          int x1=1;int x2=1;
+                         int kl;
+                          int kw;
+                  for (int i=1; i<=JML1; i++)
+                  {
+                      if(!lo[x2][5]==0){
+                                         kl = lo[x1][1];//Data ATT
+                                         kw = lo[x2][5];//Data BAT
+                                         if (kl>kw){
+                                             for (int j=2;j<9;j++){
+                                                 if (j<5){ko[i][j]=0;}
+                                                 else if (j==5){ko[i][j]=lo[x2][6];}
+                                                 else {ko[i][j]=0;}
+                                             }
+                                             ko[i][1]= lo [x2][5];
+                                             ko[i][9]=0;ko[i][10]=2;
+                                             x2=x2+1;
+                                         }
+                                         else if (kl<kw){
+                                             for (int j=2; j<9 ; j++){
+                                                 if (j<5) {ko[i][j]=lo[x1][j];}
+                                                 else {ko[i][j]=0;}
+                                             }
+                                             ko[i][1]=lo[x1][1];
+                                             ko[i][9]=1;ko[i][10]=0;
+                                             x1=x1+1;}
 
+                                         else {
+                                             for (int j=1;j<9;j++){
+                                                     if (j<5){ko[i][j]=lo[x1][j];}
+                                                     else if (j==5){ko[i][5]=lo[x2][6];}
+                                                     else {ko[i][j]=0;}
+                                                 }
+                                                 x1=x1+1;x2=x2+1;
+                                                 ko[i][9]=1;ko[i][10]=2;
+                                             }
+
+                                         }
+                                     else {
+                                         for(int n=1;n<9;n++){
+                                                 if (n<5){ko[i][n]=lo[x1][n];}
+                                                 else {ko[i][n]=0;}
+                                         }
+                                         ko[i][9]=1;ko[i][10]=0;
+                                         x1 =x1+1;
+                                     }
+
+
+                    }
+                  // Tahap2
+                             int x10=1;int x20=1;
+                             for (int i=1; i<=JML; i++)
+                             {
+                                 if(!lo[x20][7]==0){
+                                                    int kl =ko[x10][1];//Data Tahap1
+                                                    int kw =lo[x20][7];//Data GPS
+                                                    if (kl<kw){
+                                                        for (int j=1;j<9;j++){
+                                                            if (j<6) {
+                                                                ko1[i][j]=ko[x10][j];
+                                                            }
+                                                            else {
+                                                              ko1[i][j]=0;
+                                                            }
+                                                        }
+                                                        ko1[i][9]=ko[x10][9];ko1[i][10]=ko[x10][10];ko1[i][11]=0;
+                                                        x10=x10+1;
+                                                    }
+                                                    else if (kl>kw){
+                                                    for (int ik=1;ik<9;ik++){
+                                                        if (ik<6){
+                                                            ko1[i][ik]=0;
+                                                        }
+                                                        else {
+
+                                                            ko1[i][ik]=lo[x20][ik+2];
+                                                        }
+                                                    }
+                                                        ko1[i][1]=lo[x20][7];
+                                                        ko1[i][9]=0;ko1[i][10]=0;ko1[i][11]=3;
+                                                        x20=x20+1;
+                                                    }
+                                                    else {
+                                                        for (int j=1;j<9;j++){
+                                                            if (j<6){
+                                                                ko1[i][j]=ko[x10][j];
+                                                              }
+                                                            else {
+                                                                ko1[i][j]=lo[x20][j+2];
+                                                            }
+                                                           }
+                                                            x10=x10+1;x20=x20+1;
+                                                            ko1[i][9]=ko[i][9];ko1[i][10]=ko[i][10];ko1[i][11]=3;
+                                                        }
+                                                    }
+                                                else {
+                                                    for(int n=1;n<9;n++){
+                                                        if(n<6){
+                                                            ko1[i][n]=ko[x10][n];
+                                                        }
+                                                        else {
+                                                            ko1[i][n]=0;
+                                                        }
+                                                    }
+                                                    ko1[i][9]=ko[x10][9];ko1[i][10]=ko[x10][10];ko1[i][11]=0;
+                                                    x10 =x10+1;
+                                                }
                              }
+                             //for (int kl = 1; kl<=JML ; kl++){
 
- }
-    else {
-        inputfile.close();
+                                // qDebug()<< " "<< ko1[kl][1] << " "<< ko1[kl][5] << " " << ko1[kl][10];
+
+                                //}
+                             // Linearisasi
+                                    int x100= 1; int xk=1    ;int x300  ;
+                                    int jml1= 1; int jml2=1  ;int jml3=1;
+                                    float skala; float skala2;int skala3;
+                                    float kr;  float kr2; float kr3;
+                                    float aman; float aman2; float aman3;
+                                    // Data waktu
+                                            for (int k= 1; k<= JML;k++){
+                                                ko2[k][1]= ko1[k][1];
+                                            }
+                                            // Data ATT
+                                                    for (int oj=2; oj<5 ;oj++){
+                                                      for (int i=1;i<=JML;i++){
+                                                          int LokRoll = ko1[i][9];
+                                                                                float Roll    = ko1[i][oj];
+                                                                                if (LokRoll==0){
+                                                                                jml1     = jml1 + 1 ; // jumlah data bernilai 0 pada data waktu
+                                                                                x100     = i   + 1  ;
+                                                                                    if(ko1[x100][9]==0){
+                                                                                        jml1=jml1;
+
+                                                                                         }
+                                                                                    else {
+                                                                                        kr = ko1[x100][1]- ko1[i-jml1+1][1];
+                                                                                        skala= (ko1[x100][oj]-ko1[i-jml1+1][oj]);
+                                                                                        for(int a= 0; a<(jml1-1);a++){
+                                                                                            aman= ko1[i-a][1]-ko1[i-jml1+1][1];
+                                                                                              ko2[i-a][oj]=ko1[i-jml1+1][oj]+(skala*aman/kr);
+                                                                                        }
+                                                                                        x100=1;
+                                                                                        jml1=1;
+                                                                                    }
+                                                                            }
+                                                                                else{
+                                                                                     ko2[i][oj]= Roll;
+                                                                                     x100=1;
+                                                                                     jml1=1;
+                                                                                }
+
+                                                                         }// oj ==5
+
+                                                                     }
+                                                    // Data BAT
+                                                         int f=0;
+                                                         int c;
+                                                              if (ko1[1][10]==0)
+                                                              {while (ko1[1+f][5]==0){
+                                                                  ko2[1+f][5]=ko1[1+f][5];
+                                                                  ko2[1+f][1]=ko1[1+f][1];
+                                                                  f++;
+                                                                  }
+                                                                }
+                                                              for (int i=1+f; i<=JML;i++){
+                                                                                 int LoKBAT = ko1[i][10];
+                                                                                 float BAT    = ko1[i][5];
+                                                                                 if (LoKBAT==0){
+                                                                                     jml2   = jml2 + 1 ; // jumlah data bernilai 0 pada data waktu
+                                                                                     xk     = i   + 1;
+                                                                                     if(ko1[xk][10]==0){
+                                                                                         jml2=jml2;
+                                                                                         ko2[i][5]=0;
+                                                                                         }
+                                                                                     else if (ko1[xk][10]==2)  {
+                                                                                         kr2 = ko1[xk][1]- ko1[i-jml2+1][1];
+                                                                                         skala2= (ko1[xk][5]-ko1[i-jml2+1][5]);
+                                                                                         for(int a= 0; a<(jml2-1);a++){
+                                                                                             aman2= ko1[i-a][1]-ko1[i-jml2+1][1];
+                                                                                               ko2[i-a][5]=ko1[i-jml2+1][5]+(skala2*aman2/kr2);
+                                                                                         }
+                                                                                         xk=1;
+                                                                                         jml2=1;
+                                                                                     }
+                                                                                 }
+                                                                                     else{
+                                                                                          ko2[i][5]= BAT;
+                                                                                          xk=1;
+                                                                                          jml2=1;
+                                                                 //                         qDebug() << "nilai: " <<ko2[i][5]<< "data ke "<< i;
+                                                                                     }
+                                                                                  }
+                                                              // Data GPS
+                                                                                 for (int oj =6; oj<9;oj++){
+                                                                                      int fp=0;
+                                                                                      if (ko1[1][11]==0)
+                                                                                      {while (ko1[1+fp][oj]==0){
+                                                                                          ko2[1+fp][oj]=ko1[1+fp][oj];
+                                                                                          fp++;
+                                                                                          }
+                                                                                        }
+                                                                                            for (int i=1+fp; i<=JML;i++){
+                                                                                            int LoKGPS = ko1[i][11];
+                                                                                            float GPS  = ko1[i][oj];
+                                                                                            if (LoKGPS==0){
+                                                                                                jml3     = jml3 + 1 ; // jumlah data bernilai 0 pada data waktu
+                                                                                                x300     = i   + 1;
+                                                                                                if(ko1[x300][11]==0){
+                                                                                                    jml3=jml3;
+                                                                                                    ko2[i][oj]=0;
+                                                                                                    }
+                                                                                                else if (ko1[x300][11]==3)  {
+                                                                                                    kr3    =  ko1[x300][1] -ko1[i-jml3+1][1];
+                                                                                                    skala3 = (ko1[x300][oj]-ko1[i-jml3+1][oj]);
+                                                                                                    for(int a= 0; a<(jml3-1);a++){
+                                                                                                        aman3= ko1[i-a][1]-ko1[i-jml3+1][1];
+                                                                                                          ko2[i-a][oj]=ko1[i-jml3+1][oj]+(skala3*aman3/kr3);
+                                                                 //                                         qDebug() << " data ke:" << i-a << " " << ko2[i-a][oj];
+                                                                                                    }
+                                                                                                    x300=1;
+                                                                                                    jml3=1;
+                                                                                                }
+                                                                                            }
+                                                                                                else{
+                                                                                                     ko2[i][oj]= GPS;
+                                                                                                     x300=1;
+                                                                                                     jml3=1;
+
+                                                                                                }
+                                                                 //                                                      qDebug() << "nilai: " <<ko2[i][oj]<< "data ke "<< i;
+                                                                                             }
+
+                                                                                         }
+                                                                 //                for (int j=6;j<9;j++){
+                                                                 //                         for (int i = 1; i<=JML; i++){
+                                                                 //                                  qDebug() <<  " dari :" << ko2[i][j] << " " << i << " " << j;
+                                                                 //                         }
+                                                                 //                }
+                                                                                 // Tahap 1 penyempurnaan nilai data waktu
+                                                                                            float awal = ko1[1][1]/1000000;
+                                                                                            int pembagi = 1000000;
+                                                                                            for (int i=1; i <= JML ;i++){
+                                                                                                float al=ko1[i][1]/pembagi;
+                                                                                                 lo1[i][1]= al-awal;
+                                                                                                     qDebug() << " " << lo1[i][1]<< " awal" << awal << " al " << al;
+                                                                                            }
+                                                                                       return true;
+
+
+
     }
-   return true;
+bool Player:: SetPoint (String KDS){
+    QString op1 = QString::fromStdString(KDS);
+    int mop1= op1.toInt();
+               //      Tahap pengurutan data waktu berdasarkan nilai frame rate video
+                          float ak=1/frameRate;
+                          float durasi = 0.04;
 
+                          float total; float jarak; float nilai; float kali;
+//                       qDebug() << " " << durasi << " " << frameRate;
+                       //Data sudut Roll
+                          int data = (mop1-1)*25+1;
+                          int u1=data;int u2 =data;
+                       for (int ik=data; ik<=(data-1+totalframe);ik++){
+                           float a= lo1[1][1]+(durasi*(u2-1));
+                           float b= lo1[u1][1];
+                           int i=(ik-data)+1;
+                                  if (b==a){
+                                      ko3[i][1]=a;
+                                      for (int j=2; j<9;j++){
+                                       ko3[i][j]=ko2[u1][j];
+                                      }
+                                      u1=u1+1;
+                                      u2=u2+1;
+                                  }
+
+                                  else if (b>a){
+                                      ko3[i][1]=a;
+                                      total = lo1[u1][1]-lo1[u1-1][1];
+                                      jarak = a - lo1[u1-1][1];
+                                      for (int j=2; j<9;j++){
+                                      nilai = ko2[u1][j]-ko2[u1-1][j];
+                                          kali = (jarak/total)*nilai;
+                                          ko3[i][j]= kali + ko2[u1-1][j];}
+                                       u2=u2+1;
+                                  }
+                                  else {
+                                      u1=u1+1;
+                                      int banding = lo1[u1][1];
+                                          while (banding<a){
+                                              u1=u1+1;
+                                              banding = lo1[u1][1];
+                                              ko3[i][1]=a;
+                                          }
+                                          if (banding==a){
+                                              ko3[i][1]=a;
+                                              for (int j=2;j<9;j++){
+                                              ko3[i][j]=ko2[u1][j];}
+                                              u1=u1+1;
+                                              u2=u2+1;
+                                          }
+                                          else{
+                                              ko3[i][1]=a;
+                                              total = lo1[u1][1]-lo1[u1-1][1];
+                                              jarak = a - lo1[u1-1][1];
+                                              for (int j=2;j<9;j++){
+                                              nilai = ko2[u1][j]-ko2[u1-1][j];
+                                                  kali = (jarak/total)*nilai;
+                                                  ko3[i][j]= kali + ko2[u1-1][j];}
+                                              u2=u2+1;
+                                          }
+                                      }
+
+                                  qDebug() << " " << ko3[i][1] << "a:" << a << "b:" << b << " hasil:  "<< ko3[i][2] <<   "hasil2: " << ko3[i][5]<< "hasil3: " << ko3[i][6] ;
+                              }
+
+return true;
+
+//    for (int i =1; i<=totalframe;i++ ){
+//        qDebug() << "dari: " << ko2[i][2] << "  "<< ko3[i][2] <<   " " << i;
+//    }
 }
+   /*
 bool Player :: MengurutkanData(){
     int jbaris=1;
     for(int bris=1;bris<=(totalframe*2);bris++){
@@ -149,6 +425,7 @@ bool Player :: MengurutkanData(){
     }
     return true;
 }
+*/
 bool Player :: lokasiVideo(String lokasi){
      lokvideo = QString::fromStdString(lokasi);
     //qDebug()<<lokvideo<<endl;
@@ -433,7 +710,7 @@ void Player :: run()
         QString Time;
         int omo;
         if (wak > 0){
-            omo = golwaktu[kunci][1];
+            omo = ko[kunci][1];
             QString angka = QString::number(omo);
 
              Time = DataWaktu + angka +"us";
