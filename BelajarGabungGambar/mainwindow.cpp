@@ -8,14 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
     isMaximized = false;
-    widget = new QWidget(this);
-    widget->installEventFilter(this);
-    widget->setAutoFillBackground(true);
-    widget->setPalette(QPalette(Qt::black));
+   // widget = new QWidget(this);
+    ui->label->installEventFilter(this);
+    //ui->label->setAutoFillBackground(true);
+    //ui->label->setPalette(QPalette(Qt::black));
 
-    setCentralWidget(widget);
+    //setCentralWidget(ui->label);
     connect(this,SIGNAL(doubleClicked()),SLOT(onDoubleClicked()));
     }
 
@@ -25,24 +26,28 @@ MainWindow::~MainWindow()
 }
 void MainWindow::onDoubleClicked()
 {
-if ((widget->windowState() == Qt::WindowFullScreen) && isMaximized)
-{qDebug("Parent");
-    widget->setParent(this);
-    setCentralWidget(widget);
-    isMaximized = false;
+if ((ui->label->windowState() == Qt::WindowFullScreen) && isMaximized)
+{  qDebug("Parent");
+ // ui->label->setParent(this);
+  // setCentralWidget(ui->label);
+ ui->label->setWindowFlags(Qt::Widget);
+ // ui->label->setWindowState(ui->label->windowState() | Qt::WindowNoState);
+ // ui->label->windowState()==Qt::WindowNoState;
+   isMaximized =false;
+  ui->label->showNormal();
 
 }else{
     qDebug("Maximize");
         isMaximized = true;
-        widget->setParent(NULL);
-        widget->setWindowFlags(widget->windowFlags() | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint | Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
-        widget->setWindowState(widget->windowState() | Qt::WindowFullScreen);
-        widget->show();
+       //ui->label->setParent(NULL);
+      ui->label->setWindowFlags(Qt::Window);
+      ui->label->setWindowState(ui->label->windowState() | Qt::WindowFullScreen);
+     ui->label->show();
 }
 }
 bool MainWindow::eventFilter(QObject *target, QEvent *event)
 {
-if (target == widget)
+if (target == ui->label)
 {
 if (event->type() == QEvent::MouseButtonDblClick)
 {
@@ -68,5 +73,7 @@ void MainWindow :: PemutarGambar()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    ui->label->setWindowFlags(Qt::Window);
+    ui->label->setWindowState(ui->label->windowState() | Qt::WindowFullScreen);
+   ui->label->show();
 }

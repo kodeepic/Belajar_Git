@@ -28,7 +28,7 @@ protected:
     bool eventFilter(QObject *target, QEvent *event);
 private:
     Ui::MainWindow *ui;
-    QWidget *widget;
+   // QWidget *widget;
     bool isMaximized;
  //   Mat image;
 };

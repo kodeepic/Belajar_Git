@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+    /*
     Mat frame = imread("D:\\Capture gambar\\gambar.png");
     putText(frame,"10",Point(58, 514),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,"20",Point(58, 489),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
@@ -37,6 +38,7 @@ int main(int argc, char *argv[])
      rectangle(frame,r,Scalar(255,255,255),2,8,0);
      rectangle(frame,s,Scalar(255,255,255),2,8,0);
     imshow( "Frame",frame);
+    */
     /*
     VideoCapture cap("C:\\Users\\Ariku\\Documents\\MATLAB\\terbang.mp4");
 

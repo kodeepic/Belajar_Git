@@ -14,6 +14,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -24,6 +25,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QPushButton *pushButton;
     QLabel *label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -33,17 +35,19 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(394, 283);
+        MainWindow->resize(482, 374);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(130, 230, 75, 23));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 20, 341, 201));
-        label->setStyleSheet(QStringLiteral("background-color : #000000"));
+        label->setGeometry(QRect(150, 80, 141, 91));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 394, 21));
+        menuBar->setGeometry(QRect(0, 0, 482, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -60,7 +64,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        label->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Tampil", nullptr));
+        label->setText(QString());
     } // retranslateUi
 
 };
