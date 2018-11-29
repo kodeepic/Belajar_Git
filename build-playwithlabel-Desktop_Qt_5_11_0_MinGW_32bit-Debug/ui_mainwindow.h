@@ -87,7 +87,6 @@ public:
     QSlider *horizontalSlider;
     QLabel *label_5;
     QPushButton *pushButton_6;
-    QPushButton *pushButton_7;
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_4;
@@ -488,7 +487,8 @@ public:
 "{\n"
 "background-color: #000000;\n"
 "\n"
-"}"));
+"}\n"
+"QToolTip { color: #fff; background-color: #000; border: none; }"));
 
         verticalLayout_17->addWidget(label);
 
@@ -578,32 +578,6 @@ public:
 
         horizontalLayout_8->addWidget(pushButton_6);
 
-        pushButton_7 = new QPushButton(centralWidget);
-        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        sizePolicy.setHeightForWidth(pushButton_7->sizePolicy().hasHeightForWidth());
-        pushButton_7->setSizePolicy(sizePolicy);
-        pushButton_7->setMinimumSize(QSize(40, 40));
-        pushButton_7->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"color: white;\n"
-"background-color: #333333;\n"
-"border-width: 0px;;\n"
-"border: 1px solid;\n"
-"}\n"
-"QToolTip { color: #fff; background-color: #000; border: none; }\n"
-"QPushButton:hover{\n"
-"background-color: #27a9e3;\n"
-"border-width: 0px;\n"
-"border-radius: 0px;\n"
-"border: 0px solid;\n"
-"}"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/icons/exit-fullscreen-512.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_7->setIcon(icon5);
-        pushButton_7->setIconSize(QSize(46, 46));
-
-        horizontalLayout_8->addWidget(pushButton_7);
-
 
         verticalLayout_15->addLayout(horizontalLayout_8);
 
@@ -634,9 +608,9 @@ public:
 "border-radius:10px;\n"
 "border: 0px solid;\n"
 "}"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/icons/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_4->setIcon(icon6);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_4->setIcon(icon5);
         pushButton_4->setIconSize(QSize(23, 23));
 
         horizontalLayout_11->addWidget(pushButton_4);
@@ -694,7 +668,6 @@ public:
         label_4->setText(QApplication::translate("MainWindow", "--:--", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "--:--", nullptr));
         pushButton_6->setText(QString());
-        pushButton_7->setText(QString());
         pushButton_4->setText(QApplication::translate("MainWindow", "Keluar", nullptr));
     } // retranslateUi
 

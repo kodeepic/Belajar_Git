@@ -13,4 +13,8 @@
     <qresource prefix="/logos">
         <file>logo.png</file>
     </qresource>
+    <qresource prefix="/images">
+        <file>unnamed (1).png</file>
+        <file>B1001%.png</file>
+    </qresource>
 </RCC>

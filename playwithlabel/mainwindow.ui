@@ -914,7 +914,8 @@ border: 0px solid;}</string>
 {
 background-color: #000000;
 
-}</string>
+}
+QToolTip { color: #fff; background-color: #000; border: none; }</string>
           </property>
           <property name="text">
            <string/>
@@ -1062,51 +1063,6 @@ border: 0px solid;
            <size>
             <width>50</width>
             <height>50</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_7">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton
-{
-color: white;
-background-color: #333333;
-border-width: 0px;;
-border: 1px solid;
-}
-QToolTip { color: #fff; background-color: #000; border: none; }
-QPushButton:hover{
-background-color: #27a9e3;
-border-width: 0px;
-border-radius: 0px;
-border: 0px solid;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="icons.qrc">
-            <normaloff>:/icons/exit-fullscreen-512.png</normaloff>:/icons/exit-fullscreen-512.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>46</width>
-            <height>46</height>
            </size>
           </property>
          </widget>

@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_2->setEnabled(false); //pushbutton tidak aktif jika tidak file yang diunggah
     ui->horizontalSlider->setEnabled(false); //horizontal tidak aktif jika tidak file yang diunggah
     ui->pushButton_6->setToolTip("<font color=white>Layar Penuh</font>");
-    ui->pushButton_7->setToolTip("<font color=white>Keluar Layar Penuh</font>");
     ui->label_4->setToolTip("<font color=white>Pergerakan Waktu</font>");
     ui->label_5->setToolTip("<font color=white>Total Waktu</font>");
     ui->label->installEventFilter(this);
@@ -31,18 +30,15 @@ void MainWindow::onDoubleClicked()
 {
 if ((ui->label->windowState() == Qt::WindowFullScreen) && isMaximized)
 {  qDebug("Parent");
- // ui->label->setParent(this);
-  // setCentralWidget(ui->label);
  ui->label->setWindowFlags(Qt::Widget);
- // ui->label->setWindowState(ui->label->windowState() | Qt::WindowNoState);
- // ui->label->windowState()==Qt::WindowNoState;
+ ui->label->setToolTip(QString());
    isMaximized =false;
   ui->label->showNormal();
 
 }else{
     qDebug("Maximize");
         isMaximized = true;
-       //ui->label->setParent(NULL);
+      ui->label->setToolTip("<font color=white>Klik 2 Kali untuk keluar layar Penuh </font>");
       ui->label->setWindowFlags(Qt::Window);
       ui->label->setWindowState(ui->label->windowState() | Qt::WindowFullScreen);
      ui->label->show();
@@ -52,10 +48,10 @@ bool MainWindow::eventFilter(QObject *target, QEvent *event)
 {
 if (target == ui->label)
 {
-if (event->type() == QEvent::MouseButtonDblClick)
+if (event->type() == QEvent::MouseButtonDblClick )
 {
 QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-if (mouseEvent->button() == Qt::LeftButton )
+if (mouseEvent->button() == Qt::LeftButton)
 {
 emit doubleClicked();
 return QMainWindow::eventFilter(target,event);
@@ -64,15 +60,7 @@ return QMainWindow::eventFilter(target,event);
 }
 return QMainWindow::eventFilter(target,event);
 }
-/*
-void MainWindow :: PemutarGambar()
-{
-    cv::resize(image,image,Size(512,384),0,0,INTER_LINEAR);
-    cv::cvtColor(image,image,CV_BGR2RGB);
-    QImage imdisplay((uchar*)image.data,image.cols,image.rows,image.step,QImage::Format_RGB888);
-    ui->label->setPixmap(QPixmap::fromImage(imdisplay));
-}
-*/
+
 
 
 void MainWindow::updatePlayerUI(QImage img)
@@ -471,9 +459,14 @@ void MainWindow::on_checkBox_8_stateChanged(int arg1)
 
 void MainWindow::on_pushButton_6_clicked()
 {
-        ui->label->setWindowFlags(Qt::Window|Qt::WindowMaximizeButtonHint);
-        ui->label->showMaximized();
-        ui->pushButton_6->setEnabled(false);
+    isMaximized = true;
+    ui->label->setToolTip("<font color=white>Klik 2 Kali untuk keluar layar Penuh </font>");
+  ui->label->setWindowFlags(Qt::Window);
+  ui->label->setWindowState(ui->label->windowState() | Qt::WindowFullScreen);
+ ui->label->show();
+        //ui->label->setWindowFlags(Qt::Window|Qt::WindowMaximizeButtonHint);
+        //ui->label->showMaximized();
+        //ui->pushButton_6->setEnabled(false);
         //ui->pushButton_6->setToolTip("<font color=white>Keluar dari layar penuh</font>");
 
            // ui->pushButton_6->setIcon(QIcon(":/icons/exit-fullscreen-512.png"));
@@ -520,7 +513,7 @@ void MainWindow::on_checkBox_9_stateChanged(int arg1)
         msgBox.exec();
             }
 }
-
+/*
 void MainWindow :: keyPressEvent(QKeyEvent *e){
     if(e->key() == Qt::Key_Escape){
             ui->label->setWindowFlag(Qt::Window, false);
@@ -532,7 +525,7 @@ void MainWindow :: keyPressEvent(QKeyEvent *e){
 
     }
 }
-
+*/
 void MainWindow::on_pushButton_8_clicked()
 {
     QString str = ui->lineEdit_4->text();

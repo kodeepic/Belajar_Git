@@ -63,7 +63,7 @@ private slots:
   // void setWindowFlags(Qt::WindowFlags flags);
 
    void on_checkBox_9_stateChanged(int arg1);
-   void keyPressEvent(QKeyEvent *e);
+  // void keyPressEvent(QKeyEvent *e);
 
    void on_pushButton_8_clicked();
    void onDoubleClicked();
