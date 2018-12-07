@@ -11,6 +11,7 @@
 #include <QAxObject>
 #include <QTime>
 #include <QDate>
+#include <QImage>
 using namespace std;
 
 // Variabel Array untuk menampung data penerbangan
@@ -19,10 +20,10 @@ using namespace std;
 Player::Player(QObject *parent) : QThread(parent)
 {
     stop =true;
-
 }
 
 bool Player :: loadVideo(String filename){
+    infovideo = QString::fromStdString(filename);
     capture.open(filename);
     if(capture.isOpened())
     {
@@ -40,6 +41,7 @@ void Player::Play()
     if (!isRunning()){
         if(isStopped()){
             stop=false;
+            keadaan =keadaan+1;
         }
         start(LowPriority);
     }
@@ -57,6 +59,7 @@ double Player :: getFrameRate(){
 
 void Player::setCurrentFrame(int frameNumber){
     capture.set(CV_CAP_PROP_POS_FRAMES,frameNumber);
+    lk = frameNumber;
 }
 
 bool Player :: loadData(String d_filename){
@@ -431,6 +434,12 @@ bool Player :: lokasiVideo(String lokasi){
     //qDebug()<<lokvideo<<endl;
     lokasivideo = lokvideo.toLocal8Bit().constData(); //Qstring to std string
    // cout<<lokasivideo<<endl;
+    if (!lokasivideo.empty()){
+            keadaan1 =2;
+            stop =false;
+            kunci =1;
+        }else {keadaan1=0;}
+    qDebug() << "k: " <<keadaan << "posisi data" << kunci;
     return true;
 
 }
@@ -592,22 +601,37 @@ bool Player :: loadBaterai(String databaterai){
 }
 void Player :: run()
 {
-     kunci =1;
+    int theme = keadaan +keadaan1;
+    kunci=lk;
     int frame_width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
     int frame_height = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
-    video.open(lokasivideo,CV_FOURCC('M','J','P','G'),frameRate,Size(frame_width,frame_height),true);
+    if (theme==2){
+    video.open(lokasivideo,CV_FOURCC('M','J','P','G'),frameRate,Size(frame_width,frame_height),true);}
     if (!video.isOpened()) {
             qDebug() << "Could not open the output video file for write\n"<<endl;
         }
     int delay =(1000/frameRate);
-    while (!stop) {
+    while (stop==false) {
         if(!capture.read(frame))
         {
             stop=true;
             break;
         }
         if(Baterai>0){
-            image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
+            float ok = ko3[kunci][5];
+                       float alam=(ok-12)/2;
+                       alam= alam *100;
+                       if (alam >90)     {image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");}
+                       else if (alam >70){image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");}
+                       else if (alam >50){image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");}
+                       else if (alam >30){image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");}
+                       else if (alam >10){image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");}
+                       else if (alam >5) {image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");}
+                       else {image2 = imread("D:\\DataRachmaProgram\\baru2\\playwithlabel\\B0.png");}
+
+
+
+            //image2 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\B1001%.png");
             resize(image2,image3,Size(),0.50,0.50);
             double angle =-90;
             //mendapatkan matriks rotasi untuk memutar gambar di sekitar pusatnya dalam koordinat piksel
@@ -643,7 +667,8 @@ void Player :: run()
 
               }
             }
-        }
+    }
+
           image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
           resize(image4, enlarged, cv::Size(frame.cols-(0.90*frame.cols), frame.rows-(0.15*frame.rows)), cv::INTER_NEAREST);
           //grafik skala sebelah kanan frame//
@@ -651,7 +676,55 @@ void Player :: run()
           Mat baru1= frame(ROI1);
           Mat mask(enlarged);
           enlarged.copyTo(baru1,mask);
-          video.write(frame);
+
+              QString KEC;QString angkc;QString angkc1;QString angkc2;QString angkc3;QString angkc4;QString angkc5;QString angkc6;QString angkc7;QString angkc8;QString angkc9;
+              QString angkc10;QString angkc12;QString angkc13;QString angkc14;QString angkc15;QString angkc16;QString angkc17;QString angkc18;QString angkc19;QString angkc20;
+              QString fast;
+              if (kec > 0){
+                           float om1 = ko3[kunci][9];
+                           QString angku = QString::number(om1);
+                           fast = DataKecepatan + angku;
+                           KEC =angku;
+                          float onc1= om1; float onc2 = onc1+1; float onc3= onc1+2; float onc4 = onc1+3; float onc5 = onc1+4; float onc6 = onc1+5; float onc7 = onc1+6; float onc8 = onc1+7; float onc9 = onc1+8;float onc10 = onc1+9;
+                           float onc11= om1-1;float onc20= om1-2;float onc30= om1-3;float onc40= om1-4;float onc50= om1-5;float onc60= om1-6;float onc70= om1-7;float onc80= om1-8;float onc90= om1-9;
+                           angkc = QString::number(onc1);angkc1 = QString::number(onc2);angkc2 = QString::number(onc3);angkc3 = QString::number(onc4);angkc4 = QString::number(onc5);angkc5 = QString::number(onc6);angkc6 = QString::number(onc7);
+                           angkc7 = QString::number(onc7); angkc8 = QString::number(onc8); angkc9 = QString::number(onc9); angkc10 = QString::number(onc10);angkc12 = QString::number(onc11);angkc13 = QString::number(onc20);angkc14 = QString::number(onc30);
+                           angkc15 = QString::number(onc40);angkc16 = QString::number(onc50);angkc17 = QString::number(onc60);angkc18 = QString::number(onc70);angkc19 = QString::number(onc80);angkc20 = QString::number(onc90);
+
+                       }else {
+                  fast = DataKecepatan;
+                  KEC="";
+              }
+              string kecepatan1 = fast.toLocal8Bit().constData();
+              string kcptn   = KEC.toLocal8Bit().constData()    ;
+              string kcptn1  = angkc1.toLocal8Bit().constData() ;string kcptn2  = angkc2.toLocal8Bit().constData() ;string kcptn3  = angkc3.toLocal8Bit().constData() ;string kcptn4  = angkc4.toLocal8Bit().constData() ;string kcptn5  = angkc5.toLocal8Bit().constData();
+              string kcptn6  = angkc6.toLocal8Bit().constData() ;string kcptn7  = angkc7.toLocal8Bit().constData() ;string kcptn8  = angkc8.toLocal8Bit().constData() ;string kcptn9  = angkc9.toLocal8Bit().constData() ;string kcptn10 = angkc9.toLocal8Bit().constData();
+              string kcptn12 = angkc12.toLocal8Bit().constData();string kcptn13 = angkc13.toLocal8Bit().constData();string kcptn14 = angkc14.toLocal8Bit().constData();string kcptn15 = angkc15.toLocal8Bit().constData();string kcptn16 = angkc16.toLocal8Bit().constData();
+              string kcptn17 = angkc17.toLocal8Bit().constData();string kcptn18 = angkc18.toLocal8Bit().constData();string kcptn19 = angkc19.toLocal8Bit().constData();string kcptn20 = angkc20.toLocal8Bit().constData();
+              putText(frame,kcptn10,Point((frame.cols* 0.82)-16, ((frame.rows * 0.89)+5)-460),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn9,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-441),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn8,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-415),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn7,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-390),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn6,Point((frame.cols* 0.82)+5,((frame.rows * 0.89)+5)-365),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn5,Point((frame.cols* 0.82)-16,  ((frame.rows * 0.89)+5)-342),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn4,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-317),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn3,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-292),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn2,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-267),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn1,Point((frame.cols* 0.82)+5,((frame.rows * 0.89)+5)-245),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn,Point((frame.cols* 0.82)-17, ((frame.rows * 0.89)+5)-220) ,FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn12,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-195),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn13,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-170),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn14,Point((frame.cols* 0.82)+5,((frame.rows * 0.89)+5)-150) ,FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn15,Point((frame.cols* 0.82)+5,((frame.rows * 0.89)+5)-125),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn16,Point((frame.cols* 0.82)-16,((frame.rows * 0.89)+5)-100),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn17,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-75),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn18,Point((frame.cols* 0.82)+5, ((frame.rows * 0.89)+5)-50),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn19,Point((frame.cols* 0.82)+5,((frame.rows * 0.89)+5)-25),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     putText(frame,kcptn20,Point((frame.cols* 0.82)+5, (frame.rows * 0.89)+5),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                     Rect p=Rect(((frame.cols* 0.82)-25),((frame.rows * 0.89)+5-233),70,20);
+                            rectangle(frame,p,Scalar(255,255,255),2,8,0);
+
+          //video.write(frame);
           /*
           Mat roi = frame(cv::Rect(110, 370, 500, 200));
           Mat color(roi.size(), CV_8UC3, cv::Scalar(0,0, 0));
@@ -667,6 +740,59 @@ void Player :: run()
           Mat color (roi.size(),CV_8UC3,cv::Scalar(0,0,0));
           double alpha =0.4;
           addWeighted(color,alpha,roi,1.0 - alpha,0.0,roi);
+          //grafik skala sebelah kiri frame//
+              QString ALT; QString ALTK;QString angkk;QString angkk1;QString angkk2;QString angkk3;QString angkk4;QString angkk5;QString angkk6;QString angkk7;QString angkk8;QString angkk9;
+              QString angkk10;QString angkk12;QString angkk13;QString angkk14;QString angkk15;QString angkk16;QString angkk17;QString angkk18;QString angkk19;QString angkk20;
+              if (alt > 0){
+                           float om2 = ko3[kunci][8];
+                           float on1= om2; float on2 = on1+1; float on3= on1+2; float on4 = on1+3; float on5 = on1+4; float on6 = on1+5; float on7 = on1+6; float on8 = on1+7; float on9 = on1+8;float on10 = on1+9;
+                           float on11= om2-1;float on20= om2-2;float on30= om2-3;float on40= om2-4;float on50= om2-5;float on60= om2-6;float on70= om2-7;float on80= om2-8;float on90= om2-9;
+                           angkk = QString::number(on1);angkk1 = QString::number(on2);angkk2 = QString::number(on3);angkk3 = QString::number(on4);angkk4 = QString::number(on5);angkk5 = QString::number(on6);angkk6 = QString::number(on7);
+                           angkk7 = QString::number(on7); angkk8 = QString::number(on8); angkk9 = QString::number(on9); angkk10 = QString::number(on10);angkk12 = QString::number(on11);angkk13 = QString::number(on20);angkk14 = QString::number(on30);
+                           angkk15 = QString::number(on40);angkk16 = QString::number(on50);angkk17 = QString::number(on60);angkk18 = QString::number(on70);angkk19 = QString::number(on80);angkk20 = QString::number(on90);
+                            ALT = DataAltitude + angkk;
+                            ALTK = angkk;
+                       }
+                       else {
+                           ALT = DataAltitude;
+                           ALTK= "";
+                       }
+              string Altitude1 = ALT.toLocal8Bit().constData();
+                       string ketinggian = ALTK.toLocal8Bit().constData();
+                       string ketinggian1 = angkk1.toLocal8Bit().constData();string ketinggian2 = angkk2.toLocal8Bit().constData();string ketinggian3 = angkk3.toLocal8Bit().constData();string ketinggian4 = angkk4.toLocal8Bit().constData();string ketinggian5 = angkk5.toLocal8Bit().constData();
+                       string ketinggian6 = angkk6.toLocal8Bit().constData();string ketinggian7 = angkk7.toLocal8Bit().constData();string ketinggian8 = angkk8.toLocal8Bit().constData();string ketinggian9 = angkk9.toLocal8Bit().constData();string ketinggian10 = angkk10.toLocal8Bit().constData();
+                       string ketinggian12 = angkk12.toLocal8Bit().constData();string ketinggian13 = angkk13.toLocal8Bit().constData();string ketinggian14 = angkk14.toLocal8Bit().constData();string ketinggian15 = angkk15.toLocal8Bit().constData();string ketinggian16 = angkk16.toLocal8Bit().constData();
+                       string ketinggian17 = angkk17.toLocal8Bit().constData();string ketinggian18 = angkk18.toLocal8Bit().constData();string ketinggian19 = angkk19.toLocal8Bit().constData();string ketinggian20 = angkk20.toLocal8Bit().constData();
+                       flip(enlarged,flip1,+1);
+                       Rect ROI2(frame.cols-flip1.cols-640,frame.rows-flip1.rows-50,flip1.cols,flip1.rows);
+                              Mat baru2 = frame(ROI2);
+                              Mat mask1(flip1);
+                              flip1.copyTo(baru2,mask1);
+                                     putText(frame,ketinggian10,Point((frame.cols* 0.08)+16, ((frame.rows * 0.89)+5)-460),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian9,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-441),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian8,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-415),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian7,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-390),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian6,Point((frame.cols* 0.08),((frame.rows * 0.89)+5)-365),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian5,Point((frame.cols* 0.08)+16,  ((frame.rows * 0.89)+5)-342),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian4,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-317),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian3,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-292),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian2,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-267),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian1,Point(frame.cols* 0.08,((frame.rows * 0.89)+5)-245),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian,Point((frame.cols* 0.08)+17, ((frame.rows * 0.89)+5)-220) ,FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian12,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-195),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian13,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-170),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian14,Point(frame.cols* 0.08,((frame.rows * 0.89)+5)-150) ,FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian15,Point(frame.cols* 0.08,((frame.rows * 0.89)+5)-125),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian16,Point((frame.cols* 0.08)+16,((frame.rows * 0.89)+5)-100),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian17,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-75),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian18,Point(frame.cols* 0.08, ((frame.rows * 0.89)+5)-50),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian19,Point(frame.cols* 0.08,((frame.rows * 0.89)+5)-25),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                     putText(frame,ketinggian20,Point((frame.cols* 0.08), (frame.rows * 0.89)+5),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
+                                      Rect r=Rect(((frame.cols* 0.08)+5),((frame.rows * 0.89)+5-233),70,20);
+                                      rectangle(frame,r,Scalar(255,255,255),2,8,0);
+
+
+                                      /*
         //grafik skala sebelah kiri frame//
         flip(enlarged,flip1,+1);
         Rect ROI2(frame.cols-flip1.cols-640,frame.rows-flip1.rows-50,flip1.cols,flip1.rows);
@@ -695,9 +821,9 @@ void Player :: run()
          putText(frame,"200",Point(74, 61),FONT_HERSHEY_SIMPLEX,0.5,Scalar(255, 255, 255),1.6,LINE_AA);
          Rect r=Rect(22,68,70,20);
          //Rect s=Rect(22,164,85,20);
-
+*/
          //rectangle(frame,s,Scalar(255,255,255),2,8,0);
-        /*
+/*
         //grafik skala sebelah atas frame //
         resize(enlarged,enlarged1,Size(),0.8,0.8);
         transpose(enlarged1,gfatas);
@@ -706,44 +832,25 @@ void Player :: run()
         Mat baru3 =frame(ROI3);
         Mat mask2(grafikatas);
         grafikatas.copyTo(baru3,mask2);
-        */
+*/
         QString Time;
-        int omo;
+        float omo;
         if (wak > 0){
             omo = ko[kunci][1];
             QString angka = QString::number(omo);
 
-             Time = DataWaktu + angka +"us";
+             Time = DataWaktu + angka +"s";
         }
         else {
             Time = DataWaktu;
         }
         string waktu1 = Time.toLocal8Bit().constData();
-        QString fast;
-        if (kec > 0){
-            float om1 = ko[kunci][2];
-            QString angku = QString::number(om1);
-            fast = DataKecepatan + angku;
-        }
-        else {
-            fast = DataKecepatan;
-        }
-        string kecepatan1 = fast.toLocal8Bit().constData();
-        QString ALT;
-        if (alt > 0){
-            float om2 = ko[kunci][3];
-            QString angkk = QString::number(om2);
-             ALT = DataAltitude + angkk;
-        }
-        else {
-            ALT = DataAltitude;
-        }
-        string Altitude1 = ALT.toLocal8Bit().constData();
         QString Rol;
         if (rol > 0){
-            int om3 = ko[kunci][4];
+           float om3 = ko[kunci][4];
             QString angk = QString::number(om3);
              Rol = DataRoll + angk;
+             /*
              if(om3>=235.56 && om3<=238.03){
               rectangle(frame,r,Scalar(255,255,255),2,8,0);
              }if(om3>=232.6 && om3<=235.55){
@@ -759,6 +866,7 @@ void Player :: run()
                  Rect p=Rect(22,164,85,20);
                  rectangle(frame,p,Scalar(255,255,255),2,8,0);
              }
+             */
         }
         else {
             Rol = DataRoll;
@@ -766,7 +874,7 @@ void Player :: run()
         string Roll1 = Rol.toLocal8Bit().constData();
         QString Long;
         if (log > 0){
-            int om4 = ko[kunci][5];
+            float om4 = ko[kunci][5];
             QString angkl = QString::number(om4);
              Long = DataLongitude + angkl;
         }
@@ -777,7 +885,7 @@ void Player :: run()
         string Longitude1 = Long.toLocal8Bit().constData();
         QString Pitc;
         if (pit > 0){
-            int om5 = ko[kunci][6];
+            float om5 = ko[kunci][6];
             QString ang = QString::number(om5);
             Pitc = DataPitch + ang;
         }
@@ -787,7 +895,7 @@ void Player :: run()
         string Pitch1 = Pitc.toLocal8Bit().constData();
         QString Lat;
         if (lat > 0){
-            int om6 = ko[kunci][7];
+            float om6 = ko[kunci][7];
             QString anka = QString::number(om6);
             Lat = DataLatitude + anka;
         }
@@ -797,7 +905,7 @@ void Player :: run()
         string Latitude1 = Lat.toLocal8Bit().constData();
         QString Yaw;
         if (yaw > 0){
-            int om7 = ko[kunci][8];
+            float om7 = ko[kunci][8];
             QString angko = QString::number(om7);
             Yaw = DataYaw + angko;
         }
@@ -820,6 +928,44 @@ void Player :: run()
     putText(frame,Pitch1,Point2f(x2,y1+40),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,Latitude1,Point2f(x2,y1+80),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,Yaw1 ,Point2f(x2,y1+120),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    //menambahkan tanggal dan waktu
+    //       QDate cd = QDate::currentDate();
+    //       QTime ct = QTime::currentTime();
+    //         tanggal= cd.toString();
+    //          jam   = ct.toString();
+    //          string tanggalbaru = tanggal.toLocal8Bit().constData();
+    //          string jambaru = jam.toLocal8Bit().constData();
+    //   putText(frame,tanggalbaru+" | "+jambaru,Point2f(frame.cols-300,frame.rows*0.05),FONT_HERSHEY_SIMPLEX,0.6,Scalar(0,0,0),1.6,LINE_AA);
+    QFileInfo fileinfo(infovideo);
+    QDateTime last_created = fileinfo.lastRead();
+    QDateTime last_modified = fileinfo.lastModified();
+    tanggal_tercipta= last_created.toString();
+    tanggal_modifikasi = last_modified.toString();
+    string tercipta = tanggal_tercipta.toLocal8Bit().constData();
+    string modifikasi = tanggal_modifikasi.toLocal8Bit().constData();
+    putText(frame,modifikasi,Point2f(frame.cols-300,frame.rows*0.05),FONT_HERSHEY_SIMPLEX,0.6,Scalar(0,0,0),1.6,LINE_AA);
+    /*
+    //kotak sebelah kiri
+    Mat roi4 =frame(cv::Rect(50,150,50,275));
+    Mat color4 (roi4.size(),CV_8UC3,cv::Scalar(0,0,0));
+    double alpha4 =0.2;
+    addWeighted(color4,alpha4,roi4,1.0 - alpha4,0.0,roi4);
+    //grafik kiri
+    for(int i=156;i<=425;i=i+46){
+    line(frame,Point( 94,i), Point(99, i),Scalar(255,255,255),1.6,LINE_AA);
+    line(frame,Point( 94,i+23), Point(99, i+23),Scalar(255,255,255),1.6,LINE_AA);
+    //conton data kecepatan
+    putText(frame,"100",Point(70,i+3),FONT_HERSHEY_SIMPLEX,0.3,Scalar(255,255,255),1.6,LINE_AA);
+
+    }
+    //kotak penanda kiri
+    line(frame,Point(50,284),Point(85,284),Scalar(255,255,255),1.5,LINE_AA); //bagian garis atas penanda
+    line(frame,Point(50,284),Point(50,306),Scalar(255,255,255),1.5,LINE_AA); //bagian garis samping penanda
+    line(frame,Point(50,306),Point(85,306),Scalar(255,255,255),1.5,LINE_AA); //bagian garis bawah penanda
+    line(frame,Point(85,284),Point(95,294),Scalar(255,255,255),1.5,LINE_AA); //bagian garis miring atas penanda
+    line(frame,Point(85,306),Point(95,294),Scalar(255,255,255),1.5,LINE_AA); //bagian garis miring bawah penanda
+*/
+    /*
         //menambahkan tanggal dan waktu
         QDate cd = QDate::currentDate();
         QTime ct = QTime::currentTime();
@@ -828,9 +974,18 @@ void Player :: run()
            string tanggalbaru = tanggal.toLocal8Bit().constData();
            string jambaru = jam.toLocal8Bit().constData();
     putText(frame,tanggalbaru+" | "+jambaru,Point2f(frame.cols-300,frame.rows*0.05),FONT_HERSHEY_SIMPLEX,0.6,Scalar(0,0,0),1.6,LINE_AA);
-    imwrite("D:\\Capture gambar\\gambar.png", frame); //write the image to a file as JPEG
+    */
+   // imwrite("D:\\Capture gambar\\gambar.png", frame); //write the image to a file as JPEG
 
       //konversi BGR ke RGB
+    //konversi BGR ke RGB
+   if (theme==2){
+        video.write(frame);
+        emit urutan(kunci);
+   }
+      else{
+//          kunci =lk;
+       if (keadaan==1){
         if (frame.channels()==3){
             cv::cvtColor(frame, RGBframe, CV_BGR2RGB);
             img = QImage((const unsigned char*)(RGBframe.data),
@@ -843,8 +998,16 @@ void Player :: run()
         }
         emit processedImage(img);
         this->msleep(delay);
+       }
+       else {
+                   video.write(frame);
+                   emit urutan(kunci);
+              }
+    }
+
    kunci ++;
     }
+     keadaan=0;
 }
 /*
 void Player :: ~run(){

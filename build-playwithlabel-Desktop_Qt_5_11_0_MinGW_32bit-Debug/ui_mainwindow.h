@@ -19,6 +19,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
@@ -76,6 +77,7 @@ public:
     QPushButton *pushButton_5;
     QLineEdit *lineEdit_3;
     QLabel *label_6;
+    QProgressBar *progressBar;
     QSpacerItem *verticalSpacer_2;
     QVBoxLayout *verticalLayout_15;
     QVBoxLayout *verticalLayout_17;
@@ -451,6 +453,10 @@ public:
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(110, 10, 71, 16));
         label_6->setStyleSheet(QStringLiteral("color :white;"));
+        progressBar = new QProgressBar(groupBox_3);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(240, 10, 91, 16));
+        progressBar->setValue(0);
 
         horizontalLayout_13->addWidget(groupBox_3);
 
@@ -538,7 +544,7 @@ public:
 
         horizontalSlider = new QSlider(centralWidget);
         horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setStyleSheet(QStringLiteral("QToolTip { color: #ffffff; background-color: #ffffff; border: none; }"));
+        horizontalSlider->setStyleSheet(QStringLiteral("QToolTip { color: #ffffff; background-color: #000000; border: none; }"));
         horizontalSlider->setOrientation(Qt::Horizontal);
 
         horizontalLayout_8->addWidget(horizontalSlider);

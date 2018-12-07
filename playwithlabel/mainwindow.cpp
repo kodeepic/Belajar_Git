@@ -23,7 +23,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_4->setToolTip("<font color=white>Pergerakan Waktu</font>");
     ui->label_5->setToolTip("<font color=white>Total Waktu</font>");
     ui->label->installEventFilter(this);
-     connect(this,SIGNAL(doubleClicked()),SLOT(onDoubleClicked()));
+    connect(this,SIGNAL(doubleClicked()),SLOT(onDoubleClicked()));
+    connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(on_horizontalSlider_sliderMoved(int)));
+    QPixmap logo(":/logos/logo.png");
+    ui->label->setPixmap(logo);
+    ui->label->setAlignment(Qt::AlignCenter);
+    ui->pushButton_6->setEnabled(false);
+   ui->progressBar->setValue(0);
+   connect(myPlayer,SIGNAL(urutan(int)),this,SLOT(on_progressBar_valueChanged(int)));
 
 }
 void MainWindow::onDoubleClicked()
@@ -70,7 +77,26 @@ void MainWindow::updatePlayerUI(QImage img)
         ui->label->setPixmap(QPixmap::fromImage(img).scaled(ui->label->size(),Qt::KeepAspectRatio,Qt::FastTransformation));
         ui->horizontalSlider->setValue(myPlayer->getCurrentFrame());
         ui->label_4->setText(getFormattedTime((int)myPlayer->getCurrentFrame()/(int)myPlayer->getFrameRate()));
-
+        ui->horizontalSlider->setToolTip(getFormattedTime((int)myPlayer->getCurrentFrame()/(int)myPlayer->getFrameRate()));
+    }else{
+        ui->pushButton_2->setEnabled(false);
+        ui->horizontalSlider->setEnabled(false);
+    }
+    //tampilan saat video bearkhir diputar
+     Waktumasimum = getFormattedTime((int)myPlayer->getNumberOfFrames()/(int)myPlayer->getFrameRate());
+     Waktujalan = getFormattedTime((int)myPlayer->getCurrentFrame()/(int)myPlayer->getFrameRate());
+    if(Waktumasimum==Waktujalan){
+        QPixmap logo(":/logos/logo.png");
+        ui->label->setPixmap(logo);
+        ui->label->setAlignment(Qt::AlignCenter);
+        ui->pushButton_2->setToolTip("<font color=white>Play</font>"); //tulisan pushbutton jadi stop
+        ui->pushButton_2->setIcon(QIcon(":/icons/icon_control_play1.png"));
+        ui->pushButton_2->setIconSize(QSize(50,50));
+        ui->label_4->setText("--:--");
+        ui->label_5->setText("--:--");
+        ui->pushButton_6->setEnabled(false);
+       // ui->horizontalSlider->setValue(1);
+        myPlayer->Stop();
     }
 }
 
@@ -84,7 +110,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this,tr("Open Video"),".",
-                                                    tr("Video Files(*.avi *.mpg *.mp4)")); //membuka dokumen untuk memilih video yang sesuai ekstensi
+                                                    tr("Video Files(*.avi *.mpg *.mp4 *.mkv)")); //membuka dokumen untuk memilih video yang sesuai ekstensi
     QFileInfo name = filename;
     //pesan dibawah ini akan keluar video tidak sesuai
     if(!filename.isEmpty()){
@@ -104,6 +130,9 @@ void MainWindow::on_pushButton_clicked()
             //mencatat dan menampilkan durasi video
 
         }
+       ui->pushButton_2->setToolTip("<font color=white>Play</font>"); //tulisan pushbutton jadi stop
+       ui->pushButton_2->setIcon(QIcon(":/icons/icon_control_play1.png"));
+       ui->pushButton_2->setIconSize(QSize(50,50));
        ui->lineEdit->setText(filename); //menampilkan alamat filename di lineedit (lokasi video)
     }
 }
@@ -114,11 +143,12 @@ void MainWindow :: on_pushButton_2_clicked() //kalau pushbutton 2 sudah diklik m
         myPlayer->Play(); //jika mplayer berputar
         ui->pushButton_2->setIcon(QIcon(":/icons/icon_control_pause.png"));
         ui->pushButton_2->setIconSize(QSize(50,50));
-        ui->pushButton_2->setToolTip("<font color=white>Pause the playback</font>"); //tulisan puhbutton jadi play
+        ui->pushButton_2->setToolTip("<font color=white>Pause the playback</font>"); //tulisan puhbutton jadi pause
+        ui->pushButton_6->setEnabled(true);
     }else
     {
         myPlayer->Stop(); //jika mplayer berhenti
-        ui->pushButton_2->setToolTip("<font color=white>Play</font>"); //tulisan pushbutton jadi stop
+        ui->pushButton_2->setToolTip("<font color=white>Play</font>"); //tulisan pushbutton jadi play
         ui->pushButton_2->setIcon(QIcon(":/icons/icon_control_play1.png"));
         ui->pushButton_2->setIconSize(QSize(50,50));
     }
@@ -149,7 +179,9 @@ void MainWindow::on_pushButton_3_clicked() //kalau di klik, hal dibawah ini akan
             msgBox.exec();
                 }
             }
+
     ui->lineEdit_2->setText(d_filename); //mencatat lokasi file d_filename di lineedit (lokasi berkas)
+
     /*
     QAxObject* excel     = new QAxObject("Excel.Application");
     QAxObject* workbooks = excel->querySubObject("Workbooks");
@@ -200,10 +232,17 @@ void MainWindow::on_horizontalSlider_sliderReleased() //kalau ngk dipress video 
 void MainWindow::on_horizontalSlider_sliderMoved(int position){
     myPlayer->setCurrentFrame(position);
     ui->label_4->setText(getFormattedTime(position/(int)myPlayer->getFrameRate()));
+    ui->horizontalSlider->setToolTip("<font color=white></font>"+getFormattedTime(position/(int)myPlayer->getFrameRate()));
+
 }
 
 void MainWindow::on_pushButton_5_clicked()
 {
+    myPlayer->setCurrentFrame(1);
+    ui->pushButton_2->setToolTip("<font color=white>Play</font>"); //tulisan pushbutton jadi stop
+    ui->pushButton_2->setIcon(QIcon(":/icons/icon_control_play1.png"));
+    ui->pushButton_2->setIconSize(QSize(50,50));
+    myPlayer->Stop();
 QString lokasi = QFileDialog::getSaveFileName(this,tr("menyimpan video"),"",tr("video penerbangan(*.avi);;All File"
                                                                                "(*)"));
 if(!myPlayer->lokasiVideo(lokasi.toLatin1().data())){
@@ -212,6 +251,7 @@ if(!myPlayer->lokasiVideo(lokasi.toLatin1().data())){
     msgBox.exec();
         }
 ui->lineEdit_3->setText(lokasi);
+myPlayer->Play();
 }
 
 void MainWindow::on_checkBox_stateChanged(int arg1)
@@ -475,12 +515,7 @@ void MainWindow::on_pushButton_6_clicked()
             //ui->pushButton_6->setIcon(QIcon(":/icons/full-screen-icon-11.png"));
             //ui->pushButton_6->setIconSize(QSize(50,50));
 }
-void MainWindow::on_pushButton_7_clicked()
-{
-    ui->label->setWindowFlags(Qt::Widget);
-    ui->label->show();
-    ui->pushButton_6->setEnabled(true);
-}
+
 /*
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
@@ -535,4 +570,10 @@ void MainWindow::on_pushButton_8_clicked()
         msgBox.setText("Data tida keluar");
         msgBox.exec();
     }
+}
+
+void MainWindow::on_progressBar_valueChanged(int kunci)
+{
+    ui->progressBar->setRange(1,(myPlayer->getNumberOfFrames()));
+    ui->progressBar->setValue(kunci);
 }

@@ -22,8 +22,8 @@ public:
     ~MainWindow();
     QString d_filename;
     QString datawaktu,datakecepatan,dataaltitude,dataroll,datalongitude,datapitch,datalatitude,datayaw,databaterai,KDS;
-    int Data,Data1,Data2,Data3,Data4,Data5,Data6,Data7;
-
+    int Data,Data1,Data2,Data3,Data4,Data5,Data6,Data7,keadaan;
+    QString Waktumasimum,Waktujalan;
 private slots:
     void updatePlayerUI(QImage img);
     void on_pushButton_clicked();
@@ -59,16 +59,18 @@ private slots:
 
    void on_pushButton_6_clicked();
    // void keyPressEvent(QKeyEvent *e);
-   void on_pushButton_7_clicked();
-  // void setWindowFlags(Qt::WindowFlags flags);
+    // void setWindowFlags(Qt::WindowFlags flags);
 
    void on_checkBox_9_stateChanged(int arg1);
   // void keyPressEvent(QKeyEvent *e);
 
    void on_pushButton_8_clicked();
    void onDoubleClicked();
+   void on_progressBar_valueChanged(int value);
+
 signals:
    void doubleClicked();
+   void sliderMoved(int);
 protected:
    bool eventFilter(QObject *target, QEvent *event);
 private:

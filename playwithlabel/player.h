@@ -48,9 +48,10 @@ private:
     //int ini=1;
    // QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;
     //string lokasivideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw;
-    QString lokvideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw,jam,tanggal;
+    QString lokvideo,DataWaktu,DataKecepatan,DataAltitude,DataRoll,DataLongitude,DataPitch,DataLatitude,DataYaw,tanggal_tercipta,tanggal_modifikasi;
+    QString infovideo;
     string lokasivideo;
-     int kunci;
+     int keadaan,keadaan1;
 public:
     //explicit Player(QWidget *parent = nullptr);
     Player(QObject *parent = 0);
@@ -80,10 +81,13 @@ public:
     int kec, alt,bat,rol,pit,yaw,log,lat,Baterai;
     int columnCount;
     int rowCount;
+    int lk;
+    int kunci;
     //int data[100][100];
     //bool pengurutan;
 signals:
 void processedImage(const QImage &image);
+void urutan (int kunci);
 protected:
 void run();
 void msleep(int ms);
