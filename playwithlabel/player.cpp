@@ -617,6 +617,37 @@ void Player :: run()
             stop=true;
             break;
         }
+        Rect r=Rect(frame.cols-frame.cols*0.2,frame.rows-frame.rows*0.05,50,18);
+        rectangle(frame,r,Scalar(255,255,255),1,8,0);
+        Rect s=Rect((frame.cols-frame.cols*0.2)+50+4,((frame.rows-frame.rows*0.046)),5,14);
+        rectangle(frame,s,Scalar(255,255,255),1,8,0);
+        if(Baterai>0){
+            float ok = ko3[kunci][5];
+            qDebug() << " " << ok;
+            if(ok<=17 && ok>16.5){pengurang=0;     //100%
+            }else if(ok<=16.5 && ok>16){pengurang=0.00353;//90%
+            }else if(ok<=16 && ok>15){pengurang=0.009; //85%
+            }else if(ok<=15 && ok>14){pengurang=0.00353*3;} //80%
+            else if(ok<=14 && ok>13){pengurang=0.00353*4;} //75%
+            else if(ok<=13 && ok>12){pengurang=0.00353*5;} //70%
+            else if(ok<=12 && ok>11){pengurang=0.00353*6;} //65%
+            else if(ok<=11 && ok>10){pengurang=0.00353*7;} //60%
+            else if(ok<=10 && ok>9){pengurang=0.00353*8;} //55%
+            else if(ok<=9 && ok>8){pengurang=0.00353*9;} //50%
+            else if(ok<=8 && ok>7){pengurang=0.00353*10;} //45%
+            else if(ok<=7 && ok>6){pengurang=0.00353*11;} //40%
+            else if(ok<=6 && ok>5){pengurang=0.00353*12;} //35%
+            else if(ok<=5 && ok>4){pengurang=0.00353*13;} //30%
+            else if(ok<=4 && ok>3){pengurang=0.00353*14;} //20%
+            else if(ok<=3 && ok>2){pengurang=0.00353*15;} //10%
+            else if(ok<=2&& ok>1){pengurang=0.00353*16;} //5-10%
+            else {pengurang=0.00353*17;}
+            for(int i=frame.cols-(frame.cols*(0.135+pengurang));i>=frame.cols-(frame.cols*0.195);i--){
+                line(frame,Point( i,frame.rows-frame.rows*0.044), Point(i,frame.rows-frame.rows*0.024),Scalar(30,245,2),1.5,LINE_AA); //garis berkurang setiap turun 2% atau 0,32volt
+            }
+        }
+
+        /*
         if(Baterai>0){
             float ok = ko3[kunci][5];
                        float alam=(ok-12)/2;
@@ -668,7 +699,8 @@ void Player :: run()
               }
             }
     }
-
+    */
+/*
           image4 = imread("C:\\Users\\Ariku\\Documents\\MATLAB\\unnamed (1).png");
           resize(image4, enlarged, cv::Size(frame.cols-(0.90*frame.cols), frame.rows-(0.15*frame.rows)), cv::INTER_NEAREST);
           //grafik skala sebelah kanan frame//
@@ -723,7 +755,7 @@ void Player :: run()
                      putText(frame,kcptn20,Point((frame.cols* 0.82)+5, (frame.rows * 0.89)+5),FONT_HERSHEY_SIMPLEX,0.4,Scalar(255, 255, 255),1.6,LINE_AA);
                      Rect p=Rect(((frame.cols* 0.82)-25),((frame.rows * 0.89)+5-233),70,20);
                             rectangle(frame,p,Scalar(255,255,255),2,8,0);
-
+            */
           //video.write(frame);
           /*
           Mat roi = frame(cv::Rect(110, 370, 500, 200));
@@ -731,6 +763,7 @@ void Player :: run()
         double alpha = 0.4;
         addWeighted(color, alpha, roi, 1.0 - alpha , 0.0, roi);
         */
+
           // menambahkan background
           int x = frame.cols*0.2 ;
           int y = frame.rows*0.67;
@@ -740,6 +773,8 @@ void Player :: run()
           Mat color (roi.size(),CV_8UC3,cv::Scalar(0,0,0));
           double alpha =0.4;
           addWeighted(color,alpha,roi,1.0 - alpha,0.0,roi);
+
+          /*
           //grafik skala sebelah kiri frame//
               QString ALT; QString ALTK;QString angkk;QString angkk1;QString angkk2;QString angkk3;QString angkk4;QString angkk5;QString angkk6;QString angkk7;QString angkk8;QString angkk9;
               QString angkk10;QString angkk12;QString angkk13;QString angkk14;QString angkk15;QString angkk16;QString angkk17;QString angkk18;QString angkk19;QString angkk20;
@@ -791,7 +826,7 @@ void Player :: run()
                                       Rect r=Rect(((frame.cols* 0.08)+5),((frame.rows * 0.89)+5-233),70,20);
                                       rectangle(frame,r,Scalar(255,255,255),2,8,0);
 
-
+                    */
                                       /*
         //grafik skala sebelah kiri frame//
         flip(enlarged,flip1,+1);
@@ -916,13 +951,14 @@ void Player :: run()
         if(waktu1=="0"){
        putText(frame,"Waktu : -",Point(150, 430),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
         }
+
         //Posisi
         int x1 = frame.cols*0.2 +10;
         int y1 = frame.rows*0.67 +20;
         int x2 = lebar/2 +x1 +10;
     putText(frame,waktu1,Point(x1,y1),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,kecepatan1,Point2f(x1,y1+40),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
-    putText(frame,Altitude1,Point2f(x1,y1+80),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+   // putText(frame,kecepatan1,Point2f(x1,y1+40),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
+    //putText(frame,Altitude1,Point2f(x1,y1+80),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,Roll1,Point2f(x1,y1+120),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,Longitude1,Point2f(x2,y1),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
     putText(frame,Pitch1,Point2f(x2,y1+40),FONT_HERSHEY_SIMPLEX,0.6,Scalar(255, 255, 255),1.6,LINE_AA);
@@ -936,6 +972,7 @@ void Player :: run()
     //          string tanggalbaru = tanggal.toLocal8Bit().constData();
     //          string jambaru = jam.toLocal8Bit().constData();
     //   putText(frame,tanggalbaru+" | "+jambaru,Point2f(frame.cols-300,frame.rows*0.05),FONT_HERSHEY_SIMPLEX,0.6,Scalar(0,0,0),1.6,LINE_AA);
+
     QFileInfo fileinfo(infovideo);
     QDateTime last_created = fileinfo.lastRead();
     QDateTime last_modified = fileinfo.lastModified();

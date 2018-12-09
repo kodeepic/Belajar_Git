@@ -44,6 +44,7 @@ private:
         int JML;
         int JML1;
         int ini=1;
+       float pengurang;
    //int golwaktu [10000][10000];
     //int ini=1;
    // QString lokvideo,waktu,kecepatan,altitude,roll,longitude,pitch,latitude,yaw;

@@ -87,6 +87,7 @@ void MainWindow::updatePlayerUI(QImage img)
      Waktujalan = getFormattedTime((int)myPlayer->getCurrentFrame()/(int)myPlayer->getFrameRate());
     if(Waktumasimum==Waktujalan){
         QPixmap logo(":/logos/logo.png");
+        myPlayer->setCurrentFrame(1);
         ui->label->setPixmap(logo);
         ui->label->setAlignment(Qt::AlignCenter);
         ui->pushButton_2->setToolTip("<font color=white>Play</font>"); //tulisan pushbutton jadi stop
@@ -95,7 +96,7 @@ void MainWindow::updatePlayerUI(QImage img)
         ui->label_4->setText("--:--");
         ui->label_5->setText("--:--");
         ui->pushButton_6->setEnabled(false);
-       // ui->horizontalSlider->setValue(1);
+        ui->horizontalSlider->setValue(1);
         myPlayer->Stop();
     }
 }
